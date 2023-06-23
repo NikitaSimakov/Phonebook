@@ -1,0 +1,23 @@
+.form {
+    margin-bottom: 25px;
+}
+.form_label {
+    font-size: 22px;
+}
+.form_label:first-child {
+    margin-right: 10px;
+}
+.form_input {
+    height: 20px;
+    margin-left: 10px;
+    border-radius: 2px;
+    border: 1px solid black;
+}
+.form_button {
+    margin-left: 10px;
+    border-radius: 4px;
+    border-style: none;
+    cursor: pointer;
+    height: 25px;
+    background-color: rgb(183, 249, 173);
+}

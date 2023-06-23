@@ -1,0 +1,12 @@
+.contactList_item {
+    font-size: 22px;
+}
+
+.contactList_button {
+    margin-left: 10px;
+    border-radius: 4px;
+    border-style: none;
+    cursor: pointer;
+    height: 25px;  
+    background-color: rgb(172, 104, 104); 
+}
