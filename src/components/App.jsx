@@ -8,6 +8,7 @@ import { Registration } from './Registration/Registration';
 import { Route, Routes } from 'react-router-dom';
 import Contacts from './Contacts/Contacts';
 import { Login } from './Login/Login';
+import NotFound from './NotFound/NotFound';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -27,6 +28,7 @@ const App = () => {
         <Route path="/" element={<Contacts />} />
         <Route path="/register" element={<Registration />} />
         <Route path="/login" element={<Login />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   );
