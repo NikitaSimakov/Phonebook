@@ -1,9 +1,13 @@
-import ContactForm from './ContactForm/ContactForm';
-import Filter from './Filter/Filter';
-import ContactList from './ContactList/ContactList';
+// import ContactForm from './ContactForm/ContactForm';
+// import Filter from './Filter/Filter';
+// import ContactList from './ContactList/ContactList';
 import { fetchContacts } from 'redux/thunks';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { Registration } from './Registration/Registration';
+import { Route, Routes } from 'react-router-dom';
+import Contacts from './Contacts/Contacts';
+import { Login } from './Login/Login';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -19,11 +23,11 @@ const App = () => {
         padding: 30,
       }}
     >
-      <h1>Phonebook</h1>
-      <ContactForm />
-      <h2>Contacts</h2>
-      <Filter />
-      <ContactList />
+      <Routes>
+        <Route path="/" element={<Contacts />}></Route>
+        <Route path="/register" element={<Registration />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
     </div>
   );
 };

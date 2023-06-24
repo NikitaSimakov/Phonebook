@@ -17,6 +17,7 @@ const Filter = () => {
   };
   return (
     <label className={css.filter_label}>
+      <h2>Contacts</h2>
       Find contacts by name
       <input
         placeholder="Search"
