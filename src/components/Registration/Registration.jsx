@@ -1,4 +1,4 @@
-import { Login } from 'components/Login/Login';
+import { signUp } from 'api/auth';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -16,6 +16,7 @@ export const Registration = () => {
   const handleSubmit = event => {
     event.preventDefault();
     console.log({ name, email, password });
+    signUp({ name, email, password });
   };
   // console.log(name, email, password);
   return (
