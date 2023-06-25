@@ -1,11 +1,13 @@
 import { signUp } from 'api/auth';
+import { Notify } from 'notiflix';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export const Registration = () => {
   const [name, setName] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const navigate = useNavigate();
   const handleChange = ({ target: { name, value } }) => {
     if (name === 'email') {
       setEmail(value);
@@ -15,8 +17,11 @@ export const Registration = () => {
   };
   const handleSubmit = event => {
     event.preventDefault();
-    console.log({ name, email, password });
-    signUp({ name, email, password });
+    // console.log({ name, email, password });
+    signUp({ name, email, password }).then(() => {
+      Notify.success('Sign Up Success');
+      navigate('/login');
+    });
   };
   // console.log(name, email, password);
   return (
