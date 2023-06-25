@@ -1,9 +1,12 @@
-import { logIn } from 'api/auth';
+// import { logIn } from 'api/auth';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { loginThunk } from 'redux/auth/thunks';
 
 export const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const dispatch = useDispatch();
 
   const handleChange = ({ target: { name, value } }) => {
     if (name === 'email') {
@@ -12,7 +15,8 @@ export const Login = () => {
   };
   const handleSubmit = event => {
     event.preventDefault();
-    logIn({ email, password }).then(console.log);
+    // logIn({ email, password }).then(console.log);
+    dispatch(loginThunk({ email, password }));
   };
   console.log({ email, password });
   return (

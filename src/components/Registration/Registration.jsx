@@ -17,13 +17,13 @@ export const Registration = () => {
   };
   const handleSubmit = event => {
     event.preventDefault();
-    // console.log({ name, email, password });
+
     signUp({ name, email, password }).then(() => {
       Notify.success('Sign Up Success');
       navigate('/login');
     });
   };
-  // console.log(name, email, password);
+
   return (
     <>
       <form onSubmit={handleSubmit}>
