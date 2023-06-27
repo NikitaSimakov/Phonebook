@@ -15,7 +15,6 @@ export const authSlice = createSlice({
     builder
       .addCase(loginThunk.pending, (state, action) => {
         state.isLoading = true;
-        // console.log(action);
       })
       .addCase(loginThunk.fulfilled, (state, { payload }) => {
         state.isLoading = false;
@@ -24,7 +23,6 @@ export const authSlice = createSlice({
       })
       .addCase(loginThunk.rejected, (state, action) => {
         state.isLoading = false;
-        // console.log(action.error.message);
         state.error = action.error.message;
         if (action.error.message === 'Request failed with status code 404')
           Notify.failure('Login failure');
