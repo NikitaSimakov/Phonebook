@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { loginThunk } from 'redux/auth/thunks';
 
 export const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleChange = ({ target: { name, value } }) => {
     if (name === 'email') {
@@ -14,9 +16,13 @@ export const Login = () => {
   };
   const handleSubmit = event => {
     event.preventDefault();
-    dispatch(loginThunk({ email, password }));
+    dispatch(loginThunk({ email, password }))
+      .unwrap()
+      .then(() => {
+        navigate('/contacts');
+      });
   };
-  console.log({ email, password });
+  //   console.log({ email, password });
   return (
     <>
       <form onSubmit={handleSubmit}>

@@ -1,0 +1,24 @@
+.header_wrapper {
+    display: flex;
+    border-bottom-style: solid;
+}
+.nav {
+    display: flex;
+    align-items: center;
+    height: 50px;
+}
+.header_home {
+    margin-left: 50px;
+
+    color: black;
+}
+
+.header_signin {
+    margin-right: auto;
+
+    color: black;
+}
+
+&.active {
+    color: orange;
+}

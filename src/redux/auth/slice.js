@@ -5,7 +5,12 @@ import { Notify } from 'notiflix';
 const authState = {
   token: '',
   isLoading: false,
+  isLoggedIn: false,
   error: '',
+  user: {
+    name: '',
+    email: '',
+  },
 };
 
 export const authSlice = createSlice({
@@ -18,7 +23,10 @@ export const authSlice = createSlice({
       })
       .addCase(loginThunk.fulfilled, (state, { payload }) => {
         state.isLoading = false;
+        state.isLoggedIn = true;
         state.token = payload.token;
+        state.user.name = payload.user.name;
+        state.user.email = payload.user.email;
         Notify.success('Login Success');
       })
       .addCase(loginThunk.rejected, (state, action) => {
