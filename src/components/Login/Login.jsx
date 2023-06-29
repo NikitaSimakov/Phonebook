@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { loginThunk } from 'redux/auth/thunks';
 
 export const Login = () => {
@@ -37,6 +37,7 @@ export const Login = () => {
         </label>
         <button type="sumbit">Send</button>
       </form>
+      <Link to="/registration">Sign In</Link>
     </>
   );
 };

@@ -2,12 +2,13 @@ import { signUp } from 'api/auth';
 import { Notify } from 'notiflix';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export const Registration = () => {
   const [name, setName] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const handleChange = ({ target: { name, value } }) => {
@@ -17,6 +18,7 @@ export const Registration = () => {
       setPassword(value);
     } else setName(value);
   };
+
   const handleSubmit = async event => {
     event.preventDefault();
     dispatch(signUp({ name, email, password }))
@@ -48,7 +50,6 @@ export const Registration = () => {
         </label>
         <button type="sumbit">Send</button>
       </form>
-      <Link to="/login">Log In</Link>
     </>
   );
 };

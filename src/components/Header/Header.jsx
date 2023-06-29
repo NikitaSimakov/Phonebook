@@ -1,11 +1,17 @@
 import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectIsLoggedIn, selectUserName } from 'redux/selectors';
 import css from './Header.module.css';
+import { logOutThunk } from 'redux/auth/thunks';
 
 const Header = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const userName = useSelector(selectUserName);
+  const dispatch = useDispatch();
+
+  const handleLogOut = () => {
+    dispatch(logOutThunk());
+  };
   return (
     <div className={css.header_wrapper}>
       <nav className={css.nav}>
@@ -15,9 +21,14 @@ const Header = () => {
         {isLoggedIn ? (
           <p className={css.header_signin}>Hello, {userName}</p>
         ) : (
-          <NavLink className={css.header_signin} to="/register">
-            Sign In
+          <NavLink className={css.header_signin} to="/login">
+            Login
           </NavLink>
+        )}
+        {isLoggedIn && (
+          <button onClick={handleLogOut} type="button">
+            logout
+          </button>
         )}
       </nav>
     </div>

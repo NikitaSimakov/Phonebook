@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { loginThunk } from './thunks';
+import { logOutThunk, loginThunk } from './thunks';
 import { Notify } from 'notiflix';
 
 const authState = {
@@ -11,6 +11,14 @@ const authState = {
     name: '',
     email: '',
   },
+};
+
+const handlePending = state => {
+  state.isLoading = true;
+};
+const handleRejected = (state, { payload }) => {
+  state.isLoading = false;
+  state.error = payload;
 };
 
 export const authSlice = createSlice({
@@ -34,7 +42,21 @@ export const authSlice = createSlice({
         state.error = action.error.message;
         if (action.error.message === 'Request failed with status code 404')
           Notify.failure('Login failure');
-      });
+      })
+      .addCase(logOutThunk.fulfilled, state => {
+        state.token = '';
+        state.user.name = '';
+        state.user.email = '';
+        state.error = '';
+        state.isLoading = false;
+        state.isLoggedIn = false;
+      })
+      .addMatcher(action => {
+        action.type.endsWith('/pending');
+      }, handlePending)
+      .addMatcher(action => {
+        action.type.endsWith('/rejected');
+      }, handleRejected);
   },
 });
 
