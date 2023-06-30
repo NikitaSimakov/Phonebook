@@ -12,6 +12,7 @@ import Contacts from './Contacts/Contacts';
 import NotFound from './NotFound/NotFound';
 import { WelcomePage } from './WelcomePage/WelcomePage';
 import { PrivateRoute } from './PrivateRoute/PrivateRoute';
+import { PublicRoute } from './PublicRoute/PublicRoute';
 
 const App = () => {
   // const dispatch = useDispatch();
@@ -30,8 +31,22 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<WelcomePage />} />
-          <Route path="/register" element={<Registration />} />
-          <Route path="/login" element={<Login />} />
+          <Route
+            path="/register"
+            element={
+              <PublicRoute>
+                <Registration />
+              </PublicRoute>
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <PublicRoute>
+                <Login />
+              </PublicRoute>
+            }
+          />
           <Route path="*" element={<NotFound />} />
           <Route
             path="/contacts"

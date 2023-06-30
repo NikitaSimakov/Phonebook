@@ -1,5 +1,6 @@
 // import Loader from "components/Loader/Loader"
 // import { Suspense } from 'react';
+import { logOut } from 'api/auth';
 import Header from 'components/Header/Header';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -15,9 +16,12 @@ const Layout = () => {
   useEffect(() => {
     if (token && !userName) {
       console.log('refreshing');
-      dispatch(refreshUserThunk());
+      dispatch(refreshUserThunk())
+        .unwrap()
+        .catch(() => dispatch(logOut()));
     }
   }, [dispatch, token, userName]);
+
   return (
     <>
       <Header />
