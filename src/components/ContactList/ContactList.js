@@ -1,9 +1,9 @@
 import { deleteContact, fetchContacts } from 'redux/thunks';
-import css from './ContactList.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectFilteredContact } from 'redux/selectors';
 import { useEffect } from 'react';
 import { Button } from '@mui/material';
+import css from './ContactList.module.css';
 
 const ContactList = () => {
   const dispatch = useDispatch();
