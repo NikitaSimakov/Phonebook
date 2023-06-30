@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { logOutThunk, loginThunk } from './thunks';
+import { logOutThunk, loginThunk, refreshUserThunk } from './thunks';
 import { Notify } from 'notiflix';
 
 const authState = {
@@ -50,6 +50,13 @@ export const authSlice = createSlice({
         state.error = '';
         state.isLoading = false;
         state.isLoggedIn = false;
+      })
+      .addCase(refreshUserThunk.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.isLoggedIn = true;
+        state.user.name = payload.name;
+        state.user.email = payload.email;
+        // state.user = action.payload;
       })
       .addMatcher(action => {
         action.type.endsWith('/pending');

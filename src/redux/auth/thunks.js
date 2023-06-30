@@ -1,4 +1,4 @@
-import { logIn, logOut, signUp } from 'api/auth';
+import { logIn, logOut, refreshUser, setToken, signUp } from 'api/auth';
 
 const { createAsyncThunk } = require('@reduxjs/toolkit');
 
@@ -34,6 +34,23 @@ export const logOutThunk = createAsyncThunk(
       return data;
     } catch (error) {
       rejectWithValue(error.message);
+    }
+  }
+);
+
+export const refreshUserThunk = createAsyncThunk(
+  'auth/refresh',
+  async (body, thunkAPI) => {
+    const { token } = thunkAPI.getState().auth;
+    if (!token) return;
+    setToken(token);
+    try {
+      const response = await refreshUser();
+      // const response = await axios.get('/users/current');
+      // const response = await axios.get('/users/current');
+      return response.data;
+    } catch (error) {
+      thunkAPI.rejectWithValue(error.message);
     }
   }
 );
