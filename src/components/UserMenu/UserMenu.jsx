@@ -4,12 +4,13 @@ import { selectIsAuth, selectUserName } from 'redux/selectors';
 import { logOutThunk } from 'redux/auth/thunks';
 import css from './UserMenu.module.css';
 import { Notify } from 'notiflix';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Button } from '@mui/material';
 
 export const UserMenu = () => {
   const isAuth = useSelector(selectIsAuth);
   const userName = useSelector(selectUserName);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const handleLogOut = () => {
@@ -20,9 +21,9 @@ export const UserMenu = () => {
   };
   return isAuth ? (
     <div className={css.userMenuWrapper}>
-      <p>Hello, {userName}</p>
+      <p className={css.welcome_message}>Hello, {userName}</p>
       <Button
-        variant="outlined"
+        variant="contained"
         className={css.logout_button}
         onClick={handleLogOut}
       >
@@ -30,8 +31,16 @@ export const UserMenu = () => {
       </Button>
     </div>
   ) : (
-    <button className={css.logout_button}>
-      <Link to="/login">Login</Link>
-    </button>
+    <div className={css.userMenuWrapper}>
+      <Button
+        onClick={() => {
+          navigate('/login');
+        }}
+        className={css.logout_button}
+        variant="contained"
+      >
+        Login
+      </Button>
+    </div>
   );
 };

@@ -1,0 +1,10 @@
+.paragraph {
+    text-align: center;
+}
+.title {
+    text-align: center;
+}
+.login_button_wrapper{
+    display: flex;
+    justify-content: flex-end;
+}
