@@ -37,7 +37,7 @@ export const Login = () => {
         </label>
         <button type="sumbit">Send</button>
       </form>
-      <Link to="/registration">Sign In</Link>
+      <Link to="/register">Sign In</Link>
     </>
   );
 };

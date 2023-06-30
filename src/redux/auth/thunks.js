@@ -1,19 +1,18 @@
-import { logIn, logOut, refreshUser, setToken, signUp } from 'api/auth';
+import { logIn, logOut, refreshUser, setToken } from 'api/auth';
+import { createAsyncThunk } from '@reduxjs/toolkit';
 
-const { createAsyncThunk } = require('@reduxjs/toolkit');
-
-export const signUpThunk = createAsyncThunk(
-  'auth/signup',
-  async (body, { rejectWithValue }) => {
-    try {
-      const { data } = await signUp(body);
-
-      return data;
-    } catch (error) {
-      rejectWithValue(error.message);
-    }
-  }
-);
+// export const signUpThunk = createAsyncThunk(
+//   'auth/signup',
+//   async (body, { rejectWithValue }) => {
+//     try {
+//       const { data } = await signUp(body);
+//       console.log(data);
+//       return data;
+//     } catch (error) {
+//       rejectWithValue(error.message);
+//     }
+//   }
+// );
 export const loginThunk = createAsyncThunk(
   'auth/login',
   async (body, { rejectWithValue }) => {

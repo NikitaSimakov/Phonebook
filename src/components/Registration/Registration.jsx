@@ -1,7 +1,7 @@
 import { signUp } from 'api/auth';
 import { Notify } from 'notiflix';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 export const Registration = () => {
@@ -10,7 +10,7 @@ export const Registration = () => {
   const [password, setPassword] = useState();
 
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const handleChange = ({ target: { name, value } }) => {
     if (name === 'email') {
       setEmail(value);
@@ -19,10 +19,9 @@ export const Registration = () => {
     } else setName(value);
   };
 
-  const handleSubmit = async event => {
+  const handleSubmit = event => {
     event.preventDefault();
-    dispatch(signUp({ name, email, password }))
-      .unwrap()
+    signUp({ name, email, password })
       .then(() => {
         Notify.success('Sign Up Success');
         navigate('/login');

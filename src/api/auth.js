@@ -13,14 +13,13 @@ const clearToken = () => {
 
 export const signUp = async body => {
   const response = await instance.post('/users/signup', body);
-  setToken(response.data.token);
+  // setToken(response.data.token);
   return response;
 };
 
 export const logIn = async body => {
   const response = await instance.post('/users/login', body);
   setToken(response.data.token);
-  //   console.log(instance);
   return response;
 };
 

@@ -1,5 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { logOutThunk, loginThunk, refreshUserThunk } from './thunks';
+import {
+  logOutThunk,
+  loginThunk,
+  refreshUserThunk,
+  // signUpThunk,
+} from './thunks';
 import { Notify } from 'notiflix';
 
 const authState = {
@@ -26,6 +31,9 @@ export const authSlice = createSlice({
   initialState: authState,
   extraReducers: builder => {
     builder
+      // .addCase(signUpThunk.fulfilled, (state, action) => {
+      //   console.log(action);
+      // })
       .addCase(loginThunk.pending, (state, action) => {
         state.isLoading = true;
       })
