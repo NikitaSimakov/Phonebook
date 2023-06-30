@@ -1,4 +1,9 @@
 .userMenuWrapper {
     display: flex;
     justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+}
+.logout_button {
+    margin-left: 15px;
 }

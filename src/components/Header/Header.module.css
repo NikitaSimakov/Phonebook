@@ -1,6 +1,8 @@
 .header_wrapper {
     display: flex;
+    justify-content: space-between;
     border-bottom-style: solid;
+
 }
 .nav {
     display: flex;
