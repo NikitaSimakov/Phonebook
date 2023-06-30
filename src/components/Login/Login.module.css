@@ -1,0 +1,9 @@
+.login_wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.login_button {
+    height: 40px;
+    margin-left: 10px;
+}

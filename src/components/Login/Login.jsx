@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { loginThunk } from 'redux/auth/thunks';
+import css from './Login.module.css';
+import { Button, TextField } from '@mui/material';
 
 export const Login = () => {
   const [email, setEmail] = useState('');
@@ -27,17 +29,41 @@ export const Login = () => {
     <>
       <form onSubmit={handleSubmit}>
         <h1>Log In</h1>
-        <label htmlFor="email">
-          Email
-          <input onChange={handleChange} type="text" name="email" />
-        </label>
-        <label htmlFor="password">
-          Password
-          <input onChange={handleChange} type="password" name="password" />
-        </label>
-        <button type="sumbit">Send</button>
+        <div className={css.login_wrapper}>
+          <label htmlFor="email">
+            Email
+            <TextField
+              size="small"
+              onChange={handleChange}
+              type="text"
+              name="email"
+            ></TextField>
+          </label>
+          <label htmlFor="password">
+            Password
+            <TextField
+              size="small"
+              onChange={handleChange}
+              type="password"
+              name="password"
+            ></TextField>
+          </label>
+          <Button variant="outlined" type="sumbit">
+            Send
+          </Button>
+        </div>
       </form>
-      <Link to="/register">Sign In</Link>
+      <Button
+        size="small"
+        className={css.login_button}
+        variant="contained"
+        onClick={() => {
+          navigate('/register');
+        }}
+      >
+        Sign In
+      </Button>
+      {/* <Link to="/register">Sign In</Link> */}
     </>
   );
 };
