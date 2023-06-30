@@ -2,6 +2,7 @@ import css from './Filter.module.css';
 import { useDispatch } from 'react-redux';
 import { setFilterState } from 'redux/filterSlice';
 import { useState } from 'react';
+import { TextField } from '@mui/material';
 
 const Filter = () => {
   const dispatch = useDispatch();
@@ -18,14 +19,18 @@ const Filter = () => {
   return (
     <label className={css.filter_label}>
       <h2>Contacts</h2>
-      Find contacts by name
-      <input
+      <p>Find contacts by name</p>
+      {/* <TextField id="outlined-basic" label="Outlined" variant="outlined" /> */}
+      <TextField
+        size="small"
+        label="Search"
+        variant="outlined"
         placeholder="Search"
         className={css.filter_input}
         onChange={filterInputChange}
         value={filter}
         type="text"
-      ></input>
+      ></TextField>
     </label>
   );
 };
