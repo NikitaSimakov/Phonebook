@@ -1,6 +1,7 @@
 .header_wrapper {
     display: flex;
     justify-content: space-between;
+    align-items: flex-end;
     border-bottom-style: solid;
 
 }
@@ -14,7 +15,9 @@
 
     color: black;
 }
-
+.nav_button:last-child {
+margin-left: 15px
+}
 .header_signin {
     margin-right: auto;
 

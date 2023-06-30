@@ -5,6 +5,7 @@ import { logOutThunk } from 'redux/auth/thunks';
 import css from './UserMenu.module.css';
 import { Notify } from 'notiflix';
 import { Link } from 'react-router-dom';
+import { Button } from '@mui/material';
 
 export const UserMenu = () => {
   const isAuth = useSelector(selectIsAuth);
@@ -20,7 +21,13 @@ export const UserMenu = () => {
   return isAuth ? (
     <div className={css.userMenuWrapper}>
       <p>Hello, {userName}</p>
-      <button onClick={handleLogOut}>Logout</button>
+      <Button
+        variant="outlined"
+        className={css.logout_button}
+        onClick={handleLogOut}
+      >
+        Logout
+      </Button>
     </div>
   ) : (
     <button className={css.logout_button}>
