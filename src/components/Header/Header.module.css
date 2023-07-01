@@ -5,7 +5,7 @@
     border-bottom-style: solid;
 
 }
-.nav {
+.header_nav {
     display: flex;
     align-items: center;
     height: 50px;
@@ -22,6 +22,3 @@
     color: black;
 }
 
-&.active {
-    color: orange;
-}

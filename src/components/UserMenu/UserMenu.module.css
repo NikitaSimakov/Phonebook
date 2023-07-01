@@ -5,7 +5,7 @@
     align-items: center;
     flex-wrap: wrap;
 
-    width: 180px;
+    min-width: 180px;
 }
 .logout_button {
     height: 36px;
