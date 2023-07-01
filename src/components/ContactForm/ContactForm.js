@@ -29,9 +29,9 @@ const ContactForm = () => {
   return (
     <form className={css.form} onSubmit={handleSubmit}>
       <h1>Phonebook</h1>
-      <div className={css.label_wrapper}>
+      <div className={css.form_label_wrapper}>
         <label className={css.form_label}>
-          <p className={css.label_name}>Name</p>
+          <p className={css.form_label_name}>Name</p>
           <TextField
             size="small"
             label="Homer Simpson"
@@ -47,7 +47,7 @@ const ContactForm = () => {
           />
         </label>
         <label className={css.form_label}>
-          <p className={css.label_name}>Number</p>
+          <p className={css.form_label_name}>Number</p>
           <TextField
             size="small"
             label="XXX-XX-XX"

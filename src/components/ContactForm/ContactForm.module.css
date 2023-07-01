@@ -8,7 +8,7 @@
 .form_label:first-child {
     margin-right: 10px;
 }
-.label_name{
+.form_label_name{
     margin-right: 10px;
 }
 /* .form_input {
@@ -28,7 +28,7 @@
     height: 40px;
     /* background-color: rgb(183, 249, 173); */
 }
-.label_wrapper {
+.form_label_wrapper {
     display: flex;
     flex-wrap: wrap;
     align-content: center;

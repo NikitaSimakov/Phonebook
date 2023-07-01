@@ -56,7 +56,7 @@ export const Registration = () => {
             />
           </label>
           <label className={css.signin_label} htmlFor="password">
-            <p className={css.label_name}>Password</p>
+            <p className={css.siginin_label_name}>Password</p>
             <TextField
               size="small"
               onChange={handleChange}

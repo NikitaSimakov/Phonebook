@@ -34,6 +34,15 @@ export const UserMenu = () => {
     <div className={css.userMenuWrapper}>
       <Button
         onClick={() => {
+          navigate('/register');
+        }}
+        className={css.signin_button}
+        variant="outlined"
+      >
+        Sign In
+      </Button>
+      <Button
+        onClick={() => {
           navigate('/login');
         }}
         className={css.logout_button}
