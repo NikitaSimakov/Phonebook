@@ -2,9 +2,36 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    align-content: center;
 }
 .login_button {
     height: 40px;
     margin-left: 10px;
-    background-color: red;
+    
+}
+.login_input{
+    margin-right: 10px;
+}
+.login_button_signin{
+    height: 40px;
+}
+.login_signin_wrapper{
+    display: flex;
+    margin-top: 30px;
+    align-items: center;
+    justify-content: flex-start;
+}
+.login_signin_text{
+    font-size: 19px;
+    margin-right: 10px;
+}
+.login_label{
+    display: flex;
+    margin-right: 10px;
+}
+/* .login_label:first-child {
+    margin-right: 10px;
+} */
+.label_name{
+    margin-right: 10px;
 }

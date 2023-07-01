@@ -30,8 +30,8 @@ export const Login = () => {
       <form onSubmit={handleSubmit}>
         <h1>Log In</h1>
         <div className={css.login_wrapper}>
-          <label htmlFor="email">
-            Email
+          <label className={css.login_label} htmlFor="email">
+            <p className={css.label_name}>Email</p>
             <TextField
               size="small"
               onChange={handleChange}
@@ -39,8 +39,8 @@ export const Login = () => {
               name="email"
             ></TextField>
           </label>
-          <label htmlFor="password">
-            Password
+          <label className={css.login_label} htmlFor="password">
+            <p className={css.label_name}>Password</p>
             <TextField
               size="small"
               onChange={handleChange}
@@ -48,21 +48,25 @@ export const Login = () => {
               name="password"
             ></TextField>
           </label>
-          <Button variant="outlined" type="sumbit">
+          <Button className={css.login_button} variant="outlined" type="sumbit">
             Send
           </Button>
         </div>
       </form>
-      <Button
-        size="small"
-        className={css.login_button}
-        variant="contained"
-        onClick={() => {
-          navigate('/register');
-        }}
-      >
-        Sign In
-      </Button>
+      <div className={css.login_signin_wrapper}>
+        <p className={css.login_signin_text}>Not registered yet?</p>
+        <Button
+          className={css.login_button_signin}
+          size="small"
+          variant="contained"
+          onClick={() => {
+            navigate('/register');
+          }}
+        >
+          Sign In
+        </Button>
+      </div>
+
       {/* <Link to="/register">Sign In</Link> */}
     </>
   );

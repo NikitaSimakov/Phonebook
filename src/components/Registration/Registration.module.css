@@ -1,0 +1,13 @@
+.sigin_wrapper{
+    display: flex;
+}
+.signin_label {
+    display: flex;
+    margin-right: 10px;
+}
+.siginin_label_name {
+    margin-right: 10px;
+}
+.sigin_button {
+    height: 40px;
+}
