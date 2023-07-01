@@ -1,4 +1,4 @@
-import { logIn, logOut, refreshUser, setToken } from 'api/auth';
+import { logIn, logOut, refreshUser, setToken, signUp } from 'api/auth';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 // export const signUpThunk = createAsyncThunk(
@@ -13,6 +13,17 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 //     }
 //   }
 // );
+export const signUpThunk = createAsyncThunk(
+  'auth/signUp',
+  async (body, { rejectWithValue }) => {
+    try {
+      const response = await signUp(body);
+      return response;
+    } catch (error) {
+      rejectWithValue(error.message);
+    }
+  }
+);
 export const loginThunk = createAsyncThunk(
   'auth/login',
   async (body, { rejectWithValue }) => {

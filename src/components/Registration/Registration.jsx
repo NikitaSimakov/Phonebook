@@ -1,9 +1,13 @@
-import { signUp } from 'api/auth';
+// import { signUp } from 'api/auth';
 import { Notify } from 'notiflix';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button, TextField } from '@mui/material';
 import css from './Registration.module.css';
+import CircularIndeterminate from 'components/CircularProgress/CircularProgress';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectIsLoading } from 'redux/selectors';
+import { signUpThunk } from 'redux/auth/thunks';
 
 export const Registration = () => {
   const [name, setName] = useState();
@@ -11,7 +15,8 @@ export const Registration = () => {
   const [password, setPassword] = useState();
 
   const navigate = useNavigate();
-  // const dispatch = useDispatch();
+  const isLoading = useSelector(selectIsLoading);
+  const dispatch = useDispatch();
   const handleChange = ({ target: { name, value } }) => {
     if (name === 'email') {
       setEmail(value);
@@ -22,7 +27,7 @@ export const Registration = () => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    signUp({ name, email, password })
+    dispatch(signUpThunk({ name, email, password }))
       .then(() => {
         Notify.success('Sign Up Success');
         navigate('/login');
@@ -64,12 +69,13 @@ export const Registration = () => {
               name="password"
             />
           </label>
-          <Button
-            className={css.sigin_button}
-            variant="contained"
-            type="sumbit"
-          >
+          <Button className={css.sigin_button} variant="outlined" type="sumbit">
             Send
+            {isLoading && (
+              <div className={css.logout_loading}>
+                {CircularIndeterminate()}
+              </div>
+            )}
           </Button>
         </div>
       </form>

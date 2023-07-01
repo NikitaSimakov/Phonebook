@@ -1,11 +1,14 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { loginThunk } from 'redux/auth/thunks';
 import { Button, TextField } from '@mui/material';
 import css from './Login.module.css';
+import { selectIsLoading } from 'redux/selectors';
+import CircularIndeterminate from 'components/CircularProgress/CircularProgress';
 
 export const Login = () => {
+  const isLoading = useSelector(selectIsLoading);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
@@ -49,6 +52,9 @@ export const Login = () => {
           </label>
           <Button className={css.login_button} variant="outlined" type="sumbit">
             Send
+            {isLoading && (
+              <div className={css.login_loading}>{CircularIndeterminate()}</div>
+            )}
           </Button>
         </div>
       </form>

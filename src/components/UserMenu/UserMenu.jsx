@@ -23,7 +23,7 @@ export const UserMenu = () => {
     <div className={css.userMenuWrapper}>
       <p className={css.welcome_message}>Hello, {userName}</p>
       <Button
-        variant="contained"
+        variant="outlined"
         className={css.logout_button}
         onClick={handleLogOut}
       >

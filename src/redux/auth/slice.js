@@ -3,6 +3,7 @@ import {
   logOutThunk,
   loginThunk,
   refreshUserThunk,
+  signUpThunk,
   // signUpThunk,
 } from './thunks';
 import { Notify } from 'notiflix';
@@ -22,7 +23,7 @@ const handlePending = state => {
   state.isLoading = true;
 };
 const handleRejected = (state, { payload }) => {
-  state.isLoading = false;
+  state.isLoading = true;
   state.error = payload;
 };
 
@@ -31,12 +32,14 @@ export const authSlice = createSlice({
   initialState: authState,
   extraReducers: builder => {
     builder
-      // .addCase(signUpThunk.fulfilled, (state, action) => {
-      //   console.log(action);
-      // })
-      .addCase(loginThunk.pending, (state, action) => {
+      .addCase(signUpThunk.pending, state => {
         state.isLoading = true;
       })
+      .addCase(signUpThunk.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.token = payload.data.token;
+      })
+      .addCase(loginThunk.pending, state => (state.isLoading = true))
       .addCase(loginThunk.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.isAuth = true;

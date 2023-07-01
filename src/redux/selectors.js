@@ -8,3 +8,4 @@ export const selectFilteredContact = state => {
 export const selectUserName = state => state.auth.user.name;
 export const selectIsAuth = state => state.auth.isAuth;
 export const selectToken = state => state.auth.token;
+export const selectIsLoading = state => state.auth.isLoading;
