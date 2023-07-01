@@ -32,7 +32,6 @@ const ContactForm = () => {
       <div className={css.label_wrapper}>
         <label className={css.form_label}>
           <p className={css.label_name}>Name</p>
-          {/* <TextField id="outlined-basic" label="Outlined" variant="outlined" /> */}
           <TextField
             size="small"
             label="Homer Simpson"

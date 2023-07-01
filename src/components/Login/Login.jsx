@@ -24,7 +24,6 @@ export const Login = () => {
         navigate('/contacts');
       });
   };
-  //   console.log({ email, password });
   return (
     <>
       <form onSubmit={handleSubmit}>
@@ -66,8 +65,6 @@ export const Login = () => {
           Sign In
         </Button>
       </div>
-
-      {/* <Link to="/register">Sign In</Link> */}
     </>
   );
 };
