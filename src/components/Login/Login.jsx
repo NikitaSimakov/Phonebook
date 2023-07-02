@@ -68,7 +68,7 @@ export const Login = () => {
             navigate('/register');
           }}
         >
-          Sign In
+          Sign Up
         </Button>
       </div>
     </>

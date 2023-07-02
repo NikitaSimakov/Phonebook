@@ -36,10 +36,10 @@ export const UserMenu = () => {
         onClick={() => {
           navigate('/register');
         }}
-        className={css.signin_button}
+        // className={css.signin_button}
         variant="outlined"
       >
-        Sign In
+        Sign Up
       </Button>
       <Button
         onClick={() => {

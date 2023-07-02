@@ -1,18 +1,6 @@
 import { logIn, logOut, refreshUser, setToken, signUp } from 'api/auth';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-// export const signUpThunk = createAsyncThunk(
-//   'auth/signup',
-//   async (body, { rejectWithValue }) => {
-//     try {
-//       const { data } = await signUp(body);
-//       console.log(data);
-//       return data;
-//     } catch (error) {
-//       rejectWithValue(error.message);
-//     }
-//   }
-// );
 export const signUpThunk = createAsyncThunk(
   'auth/signUp',
   async (body, { rejectWithValue }) => {
@@ -56,8 +44,6 @@ export const refreshUserThunk = createAsyncThunk(
     setToken(token);
     try {
       const response = await refreshUser();
-      // const response = await axios.get('/users/current');
-      // const response = await axios.get('/users/current');
       return response.data;
     } catch (error) {
       thunkAPI.rejectWithValue(error.message);

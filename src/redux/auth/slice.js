@@ -4,7 +4,6 @@ import {
   loginThunk,
   refreshUserThunk,
   signUpThunk,
-  // signUpThunk,
 } from './thunks';
 import { Notify } from 'notiflix';
 
@@ -39,7 +38,9 @@ export const authSlice = createSlice({
         state.isLoading = false;
         state.token = payload.data.token;
       })
-      .addCase(loginThunk.pending, state => (state.isLoading = true))
+      .addCase(loginThunk.pending, state => {
+        state.isLoading = true;
+      })
       .addCase(loginThunk.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.isAuth = true;
@@ -67,7 +68,6 @@ export const authSlice = createSlice({
         state.isAuth = true;
         state.user.name = payload.name;
         state.user.email = payload.email;
-        // state.user = action.payload;
       })
       .addMatcher(action => {
         action.type.endsWith('/pending');

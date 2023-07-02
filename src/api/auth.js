@@ -13,7 +13,6 @@ const clearToken = () => {
 
 export const signUp = async body => {
   const response = await instance.post('/users/signup', body);
-  // setToken(response.data.token);
   return response;
 };
 
@@ -33,4 +32,3 @@ export const refreshUser = async () => {
   const response = await instance('users/current');
   return response;
 };
-// axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
