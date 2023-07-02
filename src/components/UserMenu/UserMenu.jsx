@@ -34,7 +34,7 @@ export const UserMenu = () => {
         className={css.logout_button}
         onClick={handleLogOut}
       >
-        Logout
+        Log out
         {isLoading && token && (
           <div className={css.logout_loading}>{CircularIndeterminate()}</div>
         )}
