@@ -1,22 +1,24 @@
 import { Route, Routes } from 'react-router-dom';
-import { Registration } from '../pages/Registration/Registration';
-import { WelcomePage } from '../pages/WelcomePage/WelcomePage';
-import Contacts from '../pages/Contacts/Contacts';
-import NotFound from '../pages/NotFound/NotFound';
-import { Login } from '../pages/Login/Login';
-import Layout from './Outlet/Outlet';
-import { PrivateRoute } from './PrivateRoute/PrivateRoute';
-import { PublicRoute } from './PublicRoute/PublicRoute';
+import { Registration } from '../../pages/Registration/Registration';
+import { WelcomePage } from '../../pages/WelcomePage/WelcomePage';
+import Contacts from '../../pages/Contacts/Contacts';
+import NotFound from '../../pages/NotFound/NotFound';
+import { Login } from '../../pages/Login/Login';
+import Layout from '../Outlet/Outlet';
+import { PrivateRoute } from '../PrivateRoute/PrivateRoute';
+import { PublicRoute } from '../PublicRoute/PublicRoute';
+import css from './App.module.css';
 
 const App = () => {
   return (
     <div
-      style={{
-        height: '100vh',
-        fontSize: 30,
-        color: '#010101',
-        padding: 30,
-      }}
+      className={css.app_wrapper}
+      // style={{
+      //   height: '100vh',
+      //   fontSize: 30,
+      //   color: '#010101',
+      //   padding: 30,
+      // }}
     >
       <Routes>
         <Route path="/" element={<Layout />}>
