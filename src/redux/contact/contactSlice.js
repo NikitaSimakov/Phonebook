@@ -1,4 +1,4 @@
-import { contactsState } from './state';
+import { contactsState } from '../state';
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchContacts, deleteContact, addContact } from './thunks';
 

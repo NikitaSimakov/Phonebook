@@ -1,10 +1,10 @@
-import { Registration } from '../pages/Registration/Registration';
 import { Route, Routes } from 'react-router-dom';
-import { Login } from '../pages/Login/Login';
-import Layout from './Outlet/Outlet';
+import { Registration } from '../pages/Registration/Registration';
+import { WelcomePage } from '../pages/WelcomePage/WelcomePage';
 import Contacts from '../pages/Contacts/Contacts';
 import NotFound from '../pages/NotFound/NotFound';
-import { WelcomePage } from '../pages/WelcomePage/WelcomePage';
+import { Login } from '../pages/Login/Login';
+import Layout from './Outlet/Outlet';
 import { PrivateRoute } from './PrivateRoute/PrivateRoute';
 import { PublicRoute } from './PublicRoute/PublicRoute';
 
@@ -48,12 +48,6 @@ const App = () => {
           />
         </Route>
       </Routes>
-      {/* <Routes>
-        <Route path="/" element={<Contacts />} />
-        <Route path="/register" element={<Registration />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes> */}
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { contactsReducer } from './contactSlice';
+import { contactsReducer } from './contact/contactSlice';
 import { filterReducer } from './filterSlice';
 import { loginReducer } from './auth/slice';
 

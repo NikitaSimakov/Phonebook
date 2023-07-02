@@ -1,6 +1,6 @@
 // import Loader from "components/Loader/Loader"
 // import { Suspense } from 'react';
-import { logOut } from 'api/auth';
+import { logOut } from 'redux/auth/auth';
 import Header from 'components/Header/Header';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';

@@ -1,4 +1,4 @@
-import { deleteContact, fetchContacts } from 'redux/thunks';
+import { deleteContact, fetchContacts } from 'redux/contact/thunks';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectFilteredContact } from 'redux/selectors';
 import { useEffect } from 'react';
