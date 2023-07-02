@@ -6,6 +6,7 @@ import { Button, TextField } from '@mui/material';
 import css from './Login.module.css';
 import { selectIsLoading } from 'redux/selectors';
 import CircularIndeterminate from 'components/CircularProgress/CircularProgress';
+import { Notify } from 'notiflix';
 
 export const Login = () => {
   const isLoading = useSelector(selectIsLoading);
@@ -25,6 +26,10 @@ export const Login = () => {
       .unwrap()
       .then(() => {
         navigate('/contacts');
+        Notify.success('Login success!');
+      })
+      .catch(() => {
+        Notify.failure('Login failure!');
       });
   };
   return (

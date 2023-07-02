@@ -5,7 +5,7 @@ import {
   refreshUserThunk,
   signUpThunk,
 } from './thunks';
-import { Notify } from 'notiflix';
+// import { Notify } from 'notiflix';
 
 const authState = {
   token: '',
@@ -47,13 +47,13 @@ export const authSlice = createSlice({
         state.token = payload.token;
         state.user.name = payload.user.name;
         state.user.email = payload.user.email;
-        Notify.success('Login Success');
+        // Notify.success('Login Success');
       })
       .addCase(loginThunk.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.error.message;
-        if (action.error.message === 'Request failed with status code 404')
-          Notify.failure('Login failure');
+        // if (action.error.message === 'Request failed with status code 404')
+        //   Notify.failure('Login failure');
       })
       .addCase(logOutThunk.pending, state => {
         state.isLoading = true;
