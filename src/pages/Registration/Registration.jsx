@@ -27,6 +27,7 @@ export const Registration = () => {
   const handleSubmit = event => {
     event.preventDefault();
     dispatch(signUpThunk({ name, email, password }))
+      .unwrap()
       .then(() => {
         Notify.success('Sign Up Success');
         navigate('/login');

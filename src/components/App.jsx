@@ -1,24 +1,14 @@
-// import ContactForm from './ContactForm/ContactForm';
-// import Filter from './Filter/Filter';
-// import ContactList from './ContactList/ContactList';
-// import { fetchContacts } from 'redux/thunks';
-// import { useEffect } from 'react';
-// import { useDispatch } from 'react-redux';
-import { Registration } from './Registration/Registration';
+import { Registration } from '../pages/Registration/Registration';
 import { Route, Routes } from 'react-router-dom';
-import { Login } from './Login/Login';
+import { Login } from '../pages/Login/Login';
 import Layout from './Outlet/Outlet';
-import Contacts from './Contacts/Contacts';
-import NotFound from './NotFound/NotFound';
-import { WelcomePage } from './WelcomePage/WelcomePage';
+import Contacts from '../pages/Contacts/Contacts';
+import NotFound from '../pages/NotFound/NotFound';
+import { WelcomePage } from '../pages/WelcomePage/WelcomePage';
 import { PrivateRoute } from './PrivateRoute/PrivateRoute';
 import { PublicRoute } from './PublicRoute/PublicRoute';
 
 const App = () => {
-  // const dispatch = useDispatch();
-  // useEffect(() => {
-  //   dispatch(fetchContacts());
-  // }, [dispatch]);
   return (
     <div
       style={{
