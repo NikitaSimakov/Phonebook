@@ -11,15 +11,7 @@ import css from './App.module.css';
 
 const App = () => {
   return (
-    <div
-      className={css.app_wrapper}
-      // style={{
-      //   height: '100vh',
-      //   fontSize: 30,
-      //   color: '#010101',
-      //   padding: 30,
-      // }}
-    >
+    <div className={css.app_wrapper}>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<WelcomePage />} />
