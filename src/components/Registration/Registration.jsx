@@ -1,4 +1,3 @@
-// import { signUp } from 'api/auth';
 import { Notify } from 'notiflix';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';

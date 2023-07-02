@@ -55,6 +55,9 @@ export const authSlice = createSlice({
         if (action.error.message === 'Request failed with status code 404')
           Notify.failure('Login failure');
       })
+      .addCase(logOutThunk.pending, state => {
+        state.isLoading = true;
+      })
       .addCase(logOutThunk.fulfilled, state => {
         state.token = '';
         state.user.name = '';

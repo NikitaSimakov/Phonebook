@@ -1,7 +1,6 @@
 import { contactsState } from './state';
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchContacts, deleteContact, addContact } from './thunks';
-import { Notify } from 'notiflix';
 
 const handlePending = state => (state.isLoading = true);
 const handleRejected = (state, { payload }) => {
@@ -24,14 +23,6 @@ const contactsSlice = createSlice({
         state.contacts.splice(index, 1);
       })
       .addCase(addContact.fulfilled, (state, { payload }) => {
-        if (
-          state.contacts.some(contact => contact.name === payload.data.name)
-        ) {
-          Notify.failure(
-            `Contact ${payload.data.name} is already in phonebook!`
-          );
-          return;
-        }
         state.contacts.push(payload.data);
       })
       .addMatcher(action => {

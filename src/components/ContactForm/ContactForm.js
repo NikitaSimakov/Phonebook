@@ -1,11 +1,14 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/thunks';
 import css from './ContactForm.module.css';
 import { Button, TextField } from '@mui/material';
+import { selectContacts } from 'redux/selectors';
+import { Notify } from 'notiflix';
 
 const ContactForm = () => {
   const dispatch = useDispatch();
+  const contacts = useSelector(selectContacts);
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
@@ -17,6 +20,8 @@ const ContactForm = () => {
 
   const handleSubmit = event => {
     event.preventDefault();
+    if (contacts.some(contact => contact.name.includes(name)))
+      return Notify.failure(`Contact ${name} is already in phonebook!`);
     dispatch(addContact({ name, number }));
     reset();
   };

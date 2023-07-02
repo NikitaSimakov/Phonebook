@@ -1,15 +1,22 @@
-// import { Link, NavLink } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectIsAuth, selectUserName } from 'redux/selectors';
-import { logOutThunk } from 'redux/auth/thunks';
-import css from './UserMenu.module.css';
+import { Button } from '@mui/material';
 import { Notify } from 'notiflix';
 import { useNavigate } from 'react-router-dom';
-import { Button } from '@mui/material';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  selectIsAuth,
+  selectIsLoading,
+  selectToken,
+  selectUserName,
+} from 'redux/selectors';
+import { logOutThunk } from 'redux/auth/thunks';
+import css from './UserMenu.module.css';
+import CircularIndeterminate from 'components/CircularProgress/CircularProgress';
 
 export const UserMenu = () => {
   const isAuth = useSelector(selectIsAuth);
   const userName = useSelector(selectUserName);
+  const token = useSelector(selectToken);
+  const isLoading = useSelector(selectIsLoading);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -28,6 +35,9 @@ export const UserMenu = () => {
         onClick={handleLogOut}
       >
         Logout
+        {isLoading && token && (
+          <div className={css.logout_loading}>{CircularIndeterminate()}</div>
+        )}
       </Button>
     </div>
   ) : (
@@ -48,7 +58,7 @@ export const UserMenu = () => {
         className={css.logout_button}
         variant="contained"
       >
-        Login
+        Log In
       </Button>
     </div>
   );

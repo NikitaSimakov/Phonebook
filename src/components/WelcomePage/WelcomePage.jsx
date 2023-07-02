@@ -15,7 +15,7 @@ export const WelcomePage = () => {
       {isAuth ? null : (
         <div className={css.login_button_wrapper}>
           <Button variant="outlined" onClick={() => navigate('/login')}>
-            Login
+            Log In
           </Button>
         </div>
       )}
