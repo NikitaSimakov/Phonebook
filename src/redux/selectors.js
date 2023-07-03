@@ -12,3 +12,4 @@ export const selectIsLoading = state => state.auth.isLoading;
 export const selectNameIsInContacts = (state, name) => {
   return selectContacts(state).some(contact => contact.name.includes(name));
 };
+export const selectIsRefreshing = state => state.auth.isRefreshing;

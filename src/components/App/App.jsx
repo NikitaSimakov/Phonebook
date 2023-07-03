@@ -8,41 +8,46 @@ import Layout from '../Outlet/Outlet';
 import { PrivateRoute } from '../PrivateRoute/PrivateRoute';
 import { PublicRoute } from '../PublicRoute/PublicRoute';
 import css from './App.module.css';
+import { useSelector } from 'react-redux';
+import { selectIsRefreshing } from 'redux/selectors';
 
 const App = () => {
+  const isRefreshing = useSelector(selectIsRefreshing);
   return (
-    <div className={css.app_wrapper}>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<WelcomePage />} />
-          <Route
-            path="/register"
-            element={
-              <PublicRoute>
-                <Registration />
-              </PublicRoute>
-            }
-          />
-          <Route
-            path="/login"
-            element={
-              <PublicRoute>
-                <Login />
-              </PublicRoute>
-            }
-          />
-          <Route path="*" element={<NotFound />} />
-          <Route
-            path="/contacts"
-            element={
-              <PrivateRoute>
-                <Contacts />
-              </PrivateRoute>
-            }
-          />
-        </Route>
-      </Routes>
-    </div>
+    !isRefreshing && (
+      <div className={css.app_wrapper}>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<WelcomePage />} />
+            <Route
+              path="/register"
+              element={
+                <PublicRoute>
+                  <Registration />
+                </PublicRoute>
+              }
+            />
+            <Route
+              path="/login"
+              element={
+                <PublicRoute>
+                  <Login />
+                </PublicRoute>
+              }
+            />
+            <Route path="*" element={<NotFound />} />
+            <Route
+              path="/contacts"
+              element={
+                <PrivateRoute>
+                  <Contacts />
+                </PrivateRoute>
+              }
+            />
+          </Route>
+        </Routes>
+      </div>
+    )
   );
 };
 

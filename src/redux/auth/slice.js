@@ -9,8 +9,9 @@ import {
 
 const authState = {
   token: '',
-  isLoading: false,
   isAuth: false,
+  isLoading: false,
+  isRefreshing: false,
   error: '',
   user: {
     name: '',
@@ -66,9 +67,13 @@ export const authSlice = createSlice({
         state.isLoading = false;
         state.isAuth = false;
       })
+      .addCase(refreshUserThunk.pending, state => {
+        state.isRefreshing = true;
+      })
       .addCase(refreshUserThunk.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.isAuth = true;
+        state.isRefreshing = false;
         state.user.name = payload.name;
         state.user.email = payload.email;
       })
