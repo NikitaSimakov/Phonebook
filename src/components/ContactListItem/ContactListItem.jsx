@@ -10,34 +10,27 @@ export const ContactListItem = ({ contact }) => {
   const dispatch = useDispatch();
   const [contactId, setContactId] = useState('');
   const isLoading = useSelector(selectIsLoadingContacts);
+  const isShowSpinner = isLoading && contactId === contact.id;
 
-  //   const deleteContactHandler = event => {
-  //     const { id } = event.currentTarget;
-  //     dispatch(deleteContact(id));
-  //   };
   const deleteHandler = event => {
     setContactId(event.currentTarget.id);
     dispatch(deleteContact(event.currentTarget.id));
   };
-  //   console.log(contactId);
-  //   const deleteContactHandler = id => {
-  //     dispatch(deleteContact(id));
-  //   };
+
   return (
-    <li className={css.contactList_item}>
+    <li className={css.item}>
       <p className={css.name}>{contact.name}</p>:
       <p className={css.number}>{contact.number}</p>
       <Button
         variant="outlined"
         color="error"
-        className={css.contactList_button}
+        className={css.button}
         type="button"
         id={contact.id}
         onClick={deleteHandler}
-        disabled={isLoading && contactId === contact.id}
+        disabled={isShowSpinner}
       >
-        Delete{' '}
-        {isLoading && contactId === contact.id && CircularIndeterminate()}
+        Delete {isShowSpinner && CircularIndeterminate()}
       </Button>
     </li>
   );
