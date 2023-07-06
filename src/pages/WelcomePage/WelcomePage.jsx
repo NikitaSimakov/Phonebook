@@ -11,7 +11,6 @@ export const WelcomePage = () => {
     <>
       <h1 className={css.title}>We are welcome in our application!</h1>
       <p className={css.paragraph}>Here you can save your contacts</p>
-      {/* {isAuth ? null : <Link to="/login">Login</Link>} */}
       {isAuth ? null : (
         <div className={css.login_button_wrapper}>
           <Button variant="outlined" onClick={() => navigate('/login')}>
