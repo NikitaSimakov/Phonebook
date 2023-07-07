@@ -12,6 +12,7 @@ export const signUpThunk = createAsyncThunk(
     }
   }
 );
+
 export const loginThunk = createAsyncThunk(
   'auth/login',
   async (body, { rejectWithValue }) => {
