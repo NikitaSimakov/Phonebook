@@ -6,7 +6,6 @@ import { Button } from '@mui/material';
 
 export const WelcomePage = () => {
   const navigate = useNavigate();
-
   const isAuth = useSelector(selectIsAuth);
   return (
     <>
