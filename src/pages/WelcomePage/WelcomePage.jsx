@@ -2,7 +2,6 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import { selectIsAuth } from 'redux/selectors';
-
 import css from './WelcomePage.module.css';
 import { Button } from '@mui/material';
 
