@@ -5,7 +5,6 @@ import { Button, TextField } from '@mui/material';
 
 import css from './Registration.module.css';
 import CircularIndeterminate from 'components/CircularProgress/CircularProgress';
-
 import { useDispatch, useSelector } from 'react-redux';
 import { selectIsLoading } from 'redux/selectors';
 import { signUpThunk } from 'redux/auth/thunks';
