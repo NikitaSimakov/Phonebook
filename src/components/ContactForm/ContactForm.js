@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/contact/thunks';
-import css from './ContactForm.module.css';
+import css from './ContactForm.module.scss';
 import { Button, TextField } from '@mui/material';
 import { selectContacts } from 'redux/selectors';
 import { Notify } from 'notiflix';

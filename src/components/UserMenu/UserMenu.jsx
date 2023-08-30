@@ -9,8 +9,8 @@ import {
   selectUserName,
 } from 'redux/selectors';
 import { logOutThunk } from 'redux/auth/thunks';
-import css from './UserMenu.module.css';
 import CircularIndeterminate from 'components/CircularProgress/CircularProgress';
+import css from './UserMenu.module.scss';
 
 export const UserMenu = () => {
   const isAuth = useSelector(selectIsAuth);

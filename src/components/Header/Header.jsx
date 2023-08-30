@@ -1,6 +1,6 @@
 import { UserMenu } from 'components/UserMenu/UserMenu';
 import { Navigate } from 'components/Navigate/Navigate';
-import css from './Header.module.css';
+import css from './Header.module.scss';
 
 const Header = () => {
   return (

@@ -1,10 +1,10 @@
 import CircularIndeterminate from 'components/CircularProgress/CircularProgress';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectIsLoadingContacts } from 'redux/selectors';
-import css from '../ContactList/ContactList.module.css';
 import { deleteContact } from 'redux/contact/thunks';
 import { Button } from '@mui/material';
 import { useState } from 'react';
+import css from '../ContactList/ContactList.module.scss';
 
 export const ContactListItem = ({ contact }) => {
   const dispatch = useDispatch();

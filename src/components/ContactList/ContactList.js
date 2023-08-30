@@ -2,7 +2,7 @@ import { fetchContacts } from 'redux/contact/thunks';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectFilteredContact } from 'redux/selectors';
 import { useEffect } from 'react';
-import css from './ContactList.module.css';
+import css from './ContactList.module.scss';
 import { ContactListItem } from 'components/ContactListItem/ContactListItem';
 
 const ContactList = () => {

@@ -7,7 +7,7 @@ import { Login } from '../../pages/Login/Login';
 import Layout from '../Outlet/Outlet';
 import { PrivateRoute } from '../PrivateRoute/PrivateRoute';
 import { PublicRoute } from '../PublicRoute/PublicRoute';
-import css from './App.module.css';
+import css from './App.module.scss';
 import { useSelector } from 'react-redux';
 import { selectIsRefreshing } from 'redux/selectors';
 

@@ -1,8 +1,8 @@
-import css from './Filter.module.css';
 import { useDispatch } from 'react-redux';
 import { setFilterState } from 'redux/filterSlice';
 import { useState } from 'react';
 import { TextField } from '@mui/material';
+import css from './Filter.module.scss';
 
 const Filter = () => {
   const dispatch = useDispatch();
