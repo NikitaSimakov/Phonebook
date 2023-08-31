@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { loginThunk } from 'redux/auth/thunks';
 import { Button, TextField } from '@mui/material';
-import css from './Login.module.css';
+import css from './Login.module.scss';
 import { selectIsLoading } from 'redux/selectors';
 import CircularIndeterminate from 'components/CircularProgress/CircularProgress';
 import { Notify } from 'notiflix';
@@ -33,27 +33,34 @@ export const Login = () => {
       });
   };
   return (
-    <>
-      <form onSubmit={handleSubmit}>
-        <h1>Log In</h1>
-        <div className={css.login_wrapper}>
-          <label className={css.login_label} htmlFor="email">
+    <section className={css.login}>
+      <div className={css.container}>
+        <h1 className={css.title}>Let’s Sign You In</h1>
+        <p className={css.text}>Welcome back, you’ve been missed!</p>
+        <form className={css.form} onSubmit={handleSubmit}>
+          <label className={css.label} htmlFor="email">
             <p className={css.label_name}>Email</p>
-            <TextField
+            {/* <TextField
               size="small"
               onChange={handleChange}
               type="text"
               name="email"
-            ></TextField>
+            ></TextField> */}
+            <input
+              className={css.input}
+              onChange={handleChange}
+              type="text"
+              name="email"
+            ></input>
           </label>
           <label className={css.login_label} htmlFor="password">
             <p className={css.label_name}>Password</p>
-            <TextField
-              size="small"
+            <input
+              className={css.input}
               onChange={handleChange}
               type="password"
               name="password"
-            ></TextField>
+            ></input>
           </label>
           <Button className={css.login_button} variant="outlined" type="sumbit">
             Send
@@ -61,21 +68,22 @@ export const Login = () => {
               <div className={css.login_loading}>{CircularIndeterminate()}</div>
             )}
           </Button>
+        </form>
+        <div className={css.linkbox_signin}>
+          <p className={css.text}>Not registered yet?</p>
+          <Button
+            className={css.login_button_signin}
+            size="small"
+            variant="contained"
+            onClick={() => {
+              navigate('/register');
+            }}
+          >
+            Sign Up
+          </Button>
         </div>
-      </form>
-      <div className={css.login_signin_wrapper}>
-        <p className={css.login_signin_text}>Not registered yet?</p>
-        <Button
-          className={css.login_button_signin}
-          size="small"
-          variant="contained"
-          onClick={() => {
-            navigate('/register');
-          }}
-        >
-          Sign Up
-        </Button>
       </div>
-    </>
+      <div className={css.right_side}>box</div>
+    </section>
   );
 };

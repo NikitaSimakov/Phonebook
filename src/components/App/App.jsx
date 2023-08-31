@@ -15,10 +15,10 @@ const App = () => {
   const isRefreshing = useSelector(selectIsRefreshing);
   return (
     !isRefreshing && (
-      <div className={css.app_wrapper}>
+      <main className={css.app_wrapper}>
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route index element={<WelcomePage />} />
+            <Route index element={<Login />} />
             <Route
               path="/register"
               element={
@@ -46,7 +46,7 @@ const App = () => {
             />
           </Route>
         </Routes>
-      </div>
+      </main>
     )
   );
 };

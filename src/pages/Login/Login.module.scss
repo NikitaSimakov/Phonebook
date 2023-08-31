@@ -1,0 +1,116 @@
+// .login_wrapper {
+//     display: flex;
+//     flex-direction: column;
+//     flex-wrap: wrap;
+//     justify-content: center;
+//     align-content: center;
+//     margin-top: 30px
+// }
+
+// .login_form {
+//     width: 100%;
+// }
+// .login_button {
+//     height: 40px;
+//     margin-left: 10px;
+    
+// }
+// .login_input{
+//     height: 24px;
+//     border: none;
+//     border-bottom: 0.5px solid black;
+//     background-color: transparent;
+
+//     margin-bottom: 15px;
+// }
+
+// .login_button_signin{
+//     height: 40px;
+// }
+// .login_signin_wrapper{
+//     display: flex;
+//     align-items: center;
+//     justify-content: flex-start;
+
+//     margin-bottom: auto;
+// }
+// .login_signin_text{
+//     font-size: 19px;
+//     margin-right: 10px;
+// }
+// .login_label{
+//     display: flex;
+//     flex-direction: column;
+//     width: 100%;
+// }
+// .label_name{
+//    font-size: 16px;
+// }
+// .login_loading {
+//     margin-left: 5px;
+// }
+
+
+.login {
+    display: flex;
+    justify-content: center;
+    
+}
+
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 200px 15px 60px;
+    width: 100%;
+    @media screen and (min-width: 768px){
+        margin-left: 0;
+        padding: 400px 15px 60px;
+
+        min-width: 320px;
+    }
+}
+
+.title {
+    font-size: 24px;
+}
+.text {
+    font-size: 14px;
+    color: #171717;
+}
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin: 60px 0;
+}
+
+.label_name {
+    font-size: 12px;
+    color: #171717;
+}
+
+.input {
+    width: 100%;
+
+    border-style:none;
+    border-bottom: 0.5px solid black;
+    background-color: transparent;
+}
+.linkbox_signin {
+    display: flex;
+    justify-content: center;
+    gap: 15px
+}
+
+.right_side {
+    display: none;
+    @media screen and (min-width: 768px){
+        display: flex;
+        width: 100%;
+        background-image: url('../../../img/background.jpeg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 100vh;
+    }
+}

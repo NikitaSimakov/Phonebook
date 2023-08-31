@@ -1,24 +1,29 @@
+// .header_wrapper {
+//     display: none;
+//     justify-content: space-between;
+//     align-items: center;
+//     border-bottom-style: solid;
+//     @media screen and (min-width: 768px){
+//         display: flex;
+//     }
+// }
+// .header_nav {
+//     display: flex;
+//     align-items: center;
+//     height: 50px;
+// }
+// .header_home {
+//     /* padding-left: 50px; */
+
+//     color: black;
+// }
+
+// .header_signin {
+//     margin-right: auto;
+
+//     color: black;
+// }
+
 .header_wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom-style: solid;
-
+    display: none;
 }
-.header_nav {
-    display: flex;
-    align-items: center;
-    height: 50px;
-}
-.header_home {
-    /* padding-left: 50px; */
-
-    color: black;
-}
-
-.header_signin {
-    margin-right: auto;
-
-    color: black;
-}
-
