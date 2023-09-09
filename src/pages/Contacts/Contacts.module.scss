@@ -1,0 +1,18 @@
+.container {
+  box-sizing: border-box;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 80px 15px 60px;
+  width: 100%;
+  @media screen and (min-width: 768px){
+      margin-left: 0;
+      // padding: 250px 15px 60px;
+      padding: 80px 15px 165px;
+      min-width: 320px;
+  }
+  @media screen and (min-width: 1024px){
+
+    padding: 80px 15px 120px;
+    
+}
+}

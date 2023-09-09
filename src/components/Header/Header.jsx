@@ -1,15 +1,16 @@
 import { UserMenu } from 'components/UserMenu/UserMenu';
-import { Navigate } from 'components/Navigate/Navigate';
-import css from './Header.module.css';
+import css from './Header.module.scss';
 
 const Header = () => {
   return (
-    <div className={css.header_wrapper}>
-      <nav className={css.header_nav}>
-        <Navigate />
+    <header className={css.wrapper}>
+      <nav className={css.nav}>
+        <a href="./" className={css.title}>
+          PhoneBook
+        </a>
       </nav>
       <UserMenu />
-    </div>
+    </header>
   );
 };
 

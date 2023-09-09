@@ -1,0 +1,9 @@
+.app_wrapper {
+    background-image: url("../../../img/background.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    @media screen and (min-width: 768px) {
+        background-position-y: -250px;
+        background-attachment: fixed;
+    }
+}

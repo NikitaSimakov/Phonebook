@@ -7,7 +7,7 @@ import { Login } from '../../pages/Login/Login';
 import Layout from '../Outlet/Outlet';
 import { PrivateRoute } from '../PrivateRoute/PrivateRoute';
 import { PublicRoute } from '../PublicRoute/PublicRoute';
-import css from './App.module.css';
+import css from './App.module.scss';
 import { useSelector } from 'react-redux';
 import { selectIsRefreshing } from 'redux/selectors';
 
@@ -15,7 +15,7 @@ const App = () => {
   const isRefreshing = useSelector(selectIsRefreshing);
   return (
     !isRefreshing && (
-      <div className={css.app_wrapper}>
+      <main className={css.app_wrapper}>
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<WelcomePage />} />
@@ -46,7 +46,7 @@ const App = () => {
             />
           </Route>
         </Routes>
-      </div>
+      </main>
     )
   );
 };

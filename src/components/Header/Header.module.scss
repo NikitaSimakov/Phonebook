@@ -1,0 +1,23 @@
+.wrapper {
+    padding: 0 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom-style: solid;
+    @media screen and (min-width: 768px) {
+        display: flex;
+    }
+}
+.title {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 1.19;
+    color: #3f7724;
+    text-decoration: none;
+}
+.nav {
+    display: flex;
+    align-items: center;
+    height: 50px;
+}

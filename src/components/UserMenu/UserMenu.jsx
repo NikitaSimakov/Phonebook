@@ -9,8 +9,8 @@ import {
   selectUserName,
 } from 'redux/selectors';
 import { logOutThunk } from 'redux/auth/thunks';
-import css from './UserMenu.module.css';
 import CircularIndeterminate from 'components/CircularProgress/CircularProgress';
+import css from './UserMenu.module.scss';
 
 export const UserMenu = () => {
   const isAuth = useSelector(selectIsAuth);
@@ -24,10 +24,11 @@ export const UserMenu = () => {
     dispatch(logOutThunk())
       .unwrap()
       .then(() => Notify.success('See you later!'))
+      .then(() => navigate('/'))
       .catch(() => Notify.failure('Sorry! Logout error'));
   };
   return isAuth ? (
-    <div className={css.userMenuWrapper}>
+    <div className={css.wrapper}>
       <p className={css.welcome_message}>Hello, {userName}</p>
       <Button
         variant="outlined"
@@ -41,7 +42,7 @@ export const UserMenu = () => {
       </Button>
     </div>
   ) : (
-    <div className={css.userMenuWrapper}>
+    <div className={css.wrapper}>
       <Button
         onClick={() => {
           navigate('/register');

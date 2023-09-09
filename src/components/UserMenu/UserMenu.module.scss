@@ -1,0 +1,31 @@
+.wrapper {
+    display: flex;
+
+    align-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    margin-left: auto;
+
+    margin-top: 15px;
+    margin-bottom: 15px;
+    min-width: 180px;
+    gap: 15px;
+}
+.userMenuWrapper button {
+    border: 1px solid white;
+    color: #fafafa;
+}
+.logout_button {
+    height: 36px;
+}
+.welcome_message {
+    display: none;
+    font-size: 18px;
+    margin-right: 15px;
+    text-align: end;
+    @media screen and (min-width: 500px) {
+        display: flex;
+        margin-right: 15px;
+    }
+}
