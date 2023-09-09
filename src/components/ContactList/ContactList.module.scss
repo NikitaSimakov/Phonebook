@@ -1,17 +1,14 @@
-.item {
-    font-size: 22px;
-    display: flex;
-    flex-wrap: wrap;
-    margin-bottom: 10px;
-}
-.item:last-child {
-    margin-bottom: 0;
-}
-
-.number {
-    margin-left: 10px;
-    margin-right: 10px;
-}
-.list{
+.list {
     margin-top: 20px;
+    display: flex;
+    gap: 30px;
+    flex-direction: column;
+    @media screen and (min-width: 768px) {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    @media screen and (min-width: 1024px) {
+
+        gap: 22px;
+    }
 }

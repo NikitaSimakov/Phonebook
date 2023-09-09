@@ -18,7 +18,7 @@ const App = () => {
       <main className={css.app_wrapper}>
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route index element={<Login />} />
+            <Route index element={<WelcomePage />} />
             <Route
               path="/register"
               element={

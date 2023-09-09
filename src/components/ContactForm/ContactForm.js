@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/contact/thunks';
 import css from './ContactForm.module.scss';
-import { Button, TextField } from '@mui/material';
+import { Button } from '@mui/material';
 import { selectContacts } from 'redux/selectors';
 import { Notify } from 'notiflix';
 
@@ -11,6 +11,7 @@ const ContactForm = () => {
   const contacts = useSelector(selectContacts);
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+  const [isActive, setIsActive] = useState(false);
 
   const handleInputChange = event => {
     const { name, value } = event.currentTarget;
@@ -26,52 +27,69 @@ const ContactForm = () => {
     reset();
   };
 
+  const modalOpen = () => setIsActive(true);
+  const modalClose = () => setIsActive(false);
+
   const reset = () => {
     setName('');
     setNumber('');
   };
 
   return (
-    <form className={css.form} onSubmit={handleSubmit}>
-      <h1>Phonebook</h1>
-      <div className={css.form_label_wrapper}>
-        <label className={css.form_label}>
-          <p className={css.form_label_name}>Name</p>
-          <TextField
-            size="small"
-            label="Homer Simpson"
-            variant="outlined"
-            className={css.form_input}
-            type="text"
-            name="name"
-            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-            required
-            value={name}
-            onChange={handleInputChange}
-          />
-        </label>
-        <label className={css.form_label}>
-          <p className={css.form_label_name}>Number</p>
-          <TextField
-            size="small"
-            label="XXX-XX-XX"
-            variant="outlined"
-            className={css.form_input}
-            type="tel"
-            name="number"
-            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-            required
-            value={number}
-            onChange={handleInputChange}
-          />
-        </label>
-        <Button variant="outlined" className={css.form_button} type="submit">
-          Add contact
-        </Button>
-      </div>
-    </form>
+    <>
+      {isActive && (
+        <section className={css.add_contact}>
+          <div className={css.container}>
+            <form className={css.form} onSubmit={handleSubmit}>
+              <h1 className={css.title}>Add new contact</h1>
+              <div className={css.label_wrapper}>
+                <label className={css.label}>
+                  <p className={css.label_name}>Name</p>
+                  <input
+                    label="Homer Simpson"
+                    className={css.input}
+                    type="text"
+                    name="name"
+                    pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+                    title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+                    required
+                    value={name}
+                    onChange={handleInputChange}
+                  />
+                </label>
+                <label className={css.label}>
+                  <p className={css.label_name}>Number</p>
+                  <input
+                    label="XXX-XX-XX"
+                    className={css.input}
+                    type="tel"
+                    name="number"
+                    pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+                    title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+                    required
+                    value={number}
+                    onChange={handleInputChange}
+                  />
+                </label>
+                <Button variant="outlined" className={css.button} type="submit">
+                  Add contact
+                </Button>
+              </div>
+              <button
+                onClick={modalClose}
+                className={css.closeButton}
+                type="button"
+              >
+                X
+              </button>
+            </form>
+          </div>
+        </section>
+      )}
+      <button onClick={modalOpen} className={css.openButton} type="button">
+        Add contact
+      </button>
+    </>
   );
 };
 

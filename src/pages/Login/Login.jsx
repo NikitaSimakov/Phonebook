@@ -1,19 +1,23 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import { loginThunk } from 'redux/auth/thunks';
-import { Button, TextField } from '@mui/material';
+import { Button } from '@mui/material';
 import css from './Login.module.scss';
-import { selectIsLoading } from 'redux/selectors';
+import { selectIsAuth, selectIsLoading } from 'redux/selectors';
 import CircularIndeterminate from 'components/CircularProgress/CircularProgress';
 import { Notify } from 'notiflix';
 
 export const Login = () => {
   const isLoading = useSelector(selectIsLoading);
+  const isAuth = useSelector(selectIsAuth);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  if (isAuth) {
+    return <Navigate to="/contacts" replace />;
+  }
 
   const handleChange = ({ target: { name, value } }) => {
     if (name === 'email') {
@@ -40,12 +44,7 @@ export const Login = () => {
         <form className={css.form} onSubmit={handleSubmit}>
           <label className={css.label} htmlFor="email">
             <p className={css.label_name}>Email</p>
-            {/* <TextField
-              size="small"
-              onChange={handleChange}
-              type="text"
-              name="email"
-            ></TextField> */}
+
             <input
               className={css.input}
               onChange={handleChange}
@@ -83,7 +82,7 @@ export const Login = () => {
           </Button>
         </div>
       </div>
-      <div className={css.right_side}>box</div>
+      <div className={css.right_side}></div>
     </section>
   );
 };

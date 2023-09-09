@@ -1,31 +1,9 @@
-// .app_wrapper {
-//     // height: '100vh';
-//     // font-size: 30px;
-//     color: '#010101';
-//     display: flex;
-//     flex-direction: column;
-//     align-items: center;
-//     gap: 40px;
-//     padding: 150px 15px;
-
-//     width: 100%;
-//     height: 100%;
-//     box-sizing: border-box;
-//     @media screen and (min-width: 767px) {
-//         padding: 0 15px;
-//     }
-//     // padding-left: 30px;
-//     // padding-right: 30px;
-//     // margin-left: 178px;
-//     // margin-right: 178px;
-// }
-
 .app_wrapper {
-    background-image: url('../../../img/background.svg');
+    background-image: url("../../../img/background.svg");
     background-size: contain;
     background-repeat: no-repeat;
-@media screen and (min-width: 768px) {
-    background-image: none;
-    background-color: #E5E5E5;
-}
+    @media screen and (min-width: 768px) {
+        background-position-y: -250px;
+        background-attachment: fixed;
+    }
 }

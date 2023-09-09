@@ -1,8 +1,8 @@
 import { Notify } from 'notiflix';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Button, TextField } from '@mui/material';
-import css from './Registration.module.css';
+import { Button } from '@mui/material';
+import css from './Registration.module.scss';
 import CircularIndeterminate from 'components/CircularProgress/CircularProgress';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectIsLoading } from 'redux/selectors';
@@ -37,47 +37,46 @@ export const Registration = () => {
   };
 
   return (
-    <>
-      <form onSubmit={handleSubmit}>
-        <h1>Registration</h1>
-        <div className={css.sigin_wrapper}>
-          <label className={css.signin_label} htmlFor="name">
-            <p className={css.siginin_label_name}>Name</p>
-            <TextField
-              size="small"
+    <section className={css.login}>
+      <div className={css.container}>
+        <h1 className={css.title}>Registration</h1>
+        <form className={css.form} onSubmit={handleSubmit}>
+          <label className={css.label} htmlFor="name">
+            <p className={css.label_name}>Name</p>
+            <input
+              className={css.input}
               onChange={handleChange}
-              type="name"
-              name="name"
-            />
-          </label>
-          <label className={css.signin_label} htmlFor="email">
-            <p className={css.siginin_label_name}>Email</p>
-            <TextField
-              size="small"
-              onChange={handleChange}
-              type="email"
+              type="text"
               name="email"
-            />
+            ></input>
           </label>
-          <label className={css.signin_label} htmlFor="password">
-            <p className={css.siginin_label_name}>Password</p>
-            <TextField
-              size="small"
+          <label className={css.login_label} htmlFor="email">
+            <p className={css.label_name}>Email</p>
+            <input
+              className={css.input}
               onChange={handleChange}
               type="password"
               name="password"
-            />
+            ></input>
           </label>
-          <Button className={css.sigin_button} variant="outlined" type="sumbit">
+          <label className={css.login_label} htmlFor="password">
+            <p className={css.label_name}>Password</p>
+            <input
+              className={css.input}
+              onChange={handleChange}
+              type="password"
+              name="password"
+            ></input>
+          </label>
+          <Button className={css.login_button} variant="outlined" type="sumbit">
             Send
             {isLoading && (
-              <div className={css.logout_loading}>
-                {CircularIndeterminate()}
-              </div>
+              <div className={css.login_loading}>{CircularIndeterminate()}</div>
             )}
           </Button>
-        </div>
-      </form>
-    </>
+        </form>
+      </div>
+      <div className={css.right_side}></div>
+    </section>
   );
 };

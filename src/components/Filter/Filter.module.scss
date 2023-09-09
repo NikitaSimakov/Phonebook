@@ -1,4 +1,4 @@
-/* .filter_label {
+.label {
     font-size: 22px;
     
     display: flex;
@@ -6,11 +6,24 @@
     margin-bottom: 25px;
 }
 
-.filter_input {
-    margin-top: 10px;
+.title  {
+    display: none;
+}
+.text {
+    display: none;
+}
 
-    height: 20px;
-    width: 177px;
-    border-radius: 2px;
-    border: 1px solid black;
-} */
+
+.input {
+
+    margin: 0;
+    height: 40px;
+    border-radius: 15px;
+    border-style: none;
+    text-indent: 15px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    &::placeholder {
+        
+        text-align: center;
+    }
+}

@@ -1,36 +1,103 @@
+.add_contact {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 60%;
+    background-color: white;
+
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+    border-radius: 15px;
+    @media screen and (min-width: 768px) {
+        width: 50%;
+        height: 60%;
+    }
+}
+
+.container {
+    box-sizing: border-box;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 15px 15px 60px;
+    width: 100%;
+    @media screen and (min-width: 768px) {
+        margin-left: 0;
+        padding: 35px 15px 60px;
+
+        min-width: 320px;
+    }
+}
+.title {
+    text-align: center;
+    font-size: 24px;
+}
 .form {
     margin-bottom: 25px;
 }
-.form_label {
+.label {
     display: flex;
     font-size: 22px;
+    flex-wrap: wrap;
+    width: 100%;
 }
-.form_label:first-child {
-    margin-right: 10px;
+
+.label_name {
+    font-size: 12px;
+    margin: 0 auto 10px;
 }
-.form_label_name{
-    margin-right: 10px;
-}
-/* .form_input {
-    height: 20px;
-    margin-left: 10px;
-    border-radius: 2px;
-    border: 1px solid black;
-} */
-.form_input {
-    margin-left: 10px;
-}
-.form_button {
-    /* margin-left: 10px;
-    border-radius: 4px;
-    border-style: none;
-    cursor: pointer; */
+
+.input {
     height: 40px;
-    /* background-color: rgb(183, 249, 173); */
+    width: 100%;
+    border-radius: 15px;
+    border-style: none;
+    box-shadow: rgba(102, 135, 86, 0.2) 0px 7px 29px 0px;
 }
-.form_label_wrapper {
+.label_wrapper .button {
+    margin-top: 50px;
+    height: 40px;
+}
+.label_wrapper {
+    margin-top: 50px;
+
     display: flex;
     flex-wrap: wrap;
     align-content: center;
     justify-content: space-evenly;
+    &:last-child {
+        margin-bottom: 50px;
+    }
+}
+.label {
+    margin-bottom: 15px;
+}
+
+.openButton {
+    position: fixed;
+    top: 90%;
+    left: 80%;
+    border-radius: 10px;
+    padding: 10px 10px;
+    font-size: 12px;
+    border: none;
+
+    background-color: yellowgreen;
+    width: 60px;
+
+    @media screen and (min-width: 768px) {
+        left: 88%;
+    }
+}
+.closeButton {
+    position: fixed;
+    top: 3%;
+    right: 3%;
+    width: 40px;
+    height: 40px;
+    border-style: none;
+    border-radius: 50%;
+    padding: 0;
+    font-size: 28px;
 }
