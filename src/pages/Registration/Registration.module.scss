@@ -30,7 +30,12 @@
     margin: 60px 0;
 }
 
-.label_name {
+.loginLabel {
+    font-size: 12px;
+    color: red;
+}
+
+.labelName {
     font-size: 12px;
     color: #171717;
 }
@@ -45,14 +50,10 @@
 .input:-internal-autofill-selected {
     background-color: transparent;
 }
-.linkbox_signin {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    align-items: center;
+.loginLoading {
+    margin-left: 5px;
 }
-
-.right_side {
+.rightSide {
     display: none;
     @media screen and (min-width: 768px) {
         opacity: 0.9;

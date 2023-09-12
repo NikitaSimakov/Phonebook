@@ -1,4 +1,4 @@
-.add_contact {
+.addContact {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -29,21 +29,38 @@
         min-width: 320px;
     }
 }
+.form {
+    margin-bottom: 25px;
+}
 .title {
     text-align: center;
     font-size: 24px;
 }
-.form {
-    margin-bottom: 25px;
+.labelWrapper .button {
+    margin-top: 50px;
+    height: 40px;
 }
+.labelWrapper {
+    margin-top: 50px;
+
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: space-evenly;
+    &:last-child {
+        margin-bottom: 50px;
+    }
+}
+
 .label {
     display: flex;
     font-size: 22px;
     flex-wrap: wrap;
     width: 100%;
+    margin-bottom: 15px;
 }
 
-.label_name {
+.labelName {
     font-size: 12px;
     margin: 0 auto 10px;
 }
@@ -55,24 +72,6 @@
     border-style: none;
     box-shadow: rgba(102, 135, 86, 0.2) 0px 7px 29px 0px;
     padding-left: 30px;
-}
-.label_wrapper .button {
-    margin-top: 50px;
-    height: 40px;
-}
-.label_wrapper {
-    margin-top: 50px;
-
-    display: flex;
-    flex-wrap: wrap;
-    align-content: center;
-    justify-content: space-evenly;
-    &:last-child {
-        margin-bottom: 50px;
-    }
-}
-.label {
-    margin-bottom: 15px;
 }
 
 .openButton {

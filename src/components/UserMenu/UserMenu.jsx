@@ -1,4 +1,4 @@
-import { Button } from '@mui/material';
+import { Button } from 'components/Button/Button';
 import { Notify } from 'notiflix';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -29,35 +29,28 @@ export const UserMenu = () => {
   };
   return isAuth ? (
     <div className={css.wrapper}>
-      <p className={css.welcome_message}>Hello, {userName}</p>
-      <Button
-        variant="outlined"
-        className={css.logout_button}
-        onClick={handleLogOut}
-      >
+      <p className={css.welcomeMessage}>Hello, {userName}</p>
+      <Button className={css.logoutButton} event={handleLogOut}>
         Log out
         {isLoading && token && (
-          <div className={css.logout_loading}>{CircularIndeterminate()}</div>
+          <div className={css.logoutLoading}>{CircularIndeterminate()}</div>
         )}
       </Button>
     </div>
   ) : (
     <div className={css.wrapper}>
       <Button
-        onClick={() => {
+        event={() => {
           navigate('/register');
         }}
-        // className={css.signin_button}
-        variant="outlined"
       >
         Sign Up
       </Button>
       <Button
-        onClick={() => {
+        event={() => {
           navigate('/login');
         }}
-        className={css.logout_button}
-        variant="contained"
+        className={css.logoutButton}
       >
         Log In
       </Button>

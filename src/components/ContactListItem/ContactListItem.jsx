@@ -1,12 +1,12 @@
-import CircularIndeterminate from 'components/CircularProgress/CircularProgress';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectIsLoadingContacts } from 'redux/selectors';
+import { BsFillTelephoneFill } from 'react-icons/bs';
 import { deleteContact } from 'redux/contact/thunks';
-import { Button } from '@mui/material';
-import { useState } from 'react';
 import img from './contact_default.jpeg';
 import css from './ContactListItem.module.scss';
-import { BsFillTelephoneFill } from 'react-icons/bs';
+import { Button } from 'components/Button/Button';
+import CircularIndeterminate from 'components/CircularProgress/CircularProgress';
 
 export const ContactListItem = ({ contact }) => {
   const dispatch = useDispatch();
@@ -21,13 +21,13 @@ export const ContactListItem = ({ contact }) => {
 
   return (
     <li className={css.item}>
-      <div className={css.item_box}>
+      <div className={css.itemBox}>
         <img className={css.image} src={img} alt="contact default pic" />
-        <div className={css.text_box}>
+        <div className={css.textBox}>
           <p className={css.name}>{contact.name}</p>
-          <div className={css.phone_box}>
+          <div className={css.phoneBox}>
             <BsFillTelephoneFill
-              className={css.phone_icon}
+              className={css.phoneIcon}
               fill="#97c784"
               height={15}
             />
@@ -35,15 +35,16 @@ export const ContactListItem = ({ contact }) => {
           </div>
         </div>
         <Button
-          variant="outlined"
-          color="error"
           className={css.button}
-          type="button"
+          stylish={'redButton'}
           id={contact.id}
-          onClick={deleteHandler}
+          event={event => deleteHandler(event)}
           disabled={isShowSpinner}
         >
-          Delete {isShowSpinner && CircularIndeterminate()}
+          Delete{' '}
+          {isShowSpinner && (
+            <div className={css.spinner}>{CircularIndeterminate()}</div>
+          )}
         </Button>
       </div>
     </li>
