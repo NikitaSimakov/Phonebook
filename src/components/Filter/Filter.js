@@ -17,8 +17,6 @@ const Filter = () => {
       <h2 className={css.title}>Contacts</h2>
       <p className={css.text}>Find contacts by name</p>
       <input
-        label="Search"
-        variant="outlined"
         placeholder="Search a friend"
         className={css.input}
         onChange={filterInputChange}

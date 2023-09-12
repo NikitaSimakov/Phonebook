@@ -47,7 +47,7 @@ export const Registration = () => {
               className={css.input}
               onChange={handleChange}
               type="text"
-              name="email"
+              name="name"
             ></input>
           </label>
           <label className={css.login_label} htmlFor="email">
@@ -55,8 +55,8 @@ export const Registration = () => {
             <input
               className={css.input}
               onChange={handleChange}
-              type="password"
-              name="password"
+              type="email"
+              name="email"
             ></input>
           </label>
           <label className={css.login_label} htmlFor="password">
