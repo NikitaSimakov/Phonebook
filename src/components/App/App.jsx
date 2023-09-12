@@ -15,7 +15,7 @@ const App = () => {
   const isRefreshing = useSelector(selectIsRefreshing);
   return (
     !isRefreshing && (
-      <main className={css.app_wrapper}>
+      <main className={css.appWrapper}>
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<WelcomePage />} />

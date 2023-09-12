@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { loginThunk } from 'redux/auth/thunks';
-import { Button } from '@mui/material';
+import { Button } from 'components/Button/Button';
 import css from './Login.module.scss';
 import { selectIsAuth, selectIsLoading } from 'redux/selectors';
 import CircularIndeterminate from 'components/CircularProgress/CircularProgress';
@@ -43,7 +43,7 @@ export const Login = () => {
         <p className={css.text}>Welcome back, you’ve been missed!</p>
         <form className={css.form} onSubmit={handleSubmit}>
           <label className={css.label} htmlFor="email">
-            <p className={css.label_name}>Email</p>
+            <p className={css.labelName}>Email</p>
 
             <input
               className={css.input}
@@ -52,8 +52,8 @@ export const Login = () => {
               name="email"
             ></input>
           </label>
-          <label className={css.login_label} htmlFor="password">
-            <p className={css.label_name}>Password</p>
+          <label className={css.loginLabel} htmlFor="password">
+            <p className={css.labelName}>Password</p>
             <input
               className={css.input}
               onChange={handleChange}
@@ -61,20 +61,17 @@ export const Login = () => {
               name="password"
             ></input>
           </label>
-          <Button className={css.login_button} variant="outlined" type="sumbit">
+          <Button buttonType={'submit'}>
             Send
             {isLoading && (
-              <div className={css.login_loading}>{CircularIndeterminate()}</div>
+              <div className={css.loginLoading}>{CircularIndeterminate()}</div>
             )}
           </Button>
         </form>
-        <div className={css.linkbox_signin}>
+        <div className={css.linkboxSignin}>
           <p className={css.text}>Not registered yet?</p>
           <Button
-            className={css.login_button_signin}
-            size="small"
-            variant="contained"
-            onClick={() => {
+            event={() => {
               navigate('/register');
             }}
           >
@@ -82,7 +79,7 @@ export const Login = () => {
           </Button>
         </div>
       </div>
-      <div className={css.right_side}></div>
+      <div className={css.rightSide}></div>
     </section>
   );
 };

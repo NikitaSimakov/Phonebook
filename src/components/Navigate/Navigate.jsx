@@ -15,7 +15,7 @@ export const Navigate = () => {
         onClick={() => {
           navigate('/');
         }}
-        className={css.nav_button}
+        className={css.navButton}
         variant="outlined"
       >
         Home
@@ -25,7 +25,7 @@ export const Navigate = () => {
           onClick={() => {
             navigate('/contacts');
           }}
-          className={css.nav_button}
+          className={css.navButton}
           variant="outlined"
         >
           Contacts
