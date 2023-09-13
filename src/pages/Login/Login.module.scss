@@ -1,3 +1,4 @@
+@import "../../index.scss";
 .login {
     display: flex;
     justify-content: center;
@@ -8,7 +9,7 @@
     margin-right: auto;
     padding: 200px 15px 60px;
     width: 100%;
-    @media screen and (min-width: 768px) {
+    @include tablet {
         margin-left: 0;
         padding: 250px 15px 60px;
 
@@ -58,7 +59,7 @@
 
 .rightSide {
     display: none;
-    @media screen and (min-width: 768px) {
+    @include tablet {
         opacity: 0.9;
         display: flex;
         width: 100%;

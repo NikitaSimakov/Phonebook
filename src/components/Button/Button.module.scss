@@ -20,20 +20,12 @@
 }
 
 .redButton {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-width: 100px;
-  height: 40px;
-  padding: 5px 15px;
-  border: 1px solid red;
-  border-radius: 5px;
-
-  cursor: pointer;
+  @extend .button;
   color: red;
-
+  border: 1px solid red;
   background-color: transparent;
-  font-family: "Roboto", sans-serif;
-  font-weight: 500;
-  line-height: 1.75;
+  &:hover {
+    color: #870505;
+    border-color: #870505;
+  }
 }

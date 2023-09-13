@@ -1,5 +1,4 @@
 import { useState } from 'react';
-// import { Button } from '@mui/material';
 import { Button } from 'components/Button/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/contact/thunks';
@@ -13,8 +12,6 @@ import 'yup-phone-lite';
 const ContactForm = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
-  // const [name, setName] = useState('');
-  // const [number, setNumber] = useState('');
   const [isActive, setIsActive] = useState(false);
 
   const initialValues = {
@@ -28,19 +25,6 @@ const ContactForm = () => {
       .string()
       .phone('IN', 'Please enter a valid phone number in format +15501234567'),
   });
-  // const handleInputChange = event => {
-  //   const { name, value } = event.currentTarget;
-  //   if (name === 'name') setName(value);
-  //   if (name === 'number') setNumber(value);
-  // };
-
-  // const handleSubmit = event => {
-  //   event.preventDefault();
-  //   if (contacts.some(contact => contact.name.includes(name)))
-  //     return Notify.failure(`Contact ${name} is already in phonebook!`);
-  //   dispatch(addContact({ name, number }));
-  //   reset();
-  // };
   const handleSubmit = ({ name, number }, { resetForm }) => {
     resetForm();
     if (contacts.some(contact => contact.name.includes(name)))
@@ -54,11 +38,6 @@ const ContactForm = () => {
 
   const modalOpen = () => setIsActive(true);
   const modalClose = () => setIsActive(false);
-
-  // const reset = () => {
-  //   setName('');
-  //   setNumber('');
-  // };
 
   return (
     <>

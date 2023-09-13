@@ -2,8 +2,7 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { selectIsAuth } from 'redux/selectors';
 import css from './Navigate.module.scss';
-
-const { Button } = require('@mui/material');
+import { Button } from 'components/Button/Button';
 
 export const Navigate = () => {
   const navigate = useNavigate();
@@ -12,21 +11,19 @@ export const Navigate = () => {
   return (
     <>
       <Button
-        onClick={() => {
+        event={() => {
           navigate('/');
         }}
         className={css.navButton}
-        variant="outlined"
       >
         Home
       </Button>
       {isAuth ? (
         <Button
-          onClick={() => {
+          event={() => {
             navigate('/contacts');
           }}
           className={css.navButton}
-          variant="outlined"
         >
           Contacts
         </Button>

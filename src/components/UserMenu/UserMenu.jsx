@@ -1,6 +1,6 @@
-import { Button } from 'components/Button/Button';
 import { Notify } from 'notiflix';
 import { useNavigate } from 'react-router-dom';
+import { logOutThunk } from 'redux/auth/thunks';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   selectIsAuth,
@@ -8,8 +8,8 @@ import {
   selectToken,
   selectUserName,
 } from 'redux/selectors';
-import { logOutThunk } from 'redux/auth/thunks';
 import CircularIndeterminate from 'components/CircularProgress/CircularProgress';
+import { Button } from 'components/Button/Button';
 import css from './UserMenu.module.scss';
 
 export const UserMenu = () => {
