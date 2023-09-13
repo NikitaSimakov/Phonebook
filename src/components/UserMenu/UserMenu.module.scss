@@ -9,8 +9,10 @@
 
     margin-top: 15px;
     margin-bottom: 15px;
-    min-width: 180px;
     gap: 15px;
+    @media screen and (min-width: 768px) {
+        min-width: 180px;
+    }
 }
 .welcomeMessage {
     display: none;
