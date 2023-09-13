@@ -1,10 +1,11 @@
+@import "../../index.scss";
 .appWrapper {
     background-image: url("../../../img/background.svg");
     background-size: contain;
     background-repeat: no-repeat;
     width: 100%;
     display: inline-block;
-    @media screen and (min-width: 768px) {
+    @include tablet {
         background-position-y: -250px;
         background-attachment: fixed;
     }

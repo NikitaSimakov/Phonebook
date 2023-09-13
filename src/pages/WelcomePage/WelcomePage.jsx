@@ -14,7 +14,7 @@ export const WelcomePage = () => {
         <ReactLogo />
       </div>
       <div className={css.textWrapper}>
-        <h1 className={css.title}>We are welcome in our application!</h1>
+        <h1 className={css.title}>We welcome to our application!</h1>
         <p className={css.paragraph}>Here you can save your contacts</p>
         {isAuth ? null : (
           <div className={css.loginButtonWrapper}>

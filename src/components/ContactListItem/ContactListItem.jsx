@@ -15,8 +15,9 @@ export const ContactListItem = ({ contact }) => {
   const isShowSpinner = isLoading && contactId === contact.id;
 
   const deleteHandler = event => {
-    setContactId(event.currentTarget.id);
-    dispatch(deleteContact(event.currentTarget.id));
+    const { id } = event.currentTarget;
+    setContactId(id);
+    dispatch(deleteContact(id));
   };
 
   return (

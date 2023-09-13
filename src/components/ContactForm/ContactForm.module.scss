@@ -1,3 +1,4 @@
+@import "../../index.scss";
 .addContact {
     position: absolute;
     top: 50%;
@@ -10,7 +11,7 @@
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 
     border-radius: 15px;
-    @media screen and (min-width: 768px) {
+    @include tablet {
         width: 50%;
         height: 60%;
     }
@@ -22,7 +23,7 @@
     margin-right: auto;
     padding: 15px 15px 60px;
     width: 100%;
-    @media screen and (min-width: 768px) {
+    @include tablet {
         margin-left: 0;
         padding: 35px 15px 60px;
 
@@ -43,8 +44,7 @@
 .labelWrapper {
     margin-top: 50px;
 
-    display: flex;
-    flex-wrap: wrap;
+    @include flex;
     align-content: center;
     justify-content: space-evenly;
     &:last-child {
@@ -53,9 +53,8 @@
 }
 
 .label {
-    display: flex;
+    @include flex;
     font-size: 22px;
-    flex-wrap: wrap;
     width: 100%;
     margin-bottom: 15px;
 
@@ -90,7 +89,7 @@
     background-color: yellowgreen;
     width: 60px;
 
-    @media screen and (min-width: 768px) {
+    @include tablet {
         left: 88%;
     }
 }

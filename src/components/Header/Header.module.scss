@@ -1,10 +1,11 @@
+@import "../../index.scss";
 .wrapper {
     padding: 0 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-bottom-style: solid;
-    @media screen and (min-width: 768px) {
+    @include tablet {
         display: flex;
     }
 }
