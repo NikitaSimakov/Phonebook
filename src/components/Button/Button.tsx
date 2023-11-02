@@ -1,6 +1,15 @@
 import css from './Button.module.scss';
+import { FC, SyntheticEvent } from 'react';
 
-export const Button = ({
+interface ButtonProps {
+  stylish?: String | Boolean;
+  event?: (event: SyntheticEvent) => void;
+  children?: String;
+  buttonType?: "button" | "submit" | "reset" | undefined;
+  id?: string;
+}
+
+export const Button: FC<ButtonProps> = ({
   stylish,
   event,
   children,

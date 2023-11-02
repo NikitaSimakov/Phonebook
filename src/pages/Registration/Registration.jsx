@@ -1,14 +1,14 @@
 // import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectIsLoading } from 'redux/selectors';
-import { signUpThunk } from 'redux/auth/thunks';
+import { selectIsLoading } from '../../redux/selectors';
+import { signUpThunk } from '../../redux/auth/thunks';
 import { Notify } from 'notiflix';
 // import { Button } from '@mui/material';
-import { Button } from 'components/Button/Button';
+import { Button } from '../../components/Button/Button';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
-import CircularIndeterminate from 'components/CircularProgress/CircularProgress';
+import CircularIndeterminate from '../../components/CircularProgress/CircularProgress';
 import css from './Registration.module.scss';
 
 export const Registration = () => {

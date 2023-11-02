@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { instance } from 'redux/auth/auth';
+import { instance } from '../auth/auth';
+// import { AxiosError } from 'axios';
 
 export const fetchContacts = createAsyncThunk(
   'contacts/fetchAll',
@@ -7,20 +8,24 @@ export const fetchContacts = createAsyncThunk(
     try {
       const { data } = await instance.get('contacts');
       return data;
-    } catch ({ message }) {
-      return thunkApi.rejectWithValue(message);
+      // } catch ({ message }) {
+      //   return thunkApi.rejectWithValue(message);
+    } catch (error) {
+      return thunkApi.rejectWithValue(error);
     }
   }
 );
 
 export const addContact = createAsyncThunk(
   'contacts/addContact',
-  async ({ name, number }, thunkApi) => {
+  async ({ name, number }: { name: string; number: string }, thunkApi) => {
     try {
       const data = await instance.post('contacts', { name, number });
       return data;
-    } catch ({ message }) {
-      return thunkApi.rejectWithValue(message);
+      // } catch ({ message }) {
+      //   return thunkApi.rejectWithValue(message);
+    } catch (error) {
+      return thunkApi.rejectWithValue(error);
     }
   }
 );
@@ -31,8 +36,10 @@ export const deleteContact = createAsyncThunk(
     try {
       const data = await instance.delete(`contacts/${id}`);
       return data;
-    } catch ({ message }) {
-      return thunkApi.rejectWithValue(message);
+    } catch (error) {
+      return thunkApi.rejectWithValue(error);
+      // } catch ({ message }) {
+      //   return thunkApi.rejectWithValue(message);
     }
   }
 );

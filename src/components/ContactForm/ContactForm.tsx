@@ -1,20 +1,28 @@
-import { useState } from 'react';
-import { Button } from 'components/Button/Button';
+import { useState, FC } from 'react';
+import { Button } from '../Button/Button';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from 'redux/contact/thunks';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { addContact } from '../../redux/contact/thunks';
+import { Formik, Form, Field, ErrorMessage, FormikHelpers as FormikActions } from 'formik';
 import * as yup from 'yup';
-import { selectContacts } from 'redux/selectors';
+import { selectContacts } from '../../redux/selectors';
 import { Notify } from 'notiflix';
 import css from './ContactForm.module.scss';
 import 'yup-phone-lite';
+import { AppDispatch } from '../../redux/store';
 
-const ContactForm = () => {
-  const dispatch = useDispatch();
+
+interface MyFormValues {
+  name: string;
+  number: string;
+}
+
+
+const ContactForm: FC<{}> = () => {
+  const dispatch = useDispatch<AppDispatch>();
   const contacts = useSelector(selectContacts);
   const [isActive, setIsActive] = useState(false);
 
-  const initialValues = {
+  const initialValues: MyFormValues = {
     name: '',
     number: '',
   };
@@ -25,8 +33,12 @@ const ContactForm = () => {
       .string()
       .phone('IN', 'Please enter a valid phone number in format +15501234567'),
   });
-  const handleSubmit = ({ name, number }, { resetForm }) => {
+  const handleSubmit = (
+    { name, number }: MyFormValues,
+    {resetForm}: FormikActions<MyFormValues>
+  ) => {
     resetForm();
+    console.log(contacts)
     if (contacts.some(contact => contact.name.includes(name)))
       return Notify.failure(`Contact ${name} is already in phonebook!`);
     dispatch(addContact({ name, number }));

@@ -1,8 +1,8 @@
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { selectIsAuth } from 'redux/selectors';
+import { selectIsAuth } from '../../redux/selectors';
 import css from './WelcomePage.module.scss';
-import { Button } from 'components/Button/Button';
+import { Button } from '../../components/Button/Button';
 import { ReactComponent as ReactLogo } from './book.svg';
 
 export const WelcomePage = () => {

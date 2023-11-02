@@ -1,4 +1,4 @@
-import { UserMenu } from 'components/UserMenu/UserMenu';
+import { UserMenu } from '../../components/UserMenu/UserMenu';
 import css from './Header.module.scss';
 
 const Header = () => {

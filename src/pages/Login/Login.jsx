@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, useNavigate } from 'react-router-dom';
-import { loginThunk } from 'redux/auth/thunks';
-import { Button } from 'components/Button/Button';
+import { loginThunk } from '../../redux/auth/thunks';
+import { Button } from '../../components/Button/Button';
 import css from './Login.module.scss';
-import { selectIsAuth, selectIsLoading } from 'redux/selectors';
-import CircularIndeterminate from 'components/CircularProgress/CircularProgress';
+import { selectIsAuth, selectIsLoading } from '../../redux/selectors';
+import CircularIndeterminate from '../../components/CircularProgress/CircularProgress';
 import { Notify } from 'notiflix';
 
 export const Login = () => {

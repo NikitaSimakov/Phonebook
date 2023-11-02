@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectIsLoadingContacts } from 'redux/selectors';
+import { selectIsLoadingContacts } from '../../redux/selectors';
 import { BsFillTelephoneFill } from 'react-icons/bs';
-import { deleteContact } from 'redux/contact/thunks';
+import { deleteContact } from '../../redux/contact/thunks';
 import img from './contact_default.jpeg';
 import css from './ContactListItem.module.scss';
-import { Button } from 'components/Button/Button';
-import CircularIndeterminate from 'components/CircularProgress/CircularProgress';
+import { Button } from '../Button/Button';
+import CircularIndeterminate from '../../components/CircularProgress/CircularProgress';
 
 export const ContactListItem = ({ contact }) => {
   const dispatch = useDispatch();
