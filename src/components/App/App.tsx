@@ -12,7 +12,7 @@ import css from './App.module.scss';
 import { useSelector } from 'react-redux';
 import { selectIsRefreshing } from '../../redux/selectors';
 
-const App:FC = () => {
+const App:FC<{}> = () => {
   const isRefreshing = useSelector(selectIsRefreshing);
   return (
     

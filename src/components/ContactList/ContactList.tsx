@@ -1,12 +1,13 @@
 import { fetchContacts } from '../../redux/contact/thunks';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectFilteredContact } from '../../redux/selectors';
-import { useEffect } from 'react';
+import { useEffect, FC } from 'react';
 import css from './ContactList.module.scss';
-import { ContactListItem } from '../../components/ContactListItem/ContactListItem';
+import { ContactListItem } from '../ContactListItem/ContactListItem';
+import { AppDispatch } from '../../redux/store';
 
-const ContactList = () => {
-  const dispatch = useDispatch();
+const ContactList:FC<{}> = () => {
+  const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
     dispatch(fetchContacts());
@@ -16,11 +17,9 @@ const ContactList = () => {
   return (
     <ul className={css.list}>
       {filteredContacts &&
-        filteredContacts.map(contact => {
-          return <ContactListItem key={contact.id} contact={contact} />;
-        })}
+        filteredContacts.map(contact => <ContactListItem key={contact.id} contact={contact} />)}
     </ul>
   );
 };
-
+1
 export default ContactList;
