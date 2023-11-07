@@ -1,10 +1,10 @@
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { selectIsAuth } from 'redux/selectors';
+import { selectIsAuth } from '../../redux/selectors';
 import css from './Navigate.module.scss';
-import { Button } from 'components/Button/Button';
+import { Button } from '../../components/Button/Button';
 
-export const Navigate = () => {
+export const Navigate = (): JSX.Element => {
   const navigate = useNavigate();
   const isAuth = useSelector(selectIsAuth);
 

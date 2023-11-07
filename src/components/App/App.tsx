@@ -1,4 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
+import { FC } from 'react';
 import { Registration } from '../../pages/Registration/Registration';
 import { WelcomePage } from '../../pages/WelcomePage/WelcomePage';
 import Contacts from '../../pages/Contacts/Contacts';
@@ -9,13 +10,13 @@ import { PrivateRoute } from '../PrivateRoute/PrivateRoute';
 import { PublicRoute } from '../PublicRoute/PublicRoute';
 import css from './App.module.scss';
 import { useSelector } from 'react-redux';
-import { selectIsRefreshing } from 'redux/selectors';
+import { selectIsRefreshing } from '../../redux/selectors';
 
-const App = () => {
+const App: FC<{}> = () => {
   const isRefreshing = useSelector(selectIsRefreshing);
   return (
-    !isRefreshing && (
-      <main className={css.appWrapper}>
+    <main className={css.appWrapper}>
+      {!isRefreshing && (
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<WelcomePage />} />
@@ -46,8 +47,8 @@ const App = () => {
             />
           </Route>
         </Routes>
-      </main>
-    )
+      )}
+    </main>
   );
 };
 

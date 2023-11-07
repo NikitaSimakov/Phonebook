@@ -1,35 +1,61 @@
 // import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectIsLoading } from 'redux/selectors';
-import { signUpThunk } from 'redux/auth/thunks';
+import { selectIsLoading } from '../../redux/selectors';
+import { signUpThunk } from '../../redux/auth/thunks';
 import { Notify } from 'notiflix';
 // import { Button } from '@mui/material';
-import { Button } from 'components/Button/Button';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Button } from '../../components/Button/Button';
+import {
+  Formik,
+  Form,
+  Field,
+  ErrorMessage,
+  FormikHelpers as FormikActions,
+} from 'formik';
 import * as yup from 'yup';
-import CircularIndeterminate from 'components/CircularProgress/CircularProgress';
+import YupPassword from 'yup-password';
+import CircularIndeterminate from '../../components/CircularProgress/CircularProgress';
 import css from './Registration.module.scss';
+import { AppDispatch } from '../../redux/store';
+
+export interface IValues {
+  name: string;
+  email: string;
+  password: string;
+}
 
 export const Registration = () => {
   const navigate = useNavigate();
   const isLoading = useSelector(selectIsLoading);
-  const dispatch = useDispatch();
-  const initialValues = {
+  const dispatch = useDispatch<AppDispatch>();
+
+  const initialValues: IValues = {
     name: '',
     email: '',
     password: '',
   };
+
+  // const schema = yup.object().shape({
+  //   name: yup.string().min(2).required(),
+  //   email: yup.string().email().required(),
+  //   password: yup
+  //     .string()
+  //     .required('Please Enter your password')
+  //     .matches(
+  //       '^(?=.*\\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$',
+  //       'Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character'
+  //     ),
+  // });
+  YupPassword(yup);
   const schema = yup.object().shape({
     name: yup.string().min(2).required(),
     email: yup.string().email().required(),
-    password: yup
-      .string()
-      .required('Please Enter your password')
-      .matches(
-        '^(?=.*\\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$',
-        'Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character'
-      ),
+    password: yup.string().required('Please Enter your password').password(),
+    // .matches(
+    //   /^(?=.*\\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/,
+    //   'Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character'
+    // ),
   });
   // const [name, setName] = useState();
   // const [email, setEmail] = useState();
@@ -54,7 +80,10 @@ export const Registration = () => {
   //     Notify.failure('Sign Up Failure');
   //   });
   // };
-  const handleSubmit = ({ name, email, password }, { resetForm }) => {
+  const handleSubmit = (
+    { name, email, password }: IValues,
+    { resetForm }: FormikActions<IValues>
+  ) => {
     resetForm();
     dispatch(signUpThunk({ name, email, password }))
       .unwrap()

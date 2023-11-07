@@ -1,7 +1,7 @@
-import { UserMenu } from 'components/UserMenu/UserMenu';
+import { UserMenu } from '../UserMenu/UserMenu';
 import css from './Header.module.scss';
 
-const Header = () => {
+const Header = (): JSX.Element => {
   return (
     <header className={css.wrapper}>
       <nav className={css.nav}>

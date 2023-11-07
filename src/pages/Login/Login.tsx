@@ -1,30 +1,33 @@
-import { useState } from 'react';
+import { useState, ChangeEvent, SyntheticEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, useNavigate } from 'react-router-dom';
-import { loginThunk } from 'redux/auth/thunks';
-import { Button } from 'components/Button/Button';
+import { loginThunk } from '../../redux/auth/thunks';
+import { Button } from '../../components/Button/Button';
 import css from './Login.module.scss';
-import { selectIsAuth, selectIsLoading } from 'redux/selectors';
-import CircularIndeterminate from 'components/CircularProgress/CircularProgress';
+import { selectIsAuth, selectIsLoading } from '../../redux/selectors';
+import CircularIndeterminate from '../../components/CircularProgress/CircularProgress';
 import { Notify } from 'notiflix';
+import { AppDispatch } from '../../redux/store';
 
 export const Login = () => {
   const isLoading = useSelector(selectIsLoading);
   const isAuth = useSelector(selectIsAuth);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
   if (isAuth) {
     return <Navigate to="/contacts" replace />;
   }
 
-  const handleChange = ({ target: { name, value } }) => {
+  const handleChange = ({
+    target: { name, value },
+  }: ChangeEvent<HTMLInputElement>) => {
     if (name === 'email') {
       setEmail(value);
     } else setPassword(value);
   };
-  const handleSubmit = event => {
+  const handleSubmit = (event: SyntheticEvent) => {
     event.preventDefault();
     dispatch(loginThunk({ email, password }))
       .unwrap()

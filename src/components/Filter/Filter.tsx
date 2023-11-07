@@ -1,13 +1,13 @@
 import { useDispatch } from 'react-redux';
-import { setFilterState } from 'redux/filterSlice';
-import { useState } from 'react';
+import { setFilterState } from '../../redux/filterSlice';
+import { useState, ChangeEvent } from 'react';
 import css from './Filter.module.scss';
 
 const Filter = () => {
   const dispatch = useDispatch();
-  const [filter, setFilter] = useState('');
+  const [filter, setFilter] = useState<string>('');
 
-  const filterInputChange = event => {
+  const filterInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const filter = event.target.value;
     setFilter(filter);
     dispatch(setFilterState({ filter }));
