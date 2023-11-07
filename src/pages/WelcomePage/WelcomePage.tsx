@@ -18,12 +18,7 @@ export const WelcomePage = () => {
         <p className={css.paragraph}>Here you can save your contacts</p>
         {isAuth ? null : (
           <div className={css.loginButtonWrapper}>
-            <Button
-              // variant="outlined"
-              event={() => navigate('/login')}
-            >
-              Log In
-            </Button>
+            <Button event={() => navigate('/login')}>Log In</Button>
           </div>
         )}
       </div>

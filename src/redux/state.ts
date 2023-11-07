@@ -1,7 +1,7 @@
-interface ContactsState {
+export interface ContactsState {
   contacts: { name: string; id: string; number: string }[];
   isLoading: boolean;
-  error: null | Error;
+  error: null | string;
   id: null | string;
 }
 

@@ -14,7 +14,7 @@ const Layout = () => {
 
   useEffect(() => {
     if (token && !userName) {
-      dispatch(refreshUserThunk())
+      dispatch(refreshUserThunk(''))
         .unwrap()
         .catch(() => dispatch(logOutThunk()));
     }

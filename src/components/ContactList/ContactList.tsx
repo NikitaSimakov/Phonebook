@@ -21,5 +21,5 @@ const ContactList:FC<{}> = () => {
     </ul>
   );
 };
-1
+
 export default ContactList;

@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import {
   logOutThunk,
   loginThunk,
@@ -6,7 +6,20 @@ import {
   signUpThunk,
 } from './thunks';
 
-const authState = {
+interface IUser {
+  name: string | undefined;
+  email: string;
+}
+interface IAuthState {
+  token: string;
+  isAuth: boolean;
+  isLoading: boolean;
+  isRefreshing: boolean;
+  error: string | undefined;
+  user: IUser;
+}
+
+const initialState: IAuthState = {
   token: '',
   isAuth: false,
   isLoading: false,
@@ -18,17 +31,21 @@ const authState = {
   },
 };
 
-const handlePending = state => {
+const handlePending = (state: IAuthState) => {
   state.isLoading = true;
 };
-const handleRejected = (state, { payload }) => {
+const handleRejected = (
+  state: IAuthState,
+  { payload }: PayloadAction<string>
+) => {
   state.isLoading = true;
   state.error = payload;
 };
 
 export const authSlice = createSlice({
   name: 'auth',
-  initialState: authState,
+  initialState,
+  reducers: {},
   extraReducers: builder => {
     builder
       .addCase(signUpThunk.pending, state => {
@@ -36,7 +53,8 @@ export const authSlice = createSlice({
       })
       .addCase(signUpThunk.fulfilled, (state, { payload }) => {
         state.isLoading = false;
-        state.token = payload.data.token;
+        console.log(payload);
+        state.token = payload!.data.token;
       })
       .addCase(loginThunk.pending, state => {
         state.isLoading = true;
@@ -73,12 +91,11 @@ export const authSlice = createSlice({
         state.user.name = payload.name;
         state.user.email = payload.email;
       })
-      .addMatcher(action => {
-        action.type.endsWith('/pending');
-      }, handlePending)
-      .addMatcher(action => {
-        action.type.endsWith('/rejected');
-      }, handleRejected);
+      .addMatcher(action => action.type.endsWith('/pending'), handlePending)
+      .addMatcher(
+        (action: PayloadAction) => action.type.endsWith('/rejected'),
+        handleRejected
+      );
   },
 });
 
