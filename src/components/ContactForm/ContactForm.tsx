@@ -2,7 +2,13 @@ import { useState, FC } from 'react';
 import { Button } from '../Button/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from '../../redux/contact/thunks';
-import { Formik, Form, Field, ErrorMessage, FormikHelpers as FormikActions } from 'formik';
+import {
+  Formik,
+  Form,
+  Field,
+  ErrorMessage,
+  FormikHelpers as FormikActions,
+} from 'formik';
 import * as yup from 'yup';
 import { selectContacts } from '../../redux/selectors';
 import { Notify } from 'notiflix';
@@ -10,12 +16,10 @@ import css from './ContactForm.module.scss';
 import 'yup-phone-lite';
 import { AppDispatch } from '../../redux/store';
 
-
 interface MyFormValues {
   name: string;
   number: string;
 }
-
 
 const ContactForm: FC<{}> = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -35,10 +39,9 @@ const ContactForm: FC<{}> = () => {
   });
   const handleSubmit = (
     { name, number }: MyFormValues,
-    {resetForm}: FormikActions<MyFormValues>
+    { resetForm }: FormikActions<MyFormValues>
   ) => {
     resetForm();
-    console.log(contacts)
     if (contacts.some(contact => contact.name.includes(name)))
       return Notify.failure(`Contact ${name} is already in phonebook!`);
     dispatch(addContact({ name, number }));

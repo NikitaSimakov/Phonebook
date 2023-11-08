@@ -10,7 +10,7 @@ const handleRejected = (
   { payload }: PayloadAction<string>
 ) => {
   state.error = payload;
-  state.isLoading = false;
+  state.isLoading = true;
 };
 const contactsSlice = createSlice({
   name: 'contacts',
@@ -26,13 +26,11 @@ const contactsSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(deleteContact.fulfilled, (state, { payload }) => {
-        if (typeof payload === 'string') {
-          const index = state.contacts.findIndex(
-            contact => contact.id === payload
-          );
-          state.contacts.splice(index, 1);
-          state.isLoading = false;
-        }
+        const index = state.contacts.findIndex(
+          contact => contact.id === payload.id
+        );
+        state.contacts.splice(index, 1);
+        state.isLoading = false;
       })
       .addCase(addContact.fulfilled, (state, { payload }) => {
         state.contacts.push(payload.data);

@@ -31,9 +31,10 @@ const initialState: IAuthState = {
   },
 };
 
-const handlePending = (state: IAuthState) => {
-  state.isLoading = true;
-};
+// const handlePending = (state: IAuthState) => {
+//   // state.isLoading = true;
+//   state.isLoading = false;
+// };
 const handleRejected = (
   state: IAuthState,
   { payload }: PayloadAction<string>
@@ -48,13 +49,13 @@ export const authSlice = createSlice({
   reducers: {},
   extraReducers: builder => {
     builder
-      .addCase(signUpThunk.pending, state => {
-        state.isLoading = true;
+      .addCase(signUpThunk.pending, ({ isLoading }) => {
+        isLoading = true;
       })
       .addCase(signUpThunk.fulfilled, (state, { payload }) => {
         state.isLoading = false;
-        console.log(payload);
-        state.token = payload!.data.token;
+
+        state.token = payload!.token;
       })
       .addCase(loginThunk.pending, state => {
         state.isLoading = true;
@@ -91,7 +92,7 @@ export const authSlice = createSlice({
         state.user.name = payload.name;
         state.user.email = payload.email;
       })
-      .addMatcher(action => action.type.endsWith('/pending'), handlePending)
+      // .addMatcher(action => action.type.endsWith('/pending'), handlePending)
       .addMatcher(
         (action: PayloadAction) => action.type.endsWith('/rejected'),
         handleRejected
