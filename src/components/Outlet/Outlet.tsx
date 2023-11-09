@@ -1,4 +1,3 @@
-// import { logOut } from '../../redux/auth/auth';
 import Header from '../Header/Header';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -14,7 +13,7 @@ const Layout = () => {
 
   useEffect(() => {
     if (token && !userName) {
-      dispatch(refreshUserThunk(''))
+      dispatch(refreshUserThunk())
         .unwrap()
         .catch(() => dispatch(logOutThunk()));
     }

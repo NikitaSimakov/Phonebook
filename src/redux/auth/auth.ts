@@ -2,7 +2,7 @@ import axios from 'axios';
 export interface IBody {
   name?: string;
   email: string;
-  password: string;
+  password?: string;
 }
 
 export const instance = axios.create({

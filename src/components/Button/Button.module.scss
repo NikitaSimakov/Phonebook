@@ -13,6 +13,16 @@
   font-family: "Roboto", sans-serif;
   font-weight: 500;
   line-height: 1.75;
+
+  transition-property: color, box-shadow, border-color;
+  transition-duration: 250ms;
+  &:hover,
+  &:focus {
+    color: #686868;
+    border-color: 686868;
+    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.2);
+  }
+
   &:hover {
     color: #686868;
     border-color: 686868;

@@ -1,45 +1,52 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { instance } from '../auth/auth';
-// import { AxiosError } from 'axios';
 
-export const fetchContacts = createAsyncThunk(
-  'contacts/fetchAll',
-  async (_, thunkApi) => {
-    try {
-      const { data } = await instance.get('contacts');
-      return data;
-      // } catch ({ message }) {
-      //   return thunkApi.rejectWithValue(message);
-    } catch (error) {
-      return thunkApi.rejectWithValue(error);
-    }
-  }
-);
+interface IContact {
+  id: string;
+  name: string;
+  number: string;
+}
 
-export const addContact = createAsyncThunk(
-  'contacts/addContact',
-  async ({ name, number }: { name: string; number: string }, thunkApi) => {
-    try {
-      const data = await instance.post('contacts', { name, number });
-      return data;
-      // } catch ({ message }) {
-      //   return thunkApi.rejectWithValue(message);
-    } catch (error) {
-      return thunkApi.rejectWithValue(error);
-    }
-  }
-);
+interface IRequest {
+  name: string;
+  number: string;
+}
 
-export const deleteContact = createAsyncThunk(
-  'contacts/deleteContact',
-  async (id: string, thunkApi) => {
-    try {
-      const { data } = await instance.delete(`contacts/${id}`);
-      return data;
-    } catch (error) {
-      return thunkApi.rejectWithValue(error);
-      // } catch ({ message }) {
-      //   return thunkApi.rejectWithValue(message);
-    }
+export const fetchContacts = createAsyncThunk<
+  IContact[],
+  undefined,
+  { rejectValue: string }
+>('contacts/fetchAll', async (_, { rejectWithValue }) => {
+  try {
+    const { data } = await instance.get('contacts');
+    return data;
+  } catch (error) {
+    return rejectWithValue((error as Error).message);
   }
-);
+});
+
+export const addContact = createAsyncThunk<
+  IContact,
+  IRequest,
+  { rejectValue: string }
+>('contacts/addContact', async (body, { rejectWithValue }) => {
+  try {
+    const { data } = await instance.post('contacts', body);
+    return data;
+  } catch (error) {
+    return rejectWithValue((error as Error).message);
+  }
+});
+
+export const deleteContact = createAsyncThunk<
+  IContact,
+  string,
+  { rejectValue: string }
+>('contacts/deleteContact', async (id: string, { rejectWithValue }) => {
+  try {
+    const { data } = await instance.delete(`contacts/${id}`);
+    return data;
+  } catch (error) {
+    return rejectWithValue((error as Error).message);
+  }
+});

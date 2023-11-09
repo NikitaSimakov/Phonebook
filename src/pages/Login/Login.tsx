@@ -11,6 +11,7 @@ import { AppDispatch } from '../../redux/store';
 
 export const Login = () => {
   const isLoading = useSelector(selectIsLoading);
+
   const isAuth = useSelector(selectIsAuth);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -19,7 +20,6 @@ export const Login = () => {
   if (isAuth) {
     return <Navigate to="/contacts" replace />;
   }
-
   const handleChange = ({
     target: { name, value },
   }: ChangeEvent<HTMLInputElement>) => {
@@ -36,9 +36,10 @@ export const Login = () => {
         Notify.success('Login success!');
       })
       .catch(() => {
-        Notify.failure('Login failure!');
+        Notify.failure('Oop! Login failure! Try again');
       });
   };
+
   return (
     <section className={css.login}>
       <div className={css.container}>

@@ -1,7 +1,7 @@
 export interface ContactsState {
   contacts: { name: string; id: string; number: string }[];
   isLoading: boolean;
-  error: null | string;
+  error: null | string | object;
   id: null | string;
 }
 
