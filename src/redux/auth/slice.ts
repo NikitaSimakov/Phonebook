@@ -79,6 +79,7 @@ export const authSlice = createSlice({
         state.user.email = '';
         state.error = '';
         state.isLoading = false;
+        state.isRefreshing = false;
         state.isAuth = false;
       })
       .addCase(refreshUserThunk.pending, state => {
@@ -91,6 +92,7 @@ export const authSlice = createSlice({
         state.user.name = payload.name;
         state.user.email = payload.email;
       })
+      .addCase(refreshUserThunk.rejected, (state, action) => {})
       // .addMatcher(action => action.type.endsWith('/pending'), handlePending)
       .addMatcher(
         (action: PayloadAction) => action.type.endsWith('/rejected'),

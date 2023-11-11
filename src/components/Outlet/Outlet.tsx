@@ -1,15 +1,15 @@
 import Header from '../Header/Header';
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { refreshUserThunk, logOutThunk } from '../../redux/auth/thunks';
 import { selectToken, selectUserName } from '../../redux/selectors';
-import { AppDispatch } from '../../redux/store';
+import { useAppDispatch } from '../../redux/hooks';
 const { Outlet } = require('react-router-dom');
 
 const Layout = () => {
   const token = useSelector(selectToken);
   const userName = useSelector(selectUserName);
-  const dispatch = useDispatch<AppDispatch>();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     if (token && !userName) {

@@ -1,3 +1,4 @@
+import { Notify } from 'notiflix';
 import { IValues } from '../../pages/Registration/Registration';
 import { RootState } from '../store';
 import { IBody, logIn, logOut, refreshUser, setToken, signUp } from './auth';
@@ -53,12 +54,17 @@ export const refreshUserThunk = createAsyncThunk<
   { state: RootState; rejectValue: string }
 >('auth/refresh', async (_, { getState, rejectWithValue }) => {
   const { token } = getState().auth;
-  if (!token) return;
+  // if (!token) return rejectWithValue('Token is dead');
   setToken(token);
   try {
     const response = await refreshUser();
     return response.data;
   } catch (error) {
+    console.log(error);
+    if ((error as Error).message === 'Request failed with status code 401')
+      return Notify.failure(
+        'Sorry You are unauthorized. Please authorize to access your account'
+      );
     rejectWithValue((error as Error).message);
   }
 });
