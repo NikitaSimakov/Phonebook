@@ -6,7 +6,7 @@ import css from './ContactList.module.scss';
 import { ContactListItem } from '../ContactListItem/ContactListItem';
 import { AppDispatch } from '../../redux/store';
 
-const ContactList:FC<{}> = () => {
+const ContactList: FC<{}> = () => {
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
@@ -15,9 +15,11 @@ const ContactList:FC<{}> = () => {
   const filteredContacts = useSelector(selectFilteredContact);
 
   return (
-    <ul className={css.list}>
+    <ul className={css.list} onKeyDown={event => console.log(event)}>
       {filteredContacts &&
-        filteredContacts.map(contact => <ContactListItem key={contact.id} contact={contact} />)}
+        filteredContacts.map(contact => (
+          <ContactListItem key={contact.id} contact={contact} />
+        ))}
     </ul>
   );
 };

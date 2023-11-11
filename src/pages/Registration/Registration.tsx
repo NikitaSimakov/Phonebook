@@ -22,7 +22,7 @@ import { AppDispatch } from '../../redux/store';
 export interface IValues {
   name: string;
   email: string;
-  password: string;
+  password?: string;
 }
 
 export const Registration = () => {

@@ -15,7 +15,7 @@ interface IAuthState {
   isAuth: boolean;
   isLoading: boolean;
   isRefreshing: boolean;
-  error: string | undefined;
+  error: string | undefined | object;
   user: IUser;
 }
 
@@ -39,7 +39,7 @@ const handleRejected = (
   state: IAuthState,
   { payload }: PayloadAction<string>
 ) => {
-  state.isLoading = true;
+  state.isLoading = false;
   state.error = payload;
 };
 
@@ -54,7 +54,6 @@ export const authSlice = createSlice({
       })
       .addCase(signUpThunk.fulfilled, (state, { payload }) => {
         state.isLoading = false;
-
         state.token = payload!.token;
       })
       .addCase(loginThunk.pending, state => {
@@ -68,8 +67,8 @@ export const authSlice = createSlice({
         state.user.email = payload.user.email;
       })
       .addCase(loginThunk.rejected, (state, action) => {
-        state.isLoading = false;
         state.error = action.error.message;
+        state.isLoading = false;
       })
       .addCase(logOutThunk.pending, state => {
         state.isLoading = true;
@@ -80,6 +79,7 @@ export const authSlice = createSlice({
         state.user.email = '';
         state.error = '';
         state.isLoading = false;
+        state.isRefreshing = false;
         state.isAuth = false;
       })
       .addCase(refreshUserThunk.pending, state => {
@@ -92,6 +92,7 @@ export const authSlice = createSlice({
         state.user.name = payload.name;
         state.user.email = payload.email;
       })
+      .addCase(refreshUserThunk.rejected, (state, action) => {})
       // .addMatcher(action => action.type.endsWith('/pending'), handlePending)
       .addMatcher(
         (action: PayloadAction) => action.type.endsWith('/rejected'),

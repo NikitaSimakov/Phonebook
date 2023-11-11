@@ -33,7 +33,7 @@ const contactsSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(addContact.fulfilled, (state, { payload }) => {
-        state.contacts.push(payload.data);
+        state.contacts.push(payload);
       })
       .addMatcher(action => action.type.endsWith('/pending'), handlePending)
       .addMatcher(action => action.type.endsWith('/rejected'), handleRejected);
