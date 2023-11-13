@@ -1,10 +1,8 @@
-// import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectIsLoading } from '../../redux/selectors';
 import { signUpThunk } from '../../redux/auth/thunks';
 import { Notify } from 'notiflix';
-// import { Button } from '@mui/material';
 import { Button } from '../../components/Button/Button';
 import {
   Formik,
@@ -36,50 +34,13 @@ export const Registration = () => {
     password: '',
   };
 
-  // const schema = yup.object().shape({
-  //   name: yup.string().min(2).required(),
-  //   email: yup.string().email().required(),
-  //   password: yup
-  //     .string()
-  //     .required('Please Enter your password')
-  //     .matches(
-  //       '^(?=.*\\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$',
-  //       'Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character'
-  //     ),
-  // });
   YupPassword(yup);
   const schema = yup.object().shape({
     name: yup.string().min(2).required(),
     email: yup.string().email().required(),
     password: yup.string().required('Please Enter your password').password(),
-    // .matches(
-    //   /^(?=.*\\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/,
-    //   'Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character'
-    // ),
   });
-  // const [name, setName] = useState();
-  // const [email, setEmail] = useState();
-  // const [password, setPassword] = useState();
-  // const handleChange = ({ target: { name, value } }) => {
-  //   if (name === 'email') {
-  //     setEmail(value);
-  //   } else if (name === 'password') {
-  //     setPassword(value);
-  //   } else setName(value);
-  // };
 
-  // const handleSubmit = event => {
-  //   event.preventDefault();
-  // dispatch(signUpThunk({ name, email, password }))
-  //   .unwrap()
-  //   .then(() => {
-  //     Notify.success('Sign Up Success');
-  //     navigate('/login');
-  //   })
-  //   .catch(() => {
-  //     Notify.failure('Sign Up Failure');
-  //   });
-  // };
   const handleSubmit = (
     { name, email, password }: IValues,
     { resetForm }: FormikActions<IValues>

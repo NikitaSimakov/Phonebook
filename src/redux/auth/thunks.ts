@@ -54,7 +54,6 @@ export const refreshUserThunk = createAsyncThunk<
   { state: RootState; rejectValue: string }
 >('auth/refresh', async (_, { getState, rejectWithValue }) => {
   const { token } = getState().auth;
-  // if (!token) return rejectWithValue('Token is dead');
   setToken(token);
   try {
     const response = await refreshUser();

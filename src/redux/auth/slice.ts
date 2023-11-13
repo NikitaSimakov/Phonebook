@@ -31,10 +31,6 @@ const initialState: IAuthState = {
   },
 };
 
-// const handlePending = (state: IAuthState) => {
-//   // state.isLoading = true;
-//   state.isLoading = false;
-// };
 const handleRejected = (
   state: IAuthState,
   { payload }: PayloadAction<string>
