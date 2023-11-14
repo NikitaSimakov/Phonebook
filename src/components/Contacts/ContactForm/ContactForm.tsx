@@ -1,7 +1,7 @@
 import { useState, FC, useEffect } from 'react';
-import { Button } from '../Button/Button';
+import { Button } from '../../Button/Button';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from '../../redux/contact/thunks';
+import { addContact } from '../../../redux/contact/thunks';
 import {
   Formik,
   Form,
@@ -10,11 +10,11 @@ import {
   FormikHelpers as FormikActions,
 } from 'formik';
 import * as yup from 'yup';
-import { selectContacts } from '../../redux/selectors';
+import { selectContacts } from '../../../redux/selectors';
 import { Notify } from 'notiflix';
 import css from './ContactForm.module.scss';
 import 'yup-phone-lite';
-import { AppDispatch } from '../../redux/store';
+import { AppDispatch } from '../../../redux/store';
 
 interface MyFormValues {
   name: string;

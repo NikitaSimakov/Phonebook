@@ -1,0 +1,12 @@
+@import "../../../index.scss";
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin: 60px 0;
+}
+
+.loginLoading {
+  margin-left: 5px;
+}

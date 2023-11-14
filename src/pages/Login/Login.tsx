@@ -8,6 +8,7 @@ import { selectIsAuth, selectIsLoading } from '../../redux/selectors';
 import CircularIndeterminate from '../../components/CircularProgress/CircularProgress';
 import { Notify } from 'notiflix';
 import { AppDispatch } from '../../redux/store';
+import AuthBlock from '../../components/Auth/AuthBlock/AuthBlock';
 
 export const Login = () => {
   const isLoading = useSelector(selectIsLoading);
@@ -41,49 +42,55 @@ export const Login = () => {
   };
 
   return (
-    <section className={css.login}>
-      <div className={css.container}>
-        <h1 className={css.title}>Let’s Sign You In</h1>
-        <p className={css.text}>Welcome back, you’ve been missed!</p>
-        <form className={css.form} onSubmit={handleSubmit}>
-          <label className={css.label} htmlFor="email">
-            <p className={css.labelName}>Email</p>
+    <AuthBlock
+      title={'Let’s Sign You In'}
+      paragraph={'Welcome back, you’ve been missed!'}
+    >
+      {/* <section className={css.login}>
+        <div className={css.container}>
+          <h1 className={css.title}>Let’s Sign You In</h1> */}
+      {/* <p className={css.text}>Welcome back, you’ve been missed!</p> */}
 
-            <input
-              className={css.input}
-              onChange={handleChange}
-              type="text"
-              name="email"
-            ></input>
-          </label>
-          <label className={css.loginLabel} htmlFor="password">
-            <p className={css.labelName}>Password</p>
-            <input
-              className={css.input}
-              onChange={handleChange}
-              type="password"
-              name="password"
-            ></input>
-          </label>
-          <Button buttonType={'submit'}>
-            Send
-            {isLoading && (
-              <div className={css.loginLoading}>{CircularIndeterminate()}</div>
-            )}
-          </Button>
-        </form>
-        <div className={css.linkboxSignin}>
-          <p className={css.text}>Not registered yet?</p>
-          <Button
-            event={() => {
-              navigate('/register');
-            }}
-          >
-            Sign Up
-          </Button>
-        </div>
+      <form className={css.form} onSubmit={handleSubmit}>
+        <label className={css.label} htmlFor="email">
+          <p className={css.labelName}>Email</p>
+
+          <input
+            className={css.input}
+            onChange={handleChange}
+            type="text"
+            name="email"
+          ></input>
+        </label>
+        <label className={css.loginLabel} htmlFor="password">
+          <p className={css.labelName}>Password</p>
+          <input
+            className={css.input}
+            onChange={handleChange}
+            type="password"
+            name="password"
+          ></input>
+        </label>
+        <Button buttonType={'submit'}>
+          Send
+          {isLoading && (
+            <div className={css.loginLoading}>{CircularIndeterminate()}</div>
+          )}
+        </Button>
+      </form>
+      <div className={css.linkboxSignin}>
+        <p className={css.text}>Not registered yet?</p>
+        <Button
+          event={() => {
+            navigate('/register');
+          }}
+        >
+          Sign Up
+        </Button>
       </div>
-      <div className={css.rightSide}></div>
-    </section>
+      {/* </div>
+        <div className={css.rightSide}></div>
+      </section> */}
+    </AuthBlock>
   );
 };
