@@ -18,6 +18,7 @@
 // import { AppDispatch } from '../../redux/store';
 import AuthBlock from '../../components/Auth/AuthBlock/AuthBlock';
 import RegistrationForm from '../../components/Auth/AuthForm/RegistrationForm';
+import { RegistrationFormLabel } from '../../components/Auth/AuthForm/RegistrationFormLabel/RegistrationFormLabel';
 
 export interface IValues {
   name: string;
@@ -64,7 +65,11 @@ export const Registration = () => {
       title={'Registration'}
       paragraph={'We welcome to our application'}
     >
-      <RegistrationForm />
+      <RegistrationForm authType={'registration'}>
+        <RegistrationFormLabel labelName={'Name'} type={'text'} />
+        <RegistrationFormLabel labelName={'Email'} type={'email'} />
+        <RegistrationFormLabel labelName={'Password'} type={'password'} />
+      </RegistrationForm>
       {/* <Formik
         initialValues={initialValues}
         validationSchema={schema}
