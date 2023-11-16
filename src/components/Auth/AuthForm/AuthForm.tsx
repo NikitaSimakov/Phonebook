@@ -21,7 +21,7 @@ const AuthForm: FC<AuthFormProps> = ({ authType, children }) => {
   const dispatch = useAppDispatch();
   YupPassword(yup);
 
-  const UseHandleSubmit = (
+  const useHandleSubmit = (
     values: FormValuesInterface,
     { resetForm }: FormikActions<FormValuesInterface>
   ) => {
@@ -34,7 +34,7 @@ const AuthForm: FC<AuthFormProps> = ({ authType, children }) => {
     <Formik
       initialValues={useSelectInititialValues(authType)}
       validationSchema={useSelectSchema(authType)}
-      onSubmit={UseHandleSubmit}
+      onSubmit={useHandleSubmit}
     >
       <Form className={css.form}>
         {children}

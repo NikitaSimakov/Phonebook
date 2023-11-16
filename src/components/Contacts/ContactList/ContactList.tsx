@@ -15,7 +15,7 @@ const ContactList: FC<{}> = () => {
   const filteredContacts = useSelector(selectFilteredContact);
 
   return (
-    <ul className={css.list} onKeyDown={event => console.log(event)}>
+    <ul className={css.list}>
       {filteredContacts &&
         filteredContacts.map(contact => (
           <ContactListItem key={contact.id} contact={contact} />

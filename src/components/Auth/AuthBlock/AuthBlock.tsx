@@ -3,7 +3,6 @@ import css from './AuthBlock.module.scss';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { selectIsAuth } from '../../../redux/selectors';
-import { Navigate } from 'react-router-dom';
 
 interface AuthBlockInterface {
   children: ReactNode;
@@ -19,7 +18,6 @@ const AuthBlock: FC<AuthBlockInterface> = ({
   const navigate = useNavigate();
   const isAuth = useSelector(selectIsAuth);
 
-  // if (isAuth) navigate('/contacts');
   return (
     <>
       {isAuth && navigate('/contacts')}
