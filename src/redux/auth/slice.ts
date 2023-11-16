@@ -31,10 +31,6 @@ const initialState: IAuthState = {
   },
 };
 
-// const handlePending = (state: IAuthState) => {
-//   // state.isLoading = true;
-//   state.isLoading = false;
-// };
 const handleRejected = (
   state: IAuthState,
   { payload }: PayloadAction<string>
@@ -49,8 +45,8 @@ export const authSlice = createSlice({
   reducers: {},
   extraReducers: builder => {
     builder
-      .addCase(signUpThunk.pending, ({ isLoading }) => {
-        isLoading = true;
+      .addCase(signUpThunk.pending, state => {
+        state.isLoading = true;
       })
       .addCase(signUpThunk.fulfilled, (state, { payload }) => {
         state.isLoading = false;

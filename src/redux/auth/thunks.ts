@@ -1,12 +1,12 @@
 import { Notify } from 'notiflix';
-import { IValues } from '../../pages/Registration/Registration';
 import { RootState } from '../store';
 import { IBody, logIn, logOut, refreshUser, setToken, signUp } from './auth';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { FormValuesInterface } from '../../components/Auth/models/models';
 
 interface IResponse {
   token: string;
-  user: IValues;
+  user: FormValuesInterface;
 }
 
 export const signUpThunk = createAsyncThunk<
@@ -54,7 +54,6 @@ export const refreshUserThunk = createAsyncThunk<
   { state: RootState; rejectValue: string }
 >('auth/refresh', async (_, { getState, rejectWithValue }) => {
   const { token } = getState().auth;
-  // if (!token) return rejectWithValue('Token is dead');
   setToken(token);
   try {
     const response = await refreshUser();

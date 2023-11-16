@@ -1,13 +1,13 @@
 import { useState, FC, SyntheticEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectIsLoadingContacts } from '../../redux/selectors';
+import { selectIsLoadingContacts } from '../../../redux/selectors';
 import { BsFillTelephoneFill } from 'react-icons/bs';
-import { deleteContact } from '../../redux/contact/thunks';
+import { deleteContact } from '../../../redux/contact/thunks';
 import img from './contact_default.jpeg';
 import css from './ContactListItem.module.scss';
-import { Button } from '../Button/Button';
-import CircularIndeterminate from '../CircularProgress/CircularProgress';
-import { AppDispatch } from '../../redux/store';
+import { Button } from '../../Button/Button';
+import CircularIndeterminate from '../../CircularProgress/CircularProgress';
+import { AppDispatch } from '../../../redux/store';
 interface ContactListItemProps {
   contact: {
     name: string;
@@ -30,7 +30,9 @@ export const ContactListItem: FC<ContactListItemProps> = ({ contact }) => {
   const showSpinner = (): JSX.Element => {
     if (isShowSpinner) {
       return <div className={css.spinner}>{CircularIndeterminate()}</div>;
-    } else {return <></>}
+    } else {
+      return <></>;
+    }
   };
 
   return (

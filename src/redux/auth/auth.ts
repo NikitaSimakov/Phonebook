@@ -33,13 +33,6 @@ export const logOut = async () => {
   return response;
 };
 
-// export const logOut = async () => {
-//   const { data } = await instance.post('/users/logout');
-//   clearToken();
-//   console.log(data);
-//   return data;
-// };
-
 export const refreshUser = async () => {
   const response = await instance('users/current');
   return response;
