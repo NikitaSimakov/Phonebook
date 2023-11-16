@@ -1,12 +1,12 @@
 import { Notify } from 'notiflix';
-import { IValues } from '../../pages/Registration/Registration';
 import { RootState } from '../store';
 import { IBody, logIn, logOut, refreshUser, setToken, signUp } from './auth';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { FormValuesInterface } from '../../components/Auth/models/models';
 
 interface IResponse {
   token: string;
-  user: IValues;
+  user: FormValuesInterface;
 }
 
 export const signUpThunk = createAsyncThunk<

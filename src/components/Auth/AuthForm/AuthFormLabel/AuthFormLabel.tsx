@@ -1,18 +1,13 @@
 import { ErrorMessage, Field } from 'formik';
 import { FC } from 'react';
-import css from './RegistrationFormLabel.module.scss';
+import css from './AuthFormLabel.module.scss';
 
-interface RegistrationFormLabelProps {
+interface AuthFormLabelProps {
   labelName: string;
   type: string;
-  // name: string;
 }
 
-export const RegistrationFormLabel: FC<RegistrationFormLabelProps> = ({
-  labelName,
-  type,
-  // name,
-}) => {
+export const AuthFormLabel: FC<AuthFormLabelProps> = ({ labelName, type }) => {
   const name = labelName.toLowerCase();
   return (
     <label className={css.loginLabel} htmlFor={labelName}>
