@@ -64,6 +64,14 @@ const ContactForm: FC<{}> = () => {
     );
   };
 
+  const isBackdropClick = (
+    event: React.MouseEvent<HTMLElement, MouseEvent>
+  ) => {
+    const target = event.target as HTMLElement;
+    if (target.id !== 'backdrop') return;
+    modalClose();
+  };
+
   const modalOpen = () => {
     setIsActive(true);
     document.body?.classList.add('hidden');
@@ -77,11 +85,7 @@ const ContactForm: FC<{}> = () => {
     <>
       {isActive && (
         <section
-          onClick={event => {
-            const target = event.target as HTMLElement;
-            if (target.id !== 'backdrop') return;
-            modalClose();
-          }}
+          onClick={isBackdropClick}
           className={css.addContactWrapper}
           id="backdrop"
         >
