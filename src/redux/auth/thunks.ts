@@ -31,8 +31,7 @@ export const loginThunk = createAsyncThunk<
     const { data } = await logIn(body);
     return data;
   } catch (error) {
-    console.log(error);
-    rejectWithValue((error as Error).message);
+    return rejectWithValue((error as Error).message);
   }
 });
 

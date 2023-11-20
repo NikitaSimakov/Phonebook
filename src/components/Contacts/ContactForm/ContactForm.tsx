@@ -59,9 +59,6 @@ const ContactForm: FC<{}> = () => {
       return Notify.failure(`Contact ${name} is already in phonebook!`);
     dispatch(addContact({ name, number }));
     modalClose();
-    return Notify.success(
-      `The contact ${name} was successfully added to the phone book!`
-    );
   };
 
   const isBackdropClick = (

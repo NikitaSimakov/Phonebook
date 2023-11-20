@@ -5,6 +5,7 @@ import {
   refreshUserThunk,
   signUpThunk,
 } from './thunks';
+import { Notify } from 'notiflix';
 
 interface IUser {
   name: string | undefined;
@@ -15,7 +16,7 @@ interface IAuthState {
   isAuth: boolean;
   isLoading: boolean;
   isRefreshing: boolean;
-  error: string | undefined | object;
+  error: string;
   user: IUser;
 }
 
@@ -35,8 +36,9 @@ const handleRejected = (
   state: IAuthState,
   { payload }: PayloadAction<string>
 ) => {
-  state.isLoading = false;
   state.error = payload;
+  state.isLoading = false;
+  Notify.failure(state.error || 'Error');
 };
 
 export const authSlice = createSlice({
@@ -62,10 +64,12 @@ export const authSlice = createSlice({
         state.user.name = payload.user.name;
         state.user.email = payload.user.email;
       })
-      .addCase(loginThunk.rejected, (state, action) => {
-        state.error = action.error.message;
-        state.isLoading = false;
-      })
+      // .addCase(loginThunk.rejected, (state, action) => {
+      //   console.log(action);
+      //   state.error = action.error.message;
+      //   state.error = action.error;
+      //   state.isLoading = false;
+      // })
       .addCase(logOutThunk.pending, state => {
         state.isLoading = true;
       })
@@ -88,12 +92,9 @@ export const authSlice = createSlice({
         state.user.name = payload.name;
         state.user.email = payload.email;
       })
-      .addCase(refreshUserThunk.rejected, (state, action) => {})
+      // .addCase(refreshUserThunk.rejected, (state, action) => {})
       // .addMatcher(action => action.type.endsWith('/pending'), handlePending)
-      .addMatcher(
-        (action: PayloadAction) => action.type.endsWith('/rejected'),
-        handleRejected
-      );
+      .addMatcher(action => action.type.endsWith('/rejected'), handleRejected);
   },
 });
 

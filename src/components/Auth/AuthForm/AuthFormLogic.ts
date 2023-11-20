@@ -36,20 +36,19 @@ export const useSelectHandleDispatch = (
   const thunk = () =>
     type === 'registration' ? signUpThunk(values) : loginThunk(values);
 
-  const dispatcher = (dispatch: Function) =>
-    dispatch(thunk())
-      .unwrap()
-      .then(() => {
-        Notify.success(
-          type === 'registration' ? 'Sign Up Success' : 'Login Success!'
-        );
-      })
-      .catch(() => {
-        Notify.failure(
-          type === 'registration'
-            ? 'Sign Up Failure'
-            : 'Oops! Login failure! Try again'
-        );
-      });
+  const dispatcher = (dispatch: Function) => dispatch(thunk());
+  // .unwrap()
+  // .then(() => {
+  //   Notify.success(
+  //     type === 'registration' ? 'Sign Up Success' : 'Login Success!'
+  //   );
+  // })
+  // .catch(() => {
+  //   Notify.failure(
+  //     type === 'registration'
+  //       ? 'Sign Up Failure'
+  //       : 'Oops! Login failure! Try again'
+  //   );
+  // });
   return { dispatcher };
 };
