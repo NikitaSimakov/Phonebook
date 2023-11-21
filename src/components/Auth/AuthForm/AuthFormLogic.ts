@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 import { loginThunk, signUpThunk } from '../../../redux/auth/thunks';
-import { Notify } from 'notiflix';
+// import { Notify } from 'notiflix';
 import { FormValuesInterface } from '../models/models';
 
 export const useSelectInititialValues = (type: string) => {
