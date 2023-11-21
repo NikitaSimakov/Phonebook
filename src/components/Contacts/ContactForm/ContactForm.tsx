@@ -59,9 +59,14 @@ const ContactForm: FC<{}> = () => {
       return Notify.failure(`Contact ${name} is already in phonebook!`);
     dispatch(addContact({ name, number }));
     modalClose();
-    return Notify.success(
-      `The contact ${name} was successfully added to the phone book!`
-    );
+  };
+
+  const isBackdropClick = (
+    event: React.MouseEvent<HTMLElement, MouseEvent>
+  ) => {
+    const target = event.target as HTMLElement;
+    if (target.id !== 'backdrop') return;
+    modalClose();
   };
 
   const modalOpen = () => {
@@ -77,11 +82,7 @@ const ContactForm: FC<{}> = () => {
     <>
       {isActive && (
         <section
-          onClick={event => {
-            const target = event.target as HTMLElement;
-            if (target.id !== 'backdrop') return;
-            modalClose();
-          }}
+          onClick={isBackdropClick}
           className={css.addContactWrapper}
           id="backdrop"
         >

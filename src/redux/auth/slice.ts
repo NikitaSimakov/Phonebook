@@ -5,6 +5,7 @@ import {
   refreshUserThunk,
   signUpThunk,
 } from './thunks';
+import { Notify } from 'notiflix';
 
 interface IUser {
   name: string | undefined;
@@ -15,7 +16,7 @@ interface IAuthState {
   isAuth: boolean;
   isLoading: boolean;
   isRefreshing: boolean;
-  error: string | undefined | object;
+  error: string;
   user: IUser;
 }
 
@@ -30,13 +31,25 @@ const initialState: IAuthState = {
     email: '',
   },
 };
-
+const handlePending = (state: IAuthState) => {
+  state.isLoading = true;
+  state.error = '';
+};
 const handleRejected = (
   state: IAuthState,
   { payload }: PayloadAction<string>
 ) => {
-  state.isLoading = false;
   state.error = payload;
+  state.isLoading = false;
+  if (payload === 'Request failed with status code 400') {
+    return Notify.failure('Maybe the username or password is incorrect');
+  }
+  // if (state.error && payload === 'Request failed with status code 401') {
+  //   return Notify.failure(
+  //     'Sorry You are unauthorized. Please authorize to access your account'
+  //   );
+  // }
+  Notify.failure(state.error || 'Error');
 };
 
 export const authSlice = createSlice({
@@ -45,16 +58,16 @@ export const authSlice = createSlice({
   reducers: {},
   extraReducers: builder => {
     builder
-      .addCase(signUpThunk.pending, state => {
-        state.isLoading = true;
-      })
+      // .addCase(signUpThunk.pending, state => {
+      //   state.isLoading = true;
+      // })
       .addCase(signUpThunk.fulfilled, (state, { payload }) => {
         state.isLoading = false;
-        state.token = payload!.token;
+        state.token = payload?.token;
       })
-      .addCase(loginThunk.pending, state => {
-        state.isLoading = true;
-      })
+      // .addCase(loginThunk.pending, state => {
+      //   state.isLoading = true;
+      // })
       .addCase(loginThunk.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.isAuth = true;
@@ -62,13 +75,15 @@ export const authSlice = createSlice({
         state.user.name = payload.user.name;
         state.user.email = payload.user.email;
       })
-      .addCase(loginThunk.rejected, (state, action) => {
-        state.error = action.error.message;
-        state.isLoading = false;
-      })
-      .addCase(logOutThunk.pending, state => {
-        state.isLoading = true;
-      })
+      // .addCase(loginThunk.rejected, (state, action) => {
+      //   console.log(action);
+      //   state.error = action.error.message;
+      //   state.error = action.error;
+      //   state.isLoading = false;
+      // })
+      // .addCase(logOutThunk.pending, state => {
+      //   state.isLoading = true;
+      // })
       .addCase(logOutThunk.fulfilled, state => {
         state.token = '';
         state.user.name = '';
@@ -77,6 +92,7 @@ export const authSlice = createSlice({
         state.isLoading = false;
         state.isRefreshing = false;
         state.isAuth = false;
+        Notify.success('See you later!');
       })
       .addCase(refreshUserThunk.pending, state => {
         state.isRefreshing = true;
@@ -88,10 +104,18 @@ export const authSlice = createSlice({
         state.user.name = payload.name;
         state.user.email = payload.email;
       })
-      .addCase(refreshUserThunk.rejected, (state, action) => {})
-      // .addMatcher(action => action.type.endsWith('/pending'), handlePending)
+      .addCase(refreshUserThunk.rejected, state => {
+        state.isRefreshing = false;
+        state.token = '';
+        if (state.error === 'Request failed with status code 401') {
+          return Notify.failure(
+            'Sorry You are unauthorized. Please authorize to access your account'
+          );
+        }
+      })
+      .addMatcher(action => action.type.endsWith('User/pending'), handlePending)
       .addMatcher(
-        (action: PayloadAction) => action.type.endsWith('/rejected'),
+        action => action.type.endsWith('User/rejected'),
         handleRejected
       );
   },

@@ -2,13 +2,13 @@ export interface ContactsState {
   contacts: { name: string; id: string; number: string }[];
   isLoading: boolean;
   error: null | string | object;
-  id: null | string;
+  id: string;
 }
 
 export const contactsState: ContactsState = {
   contacts: [],
   isLoading: false,
   error: null,
-  id: null,
+  id: '',
 };
 export const filterState = { filter: '' };

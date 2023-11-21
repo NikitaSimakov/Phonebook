@@ -17,3 +17,4 @@ export const selectNameIsInContacts = (state: RootState, name: string) => {
   return selectContacts(state).some(contact => contact.name.includes(name));
 };
 export const selectIsRefreshing = (state: RootState) => state.auth.isRefreshing;
+export const selectContactId = (state: RootState) => state.contacts.id;

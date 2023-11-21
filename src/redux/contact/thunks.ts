@@ -32,6 +32,7 @@ export const addContact = createAsyncThunk<
 >('contacts/addContact', async (body, { rejectWithValue }) => {
   try {
     const { data } = await instance.post('contacts', body);
+
     return data;
   } catch (error) {
     return rejectWithValue((error as Error).message);
@@ -42,7 +43,7 @@ export const deleteContact = createAsyncThunk<
   IContact,
   string,
   { rejectValue: string }
->('contacts/deleteContact', async (id: string, { rejectWithValue }) => {
+>('contacts/deleteContact', async (id, { rejectWithValue }) => {
   try {
     const { data } = await instance.delete(`contacts/${id}`);
     return data;

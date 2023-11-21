@@ -22,11 +22,11 @@ export const UserMenu = () => {
   const dispatch = useDispatch<AppDispatch>();
 
   const handleLogOut = () => {
-    dispatch(logOutThunk())
-      .unwrap()
-      .then(() => Notify.success('See you later!'))
-      .then(() => navigate('/'))
-      .catch(() => Notify.failure('Sorry! Logout error'));
+    dispatch(logOutThunk());
+    // .unwrap()
+    // .then(() => Notify.success('See you later!'))
+    // .then(() => navigate('/'))
+    // .catch(() => Notify.failure('Sorry! Logout error'));
   };
   return isAuth ? (
     <div className={css.wrapper}>

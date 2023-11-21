@@ -1,13 +1,16 @@
-import { useState, FC, SyntheticEvent } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectIsLoadingContacts } from '../../../redux/selectors';
+import { FC, SyntheticEvent } from 'react';
+import { useSelector } from 'react-redux';
+import {
+  selectContactId,
+  selectIsLoadingContacts,
+} from '../../../redux/selectors';
 import { BsFillTelephoneFill } from 'react-icons/bs';
 import { deleteContact } from '../../../redux/contact/thunks';
 import img from './contact_default.jpeg';
 import css from './ContactListItem.module.scss';
 import { Button } from '../../Button/Button';
 import CircularIndeterminate from '../../CircularProgress/CircularProgress';
-import { AppDispatch } from '../../../redux/store';
+import { useAppDispatch } from '../../../redux/hooks';
 interface ContactListItemProps {
   contact: {
     name: string;
@@ -16,24 +19,21 @@ interface ContactListItemProps {
   };
 }
 export const ContactListItem: FC<ContactListItemProps> = ({ contact }) => {
-  const dispatch = useDispatch<AppDispatch>();
-  const [contactId, setContactId] = useState<String>('');
+  const dispatch = useAppDispatch();
   const isLoading = useSelector(selectIsLoadingContacts);
+  const contactId = useSelector(selectContactId);
   const isShowSpinner: boolean = isLoading && contactId === contact.id;
 
   const deleteHandler = (event: SyntheticEvent) => {
     const { id } = event.currentTarget;
-    setContactId(id);
     dispatch(deleteContact(id));
   };
 
-  const showSpinner = (): JSX.Element => {
-    if (isShowSpinner) {
-      return <div className={css.spinner}>{CircularIndeterminate()}</div>;
-    } else {
-      return <></>;
-    }
-  };
+  const showSpinner = isShowSpinner ? (
+    <div className={css.spinner}>{CircularIndeterminate()}</div>
+  ) : (
+    <></>
+  );
 
   return (
     <li className={css.item}>
@@ -54,11 +54,11 @@ export const ContactListItem: FC<ContactListItemProps> = ({ contact }) => {
           className={css.button}
           stylish={'redButton'}
           id={contact.id}
-          event={event => deleteHandler(event)}
+          event={deleteHandler}
           disabled={isShowSpinner}
         >
           Delete
-          {showSpinner()}
+          {showSpinner}
         </Button>
       </div>
     </li>

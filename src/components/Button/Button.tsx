@@ -5,7 +5,7 @@ interface ButtonProps {
   stylish?: String | Boolean;
   event?: (event: SyntheticEvent) => void;
   children?: String | ReactNode | undefined;
-  buttonType?: "button" | "submit" | "reset" | undefined;
+  buttonType?: 'button' | 'submit' | 'reset' | undefined;
   id?: string;
   className?: string;
   disabled?: boolean;
