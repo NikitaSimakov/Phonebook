@@ -1,6 +1,5 @@
 import * as yup from 'yup';
 import { loginThunk, signUpThunk } from '../../../redux/auth/thunks';
-// import { Notify } from 'notiflix';
 import { FormValuesInterface } from '../models/models';
 
 export const useSelectInititialValues = (type: string) => {
@@ -37,18 +36,5 @@ export const useSelectHandleDispatch = (
     type === 'registration' ? signUpThunk(values) : loginThunk(values);
 
   const dispatcher = (dispatch: Function) => dispatch(thunk());
-  // .unwrap()
-  // .then(() => {
-  //   Notify.success(
-  //     type === 'registration' ? 'Sign Up Success' : 'Login Success!'
-  //   );
-  // })
-  // .catch(() => {
-  //   Notify.failure(
-  //     type === 'registration'
-  //       ? 'Sign Up Failure'
-  //       : 'Oops! Login failure! Try again'
-  //   );
-  // });
   return { dispatcher };
 };

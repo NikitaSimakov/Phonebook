@@ -1,4 +1,3 @@
-// import { Notify } from 'notiflix';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -23,10 +22,6 @@ export const UserMenu = () => {
 
   const handleLogOut = () => {
     dispatch(logOutThunk());
-    // .unwrap()
-    // .then(() => Notify.success('See you later!'))
-    // .then(() => navigate('/'))
-    // .catch(() => Notify.failure('Sorry! Logout error'));
   };
   return isAuth ? (
     <div className={css.wrapper}>

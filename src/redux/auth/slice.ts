@@ -44,11 +44,6 @@ const handleRejected = (
   if (payload === 'Request failed with status code 400') {
     return Notify.failure('Maybe the username or password is incorrect');
   }
-  // if (state.error && payload === 'Request failed with status code 401') {
-  //   return Notify.failure(
-  //     'Sorry You are unauthorized. Please authorize to access your account'
-  //   );
-  // }
   Notify.failure(state.error || 'Error');
 };
 
@@ -58,16 +53,10 @@ export const authSlice = createSlice({
   reducers: {},
   extraReducers: builder => {
     builder
-      // .addCase(signUpThunk.pending, state => {
-      //   state.isLoading = true;
-      // })
       .addCase(signUpThunk.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.token = payload?.token;
       })
-      // .addCase(loginThunk.pending, state => {
-      //   state.isLoading = true;
-      // })
       .addCase(loginThunk.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.isAuth = true;
@@ -75,15 +64,6 @@ export const authSlice = createSlice({
         state.user.name = payload.user.name;
         state.user.email = payload.user.email;
       })
-      // .addCase(loginThunk.rejected, (state, action) => {
-      //   console.log(action);
-      //   state.error = action.error.message;
-      //   state.error = action.error;
-      //   state.isLoading = false;
-      // })
-      // .addCase(logOutThunk.pending, state => {
-      //   state.isLoading = true;
-      // })
       .addCase(logOutThunk.fulfilled, state => {
         state.token = '';
         state.user.name = '';
