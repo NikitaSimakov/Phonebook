@@ -1,4 +1,3 @@
-// import { Notify } from 'notiflix';
 import { RootState } from '../store';
 import { IBody, logIn, logOut, refreshUser, setToken, signUp } from './auth';
 import { createAsyncThunk } from '@reduxjs/toolkit';

@@ -56,31 +56,6 @@
     justify-content: space-evenly;
 }
 
-.label {
-    @include flex;
-    font-size: 22px;
-    width: 100%;
-    margin-bottom: 15px;
-
-    font-size: 12px;
-    color: red;
-}
-
-.labelName {
-    font-size: 12px;
-    color: #171717;
-    margin: 0 auto 10px;
-}
-
-.input {
-    height: 40px;
-    width: 100%;
-    border-radius: 15px;
-    border-style: none;
-    box-shadow: rgba(102, 135, 86, 0.2) 0px 7px 29px 0px;
-    padding-left: 30px;
-}
-
 .openButton {
     position: fixed;
     top: 90%;

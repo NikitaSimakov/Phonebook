@@ -4,10 +4,12 @@ import { Navigate } from 'react-router-dom';
 import { selectIsAuth } from '../../redux/selectors';
 
 export interface RouteProps {
-  children: ReactNode
+  children: ReactNode;
 }
 
-export const PrivateRoute:FC<RouteProps> = ({ children }) => {
+const PrivateRoute: FC<RouteProps> = ({ children }) => {
   const isAuth = useSelector(selectIsAuth);
   return isAuth ? <>{children}</> : <Navigate to="/login" />;
 };
+
+export default PrivateRoute;

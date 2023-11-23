@@ -4,7 +4,9 @@ import { Navigate } from 'react-router-dom';
 import { selectIsAuth } from '../../redux/selectors';
 import { RouteProps } from '../PrivateRoute/PrivateRoute';
 
-export const PublicRoute: FC<RouteProps> = ({ children }) => {
+const PublicRoute: FC<RouteProps> = ({ children }) => {
   const isAuth = useSelector(selectIsAuth);
   return !isAuth ? <>{children}</> : <Navigate to="/contacts" />;
 };
+
+export default PublicRoute;

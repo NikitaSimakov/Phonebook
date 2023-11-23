@@ -1,7 +1,11 @@
-import { UserMenu } from '../UserMenu/UserMenu';
+import { FC, ReactNode } from 'react';
 import css from './Header.module.scss';
 
-const Header = (): JSX.Element => {
+interface HeaderProps {
+  children: ReactNode;
+}
+
+const Header: FC<HeaderProps> = ({ children }) => {
   return (
     <header className={css.wrapper}>
       <nav className={css.nav}>
@@ -9,7 +13,7 @@ const Header = (): JSX.Element => {
           PhoneBook
         </a>
       </nav>
-      <UserMenu />
+      {children}
     </header>
   );
 };
