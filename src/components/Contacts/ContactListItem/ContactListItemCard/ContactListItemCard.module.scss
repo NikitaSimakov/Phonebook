@@ -1,0 +1,37 @@
+@import "../../../../index.scss";
+.image {
+  display: flex;
+  max-width: 95px;
+  height: auto;
+  margin: 0 auto;
+}
+
+.textBox {
+  @include flex;
+  gap: 10px;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.name {
+  @include tablet {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.phone {
+  &Box {
+    @include flex;
+    align-content: center;
+    align-items: center;
+  }
+  &Icon {
+    height: 15px;
+  }
+}
+
+.number {
+  margin-left: 10px;
+  margin-right: 10px;
+}

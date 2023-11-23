@@ -2,7 +2,7 @@ import AuthBlock from '../../components/Auth/AuthBlock/AuthBlock';
 import AuthForm from '../../components/Auth/AuthForm/AuthForm';
 import { AuthFormLabel } from '../../components/Auth/AuthForm/AuthFormLabel/AuthFormLabel';
 
-export const Registration = () => {
+const Registration = () => {
   return (
     <AuthBlock
       title={'Lets Sign You Up'}
@@ -16,3 +16,5 @@ export const Registration = () => {
     </AuthBlock>
   );
 };
+
+export default Registration;

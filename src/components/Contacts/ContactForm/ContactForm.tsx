@@ -1,20 +1,15 @@
 import { useState, FC, useEffect } from 'react';
-import { Button } from '../../Button/Button';
-import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from '../../../redux/contact/thunks';
-import {
-  Formik,
-  Form,
-  Field,
-  ErrorMessage,
-  FormikHelpers as FormikActions,
-} from 'formik';
+import { useSelector } from 'react-redux';
+import { Formik, Form, FormikHelpers as FormikActions } from 'formik';
 import * as yup from 'yup';
-import { selectContacts } from '../../../redux/selectors';
+import 'yup-phone-lite';
 import { Notify } from 'notiflix';
 import css from './ContactForm.module.scss';
-import 'yup-phone-lite';
-import { AppDispatch } from '../../../redux/store';
+import ContactFormLabel from './ContactFormLabel/ContactFormLabel';
+import Button from '../../Button/Button';
+import { addContact } from '../../../redux/contact/thunks';
+import { selectContacts } from '../../../redux/selectors';
+import { useAppDispatch } from '../../../redux/hooks';
 
 interface MyFormValues {
   name: string;
@@ -25,7 +20,7 @@ interface KeyboardEvent {
 }
 
 const ContactForm: FC<{}> = () => {
-  const dispatch = useDispatch<AppDispatch>();
+  const dispatch = useAppDispatch();
   const contacts = useSelector(selectContacts);
   const [isActive, setIsActive] = useState(false);
 
@@ -96,26 +91,16 @@ const ContactForm: FC<{}> = () => {
                 <Form className={css.form}>
                   <h1 className={css.title}>Add new contact</h1>
                   <div className={css.labelWrapper}>
-                    <label className={css.label}>
-                      <p className={css.labelName}>Name</p>
-                      <Field
-                        className={css.input}
-                        type="text"
-                        name="name"
-                        placeholder="Homer Simpson"
-                      />
-                      <ErrorMessage name="name" />
-                    </label>
-                    <label className={css.label}>
-                      <p className={css.labelName}>Number</p>
-                      <Field
-                        className={css.input}
-                        type="tel"
-                        name="number"
-                        placeholder="+15501234567"
-                      />
-                      <ErrorMessage name="number" />
-                    </label>
+                    <ContactFormLabel
+                      labelName={'Name'}
+                      type={'text'}
+                      placeholder={'Homer Simpson'}
+                    />
+                    <ContactFormLabel
+                      labelName={'Number'}
+                      type={'tel'}
+                      placeholder={'+15501234567'}
+                    />
                     <Button buttonType={'submit'}>Add contact</Button>
                   </div>
                   <button

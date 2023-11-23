@@ -44,6 +44,11 @@ const handleRejected = (
   if (payload === 'Request failed with status code 400') {
     return Notify.failure('Maybe the username or password is incorrect');
   }
+  if (payload === 'Request failed with status code 401') {
+    return Notify.failure(
+      'Sorry You are unauthorized. Please authorize to access your account'
+    );
+  }
   Notify.failure(state.error || 'Error');
 };
 
@@ -87,11 +92,6 @@ export const authSlice = createSlice({
       .addCase(refreshUserThunk.rejected, state => {
         state.isRefreshing = false;
         state.token = '';
-        if (state.error === 'Request failed with status code 401') {
-          return Notify.failure(
-            'Sorry You are unauthorized. Please authorize to access your account'
-          );
-        }
       })
       .addMatcher(action => action.type.endsWith('User/pending'), handlePending)
       .addMatcher(

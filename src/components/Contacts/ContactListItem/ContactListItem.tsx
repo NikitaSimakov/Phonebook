@@ -4,13 +4,13 @@ import {
   selectContactId,
   selectIsLoadingContacts,
 } from '../../../redux/selectors';
-import { BsFillTelephoneFill } from 'react-icons/bs';
 import { deleteContact } from '../../../redux/contact/thunks';
-import img from './contact_default.jpeg';
 import css from './ContactListItem.module.scss';
-import { Button } from '../../Button/Button';
+import Button from '../../Button/Button';
 import CircularIndeterminate from '../../CircularProgress/CircularProgress';
 import { useAppDispatch } from '../../../redux/hooks';
+import ContaListItemCard from './ContactListItemCard/ContactListItemCard';
+
 interface ContactListItemProps {
   contact: {
     name: string;
@@ -29,27 +29,10 @@ export const ContactListItem: FC<ContactListItemProps> = ({ contact }) => {
     dispatch(deleteContact(id));
   };
 
-  const showSpinner = isShowSpinner ? (
-    <div className={css.spinner}>{CircularIndeterminate()}</div>
-  ) : (
-    <></>
-  );
-
   return (
     <li className={css.item}>
       <div className={css.itemBox}>
-        <img className={css.image} src={img} alt="contact default pic" />
-        <div className={css.textBox}>
-          <p className={css.name}>{contact.name}</p>
-          <div className={css.phoneBox}>
-            <BsFillTelephoneFill
-              className={css.phoneIcon}
-              fill="#97c784"
-              height={15}
-            />
-            <p className={css.number}>{contact.number}</p>
-          </div>
-        </div>
+        <ContaListItemCard name={contact.name} number={contact.number} />
         <Button
           className={css.button}
           stylish={'redButton'}
@@ -58,7 +41,7 @@ export const ContactListItem: FC<ContactListItemProps> = ({ contact }) => {
           disabled={isShowSpinner}
         >
           Delete
-          {showSpinner}
+          <CircularIndeterminate conditions={isShowSpinner} />
         </Button>
       </div>
     </li>

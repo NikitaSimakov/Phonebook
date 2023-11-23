@@ -11,7 +11,7 @@ interface ButtonProps {
   disabled?: boolean;
 }
 
-export const Button: FC<ButtonProps> = ({
+const Button: FC<ButtonProps> = ({
   stylish,
   event,
   children,
@@ -29,3 +29,5 @@ export const Button: FC<ButtonProps> = ({
     </button>
   );
 };
+
+export default Button;

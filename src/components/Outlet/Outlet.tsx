@@ -1,9 +1,10 @@
-import Header from '../Header/Header';
+import { UserMenu } from '../UserMenu/UserMenu';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import Header from '../Header/Header';
 import { refreshUserThunk, logOutThunk } from '../../redux/auth/thunks';
-import { selectToken, selectUserName } from '../../redux/selectors';
 import { useAppDispatch } from '../../redux/hooks';
+import { selectToken, selectUserName } from '../../redux/selectors';
 const { Outlet } = require('react-router-dom');
 
 const Layout = () => {
@@ -13,15 +14,15 @@ const Layout = () => {
 
   useEffect(() => {
     if (token && !userName) {
-      dispatch(refreshUserThunk())
-        .unwrap()
-        .catch(() => dispatch(logOutThunk()));
+      dispatch(refreshUserThunk());
     }
   }, [dispatch, token, userName]);
 
   return (
     <>
-      <Header />
+      <Header>
+        <UserMenu />
+      </Header>
       <Outlet />
     </>
   );

@@ -7,7 +7,9 @@ export interface RouteProps {
   children: ReactNode;
 }
 
-export const PrivateRoute: FC<RouteProps> = ({ children }) => {
+const PrivateRoute: FC<RouteProps> = ({ children }) => {
   const isAuth = useSelector(selectIsAuth);
   return isAuth ? <>{children}</> : <Navigate to="/login" />;
 };
+
+export default PrivateRoute;
