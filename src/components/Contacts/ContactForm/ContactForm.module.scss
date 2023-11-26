@@ -60,13 +60,13 @@
     position: fixed;
     top: 90%;
     left: 80%;
-    border-radius: 10px;
+    border-radius: 50%;
     padding: 10px 10px;
-    font-size: 12px;
     border: none;
 
     background-color: yellowgreen;
-    width: 60px;
+    width: 40px;
+    height: 40px;
 
     cursor: pointer;
 
@@ -76,22 +76,41 @@
     &:focus {
         background-color: rgb(133, 195, 67);
         box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.2);
+        & svg {
+            transition-property: fill;
+            transition-duration: 250ms;
+            fill: whitesmoke;
+        }
+    }
+    & svg {
+        width: 20px;
+        height: 20px;
     }
 
     @include tablet {
         left: 88%;
+
+        width: 60px;
+        height: 60px;
+        & svg {
+            width: 30px;
+            height: 30px;
+        }
     }
 }
 .closeButton {
     position: fixed;
     top: 3%;
     right: 3%;
-    width: 40px;
-    height: 40px;
+    width: 20px;
+    height: 20px;
     border-style: none;
     border-radius: 50%;
     padding: 0;
-    font-size: 28px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     cursor: pointer;
 
@@ -101,5 +120,11 @@
     &:hover,
     &:focus {
         transform: rotate(20deg);
+    }
+
+    @include tablet {
+        width: 40px;
+        height: 40px;
+        font-size: 28px;
     }
 }

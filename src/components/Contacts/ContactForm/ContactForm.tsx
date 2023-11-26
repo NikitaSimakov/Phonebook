@@ -4,6 +4,7 @@ import { Formik, Form, FormikHelpers as FormikActions } from 'formik';
 import * as yup from 'yup';
 import 'yup-phone-lite';
 import { Notify } from 'notiflix';
+import { VscChromeClose, VscPersonAdd } from 'react-icons/vsc';
 import css from './ContactForm.module.scss';
 import ContactFormLabel from './ContactFormLabel/ContactFormLabel';
 import Button from '../../Button/Button';
@@ -108,7 +109,7 @@ const ContactForm: FC<{}> = () => {
                     className={css.closeButton}
                     type="button"
                   >
-                    X
+                    <VscChromeClose />
                   </button>
                 </Form>
               </Formik>
@@ -117,7 +118,7 @@ const ContactForm: FC<{}> = () => {
         </section>
       )}
       <button onClick={modalOpen} className={css.openButton} type="button">
-        Add contact
+        <VscPersonAdd />
       </button>
     </>
   );
