@@ -38,23 +38,6 @@
         min-width: 320px;
     }
 }
-.form {
-    margin-bottom: 25px;
-}
-.title {
-    text-align: center;
-    font-size: 24px;
-}
-.labelWrapper button {
-    margin-top: 40px;
-}
-.labelWrapper {
-    margin-top: 50px;
-
-    @include flex;
-    align-content: center;
-    justify-content: space-evenly;
-}
 
 .openButton {
     position: fixed;
