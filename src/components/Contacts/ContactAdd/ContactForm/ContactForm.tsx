@@ -23,33 +23,35 @@ const ContactForm: FC<IContactFormProps> = ({ onSubmit }) => {
     name: yup.string().min(2).required(),
     number: yup
       .string()
-      .phone('IN', 'Please enter a valid phone number in format +15501234567'),
+      .phone('IN', 'Please enter a valid phone number in format +15501234567')
+      .required(),
   });
   return (
-    <section className={css.formWrapper}>
+    <>
+      <h1 className={css.title}>Add new contact</h1>
       <Formik
         initialValues={initialValues}
         validationSchema={schema}
         onSubmit={onSubmit}
+        className={css.form}
       >
-        <Form className={css.form}>
-          <h1 className={css.title}>Add new contact</h1>
-          <div className={css.labelWrapper}>
-            <ContactFormLabel
-              labelName={'Name'}
-              type={'text'}
-              placeholder={'Homer Simpson'}
-            />
-            <ContactFormLabel
-              labelName={'Number'}
-              type={'tel'}
-              placeholder={'+15501234567'}
-            />
-            <Button buttonType={'submit'}>Add contact</Button>
-          </div>
+        <Form className={css.form} id="addContactForm">
+          <ContactFormLabel
+            labelName={'Name'}
+            type={'text'}
+            placeholder={'Homer Simpson'}
+          />
+          <ContactFormLabel
+            labelName={'Number'}
+            type={'tel'}
+            placeholder={'+15501234567'}
+          />
         </Form>
       </Formik>
-    </section>
+      <Button form="addContactForm" buttonType={'submit'}>
+        Add contact
+      </Button>
+    </>
   );
 };
 

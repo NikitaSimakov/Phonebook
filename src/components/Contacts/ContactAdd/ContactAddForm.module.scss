@@ -1,44 +1,5 @@
 @import "../../../index.scss";
 
-.addContactWrapper {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-}
-.addContact {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80%;
-    height: 60%;
-    background-color: white;
-
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-
-    border-radius: 15px;
-    @include tablet {
-        width: 50%;
-        height: 60%;
-    }
-}
-
-.container {
-    box-sizing: border-box;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 15px 15px 60px;
-    width: 100%;
-    @include tablet {
-        margin-left: 0;
-        padding: 35px 15px;
-
-        min-width: 320px;
-    }
-}
-
 .openButton {
     position: fixed;
     top: 90%;
@@ -79,35 +40,5 @@
             width: 30px;
             height: 30px;
         }
-    }
-}
-.closeButton {
-    position: fixed;
-    top: 3%;
-    right: 3%;
-    width: 20px;
-    height: 20px;
-    border-style: none;
-    border-radius: 50%;
-    padding: 0;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    cursor: pointer;
-
-    transition-property: transform;
-    transition-duration: 250ms;
-
-    &:hover,
-    &:focus {
-        transform: rotate(20deg);
-    }
-
-    @include tablet {
-        width: 40px;
-        height: 40px;
-        font-size: 28px;
     }
 }

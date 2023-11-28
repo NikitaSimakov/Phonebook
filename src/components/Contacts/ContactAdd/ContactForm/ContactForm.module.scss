@@ -1,33 +1,9 @@
 @import "../../../../index.scss";
 
-.formWrapper {
-  box-sizing: border-box;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 15px 15px 60px;
-  width: 100%;
-  @include tablet {
-    margin-left: 0;
-    padding: 35px 15px;
-
-    min-width: 320px;
-  }
-}
-
-// .form {
-//   margin-bottom: 25px;
-// }
 .title {
   text-align: center;
   font-size: 24px;
 }
-.labelWrapper button {
-  // margin-top: 40px;
-}
-.labelWrapper {
-  margin-top: 50px;
-
-  @include flex;
-  align-content: center;
-  justify-content: space-evenly;
+.form {
+  margin: auto 0;
 }

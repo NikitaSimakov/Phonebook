@@ -29,12 +29,12 @@ const Modal: FC<IModalProps> = ({ children, onClose }) => {
 
   const Modal = (
     <div onClick={onEscTapHandler} className={css.overlay}>
-      <div className={css.modal}>
+      <section className={css.modal}>
         <button onClick={onClose} className={css.closeButton} type="button">
           <VscChromeClose />
         </button>
         {children}
-      </div>
+      </section>
     </div>
   );
   return createPortal(Modal, modalRoot);
