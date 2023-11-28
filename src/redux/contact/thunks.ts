@@ -51,3 +51,19 @@ export const deleteContact = createAsyncThunk<
     return rejectWithValue((error as Error).message);
   }
 });
+
+export const editContact = createAsyncThunk<
+  IContact,
+  IContact,
+  { rejectValue: string }
+>('contacts/editContact', async (body, { rejectWithValue }) => {
+  try {
+    const { id, name, number } = body;
+    const request = { name, number };
+    const { data } = await instance.patch(`contacts/${id}`, request);
+
+    return data;
+  } catch (error) {
+    return rejectWithValue((error as Error).message);
+  }
+});

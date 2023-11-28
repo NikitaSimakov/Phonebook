@@ -36,7 +36,7 @@ const AuthForm: FC<AuthFormProps> = ({ authType, children }) => {
       validationSchema={useSelectSchema(authType)}
       onSubmit={useHandleSubmit}
     >
-      <Form className={css.form}>
+      <Form id="authForm" className={css.form}>
         {children}
         <AuthButton />
       </Form>

@@ -1,4 +1,4 @@
-import { FC, SyntheticEvent } from 'react';
+import { FC, SyntheticEvent, useState } from 'react';
 import { useSelector } from 'react-redux';
 import {
   selectContactId,
@@ -10,6 +10,7 @@ import Button from '../../Button/Button';
 import CircularIndeterminate from '../../CircularProgress/CircularProgress';
 import { useAppDispatch } from '../../../redux/hooks';
 import ContaListItemCard from './ContactListItemCard/ContactListItemCard';
+import ContactEdit from '../ContactEdit/ContactEdit';
 
 interface ContactListItemProps {
   contact: {
@@ -22,6 +23,7 @@ export const ContactListItem: FC<ContactListItemProps> = ({ contact }) => {
   const dispatch = useAppDispatch();
   const isLoading = useSelector(selectIsLoadingContacts);
   const contactId = useSelector(selectContactId);
+  const [isEdit, setIsEdit] = useState(false);
   const isShowSpinner: boolean = isLoading && contactId === contact.id;
 
   const deleteHandler = (event: SyntheticEvent) => {
@@ -30,19 +32,27 @@ export const ContactListItem: FC<ContactListItemProps> = ({ contact }) => {
   };
 
   return (
-    <li className={css.item}>
+    <li key={contact.id} className={css.item}>
       <div className={css.itemBox}>
         <ContaListItemCard name={contact.name} number={contact.number} />
-        <Button
-          className={css.button}
-          stylish={'redButton'}
-          id={contact.id}
-          event={deleteHandler}
-          disabled={isShowSpinner}
-        >
-          Delete
-          <CircularIndeterminate conditions={isShowSpinner} />
-        </Button>
+        <div className={css.buttonBox}>
+          <ContactEdit
+            id={contact.id}
+            isActive={isEdit}
+            setIsActive={setIsEdit}
+          />
+          <Button>Favo</Button>
+          <Button
+            className={css.button}
+            stylish={'redButton'}
+            id={contact.id}
+            event={deleteHandler}
+            disabled={isShowSpinner}
+          >
+            Delete
+            <CircularIndeterminate conditions={isShowSpinner} />
+          </Button>
+        </div>
       </div>
     </li>
   );
