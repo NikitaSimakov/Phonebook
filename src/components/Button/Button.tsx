@@ -9,6 +9,7 @@ interface ButtonProps {
   id?: string;
   className?: string;
   disabled?: boolean;
+  form?: string;
 }
 
 const Button: FC<ButtonProps> = ({
@@ -17,12 +18,14 @@ const Button: FC<ButtonProps> = ({
   children,
   buttonType = 'button',
   id,
+  form = '',
 }) => {
   return (
     <button
       onClick={event}
       type={buttonType}
       id={id}
+      form={form}
       className={stylish === 'redButton' ? css.redButton : css.button}
     >
       {children}

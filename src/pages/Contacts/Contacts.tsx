@@ -1,4 +1,4 @@
-import ContactForm from '../../components/Contacts/ContactForm/ContactForm';
+import ContactAddForm from '../../components/Contacts/ContactAdd/ContactAddForm';
 import ContactList from '../../components/Contacts/ContactList/ContactList';
 import Filter from '../../components/Filter/Filter';
 import css from './Contacts.module.scss';
@@ -8,7 +8,7 @@ const Contacts = () => {
     <section className={css.container}>
       <Filter />
       <ContactList />
-      <ContactForm />
+      <ContactAddForm />
     </section>
   );
 };

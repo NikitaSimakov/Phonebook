@@ -24,7 +24,7 @@ const ContactFormLabel: FC<ContactFormLabelProps> = ({
         id={name}
         placeholder={placeholder}
       />
-      <ErrorMessage name={name} />
+      <ErrorMessage component="span" name={name} />
     </label>
   );
 };
