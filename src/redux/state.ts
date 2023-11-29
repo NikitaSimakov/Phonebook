@@ -3,6 +3,7 @@ export interface ContactsState {
   isLoading: boolean;
   error: null | string | object;
   id: string;
+  favorites: string[];
 }
 
 export const contactsState: ContactsState = {
@@ -10,5 +11,6 @@ export const contactsState: ContactsState = {
   isLoading: false,
   error: null,
   id: '',
+  favorites: [],
 };
 export const filterState = { filter: '' };

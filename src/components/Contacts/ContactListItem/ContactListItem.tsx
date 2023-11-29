@@ -11,6 +11,8 @@ import CircularIndeterminate from '../../CircularProgress/CircularProgress';
 import { useAppDispatch } from '../../../redux/hooks';
 import ContaListItemCard from './ContactListItemCard/ContactListItemCard';
 import ContactEdit from '../ContactEdit/ContactEdit';
+import { BsPersonFillDash, BsPersonHeart } from 'react-icons/bs';
+import ContactFavorite from '../ContactFavorite/ContactFavorite';
 
 interface ContactListItemProps {
   contact: {
@@ -41,7 +43,7 @@ export const ContactListItem: FC<ContactListItemProps> = ({ contact }) => {
             isActive={isEdit}
             setIsActive={setIsEdit}
           />
-          <Button>Favo</Button>
+          <ContactFavorite id={contact.id} />
           <Button
             className={css.button}
             stylish={'redButton'}
@@ -49,7 +51,7 @@ export const ContactListItem: FC<ContactListItemProps> = ({ contact }) => {
             event={deleteHandler}
             disabled={isShowSpinner}
           >
-            Delete
+            {!isShowSpinner && <BsPersonFillDash />}
             <CircularIndeterminate conditions={isShowSpinner} />
           </Button>
         </div>

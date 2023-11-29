@@ -67,3 +67,41 @@ export const editContact = createAsyncThunk<
     return rejectWithValue((error as Error).message);
   }
 });
+
+export const favoriteContact = (id: string, action: string) => {
+  switch (action) {
+    case 'add':
+      return {
+        type: 'contacts/addFavoriteContact',
+        payload: id,
+      };
+    case 'remove':
+      return {
+        type: 'contacts/removeFavoriteContact',
+        payload: id,
+      };
+    default:
+      return {
+        type: 'contacts/favorite',
+        payload: id,
+      };
+  }
+};
+
+// export const removeFavorite = (id: string) => {
+//   return {
+//     type: 'contacts/removeFavoriteContact',
+//     payload: id,
+//   };
+// };
+// export const favoriteContacts = createAsyncThunk<
+//   string,
+//   string,
+//   { rejectValue: string }
+// >('contacts/favoriteContacts', (id, { rejectWithValue }) => {
+//   try {
+//     return id;
+//   } catch (error) {
+//     return rejectWithValue((error as Error).message);
+//   }
+// });

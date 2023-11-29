@@ -2,7 +2,7 @@ import { useState, FC } from 'react';
 import { useSelector } from 'react-redux';
 import { FormikHelpers as FormikActions } from 'formik';
 import { Notify } from 'notiflix';
-import { VscPersonAdd } from 'react-icons/vsc';
+import { BsPersonFillAdd } from 'react-icons/bs';
 import css from './ContactAddForm.module.scss';
 import ContactForm from './ContactForm/ContactForm';
 import { addContact } from '../../../redux/contact/thunks';
@@ -47,7 +47,7 @@ const ContactAddForm: FC<{}> = () => {
         className={css.openButton}
         type="button"
       >
-        <VscPersonAdd />
+        <BsPersonFillAdd />
       </button>
     </>
   );

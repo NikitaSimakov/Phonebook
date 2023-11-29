@@ -1,7 +1,7 @@
 import { Dispatch, FC, SetStateAction, SyntheticEvent, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { FormikHelpers as FormikActions } from 'formik';
-import { VscEdit } from 'react-icons/vsc';
+import { BsPersonFillGear } from 'react-icons/bs';
 import {
   modalClose,
   modalOpen,
@@ -52,7 +52,7 @@ const ContactEdit: FC<IContactEditProps> = ({ isActive, setIsActive, id }) => {
         </Modal>
       )}
       <Button id={id} event={handleClick} className={css.openButton}>
-        <VscEdit />
+        <BsPersonFillGear />
       </Button>
     </>
   );

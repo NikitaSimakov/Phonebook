@@ -5,6 +5,8 @@ import {
   deleteContact,
   addContact,
   editContact,
+  // favoriteContact,
+  // favoriteContacts,
 } from './thunks';
 import { Notify } from 'notiflix';
 
@@ -59,6 +61,18 @@ const contactsSlice = createSlice({
           `The contact ${payload.name} was successfully edited in the phone book!`
         );
       })
+      .addMatcher(
+        action => action.type.endsWith('addFavoriteContact'),
+        (state: ContactsState, { payload }) => {
+          state.favorites.push(payload);
+        }
+      )
+      .addMatcher(
+        action => action.type.endsWith('removeFavoriteContact'),
+        (state: ContactsState, { payload }) => {
+          state.favorites = state.favorites.filter(id => id !== payload);
+        }
+      )
       .addMatcher(
         action => action.type.endsWith('Contact/pending'),
         handlePending
