@@ -11,7 +11,7 @@ import CircularIndeterminate from '../../CircularProgress/CircularProgress';
 import { useAppDispatch } from '../../../redux/hooks';
 import ContaListItemCard from './ContactListItemCard/ContactListItemCard';
 import ContactEdit from '../ContactEdit/ContactEdit';
-import { BsPersonFillDash, BsPersonHeart } from 'react-icons/bs';
+import { BsPersonFillDash } from 'react-icons/bs';
 import ContactFavorite from '../ContactFavorite/ContactFavorite';
 
 interface ContactListItemProps {
