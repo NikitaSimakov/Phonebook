@@ -1,7 +1,7 @@
-import { VscChromeClose } from 'react-icons/vsc';
-import css from './Modal.module.scss';
-import { createPortal } from 'react-dom';
 import { ReactNode, FC, useEffect, MouseEvent } from 'react';
+import { createPortal } from 'react-dom';
+import css from './Modal.module.scss';
+import { CloseButton } from './CloseButton';
 
 interface IModalProps {
   children: ReactNode;
@@ -30,9 +30,7 @@ const Modal: FC<IModalProps> = ({ children, onClose }) => {
   const Modal = (
     <div onClick={onEscTapHandler} className={css.overlay}>
       <section className={css.modal}>
-        <button onClick={onClose} className={css.closeButton} type="button">
-          <VscChromeClose />
-        </button>
+        <CloseButton onClose={onClose} />
         {children}
       </section>
     </div>

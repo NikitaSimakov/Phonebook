@@ -4,7 +4,7 @@ export const selectContacts = (state: RootState) => state.contacts.contacts;
 export const selectFilter = (state: RootState) => state.filter;
 export const selectFilteredContact = (state: RootState) => {
   return selectContacts(state).filter(contact =>
-    contact.name.includes(selectFilter(state))
+    contact.name.toLowerCase().includes(selectFilter(state).toLowerCase())
   );
 };
 export const selectUserName = (state: RootState) => state.auth.user.name;
