@@ -10,7 +10,7 @@ const Filter = () => {
   const filterInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const filter = event.target.value;
     setFilter(filter);
-    dispatch(setFilterState({ filter }));
+    dispatch(setFilterState(filter));
   };
   return (
     <label className={css.label} htmlFor="filter">

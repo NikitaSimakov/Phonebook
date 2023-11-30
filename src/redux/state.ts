@@ -13,4 +13,4 @@ export const contactsState: ContactsState = {
   id: '',
   favorites: [],
 };
-export const filterState = { filter: '' };
+export const filterState = '';

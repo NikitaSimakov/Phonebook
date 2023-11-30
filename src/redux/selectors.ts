@@ -1,7 +1,7 @@
 import { RootState } from './store';
 
 export const selectContacts = (state: RootState) => state.contacts.contacts;
-export const selectFilter = (state: RootState) => state.filter.filter;
+export const selectFilter = (state: RootState) => state.filter;
 export const selectFilteredContact = (state: RootState) => {
   return selectContacts(state).filter(contact =>
     contact.name.includes(selectFilter(state))

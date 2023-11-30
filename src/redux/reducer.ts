@@ -7,15 +7,43 @@ import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
 
 const persistConfig = {
+  key: 'root',
+  storage,
+  whitelist: ['token', 'favorites'],
+};
+
+const authPersistConfig = {
   key: 'token',
   storage,
   whitelist: ['token'],
 };
 
-const persistedReducer = persistReducer(persistConfig, loginReducer);
+const favoritesPersistConfig = {
+  key: 'favorites',
+  storage,
+  whitelist: ['favorites'],
+};
+
+// const persistedReducer = persistReducer(persistConfig, loginReducer);
 
 export const reducer = combineReducers({
-  contacts: contactsReducer,
+  contacts: persistReducer(favoritesPersistConfig, contactsReducer),
   filter: filterReducer,
-  auth: persistedReducer,
+  // favorites: persistReducer(favoritesPersistConfig, favoriteReducer),
+  auth: persistReducer(authPersistConfig, loginReducer),
 });
+export const persistedReducer = persistReducer(persistConfig, reducer);
+
+// const persistConfig = {
+//   key: 'token',
+//   storage,
+//   whitelist: ['token'],
+// };
+
+// const persistedReducer = persistReducer(persistConfig, loginReducer);
+
+// export const reducer = combineReducers({
+//   contacts: contactsReducer,
+//   filter: filterReducer,
+//   auth: persistedReducer,
+// });

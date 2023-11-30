@@ -22,6 +22,21 @@ const handleRejected = (
   state.isLoading = false;
   Notify.failure(state.error || 'Error');
 };
+
+// export const AddToFavorite = (id: string) => {
+//   return {
+//     type: 'favorites/addFavorite',
+//     payload: id,
+//   };
+// };
+
+// export const DeleteFromFavorite = (id: string) => {
+//   return {
+//     type: 'favorites/deleteFavorite',
+//     payload: id,
+//   };
+// };
+
 const contactsSlice = createSlice({
   name: 'contacts',
   initialState: contactsState,
