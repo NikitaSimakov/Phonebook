@@ -12,13 +12,17 @@ interface IContactFormProps {
     { name, number }: MyFormValues,
     { resetForm }: FormikActions<MyFormValues>
   ) => void;
-}
-
-const ContactForm: FC<IContactFormProps> = ({ onSubmit }) => {
-  const initialValues: MyFormValues = {
-    name: '',
-    number: '',
+  title: string;
+  initialValues: {
+    name: string;
+    number: string;
   };
+}
+const ContactForm: FC<IContactFormProps> = ({
+  onSubmit,
+  title,
+  initialValues = { name: '', number: '' },
+}) => {
   const schema = yup.object().shape({
     name: yup.string().min(2).required(),
     number: yup
@@ -28,7 +32,7 @@ const ContactForm: FC<IContactFormProps> = ({ onSubmit }) => {
   });
   return (
     <>
-      <h1 className={css.title}>Add new contact</h1>
+      <h1 className={css.title}>{title}</h1>
       <Formik
         initialValues={initialValues}
         validationSchema={schema}

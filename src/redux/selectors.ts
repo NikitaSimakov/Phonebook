@@ -1,7 +1,7 @@
 import { RootState } from './store';
 
 export const selectContacts = (state: RootState) => state.contacts.contacts;
-export const selectFilter = (state: RootState) => state.filter.filter;
+export const selectFilter = (state: RootState) => state.filter;
 export const selectFilteredContact = (state: RootState) => {
   return selectContacts(state).filter(contact =>
     contact.name.includes(selectFilter(state))
@@ -18,3 +18,7 @@ export const selectNameIsInContacts = (state: RootState, name: string) => {
 };
 export const selectIsRefreshing = (state: RootState) => state.auth.isRefreshing;
 export const selectContactId = (state: RootState) => state.contacts.id;
+export const selectContact = (state: RootState, id: string) => {
+  return selectContacts(state).find(contact => contact.id === id);
+};
+export const selectFavoriteIds = (state: RootState) => state.contacts.favorites;

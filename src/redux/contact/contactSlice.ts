@@ -1,6 +1,11 @@
 import { ContactsState, contactsState } from '../state';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { fetchContacts, deleteContact, addContact } from './thunks';
+import {
+  fetchContacts,
+  deleteContact,
+  addContact,
+  editContact,
+} from './thunks';
 import { Notify } from 'notiflix';
 
 const handlePending = (state: ContactsState) => {
@@ -15,6 +20,7 @@ const handleRejected = (
   state.isLoading = false;
   Notify.failure(state.error || 'Error');
 };
+
 const contactsSlice = createSlice({
   name: 'contacts',
   initialState: contactsState,
@@ -42,6 +48,30 @@ const contactsSlice = createSlice({
         );
         state.contacts.push(payload);
       })
+      .addCase(editContact.fulfilled, (state, { payload }) => {
+        state.contacts.filter(contact => {
+          if (contact.id === payload.id) {
+            contact.name = payload.name;
+            contact.number = payload.number;
+          }
+          return contact;
+        });
+        Notify.success(
+          `The contact ${payload.name} was successfully edited in the phone book!`
+        );
+      })
+      .addMatcher(
+        action => action.type.endsWith('addFavoriteContact'),
+        (state: ContactsState, { payload }) => {
+          state.favorites.push(payload);
+        }
+      )
+      .addMatcher(
+        action => action.type.endsWith('removeFavoriteContact'),
+        (state: ContactsState, { payload }) => {
+          state.favorites = state.favorites.filter(id => id !== payload);
+        }
+      )
       .addMatcher(
         action => action.type.endsWith('Contact/pending'),
         handlePending

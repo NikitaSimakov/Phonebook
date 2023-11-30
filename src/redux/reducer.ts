@@ -6,16 +6,20 @@ import { loginReducer } from './auth/slice';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
 
-const persistConfig = {
+const authPersistConfig = {
   key: 'token',
   storage,
   whitelist: ['token'],
 };
 
-const persistedReducer = persistReducer(persistConfig, loginReducer);
+const favoritesPersistConfig = {
+  key: 'favorites',
+  storage,
+  whitelist: ['favorites'],
+};
 
 export const reducer = combineReducers({
-  contacts: contactsReducer,
+  contacts: persistReducer(favoritesPersistConfig, contactsReducer),
+  auth: persistReducer(authPersistConfig, loginReducer),
   filter: filterReducer,
-  auth: persistedReducer,
 });

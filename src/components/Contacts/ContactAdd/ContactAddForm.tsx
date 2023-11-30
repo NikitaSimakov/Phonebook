@@ -2,7 +2,7 @@ import { useState, FC } from 'react';
 import { useSelector } from 'react-redux';
 import { FormikHelpers as FormikActions } from 'formik';
 import { Notify } from 'notiflix';
-import { VscPersonAdd } from 'react-icons/vsc';
+import { BsPersonFillAdd } from 'react-icons/bs';
 import css from './ContactAddForm.module.scss';
 import ContactForm from './ContactForm/ContactForm';
 import { addContact } from '../../../redux/contact/thunks';
@@ -10,6 +10,10 @@ import { selectContacts } from '../../../redux/selectors';
 import { useAppDispatch } from '../../../redux/hooks';
 import Modal from '../../../shared/components/Modal/Modal';
 import { MyFormValues } from '../modules/interfaces';
+import {
+  modalClose,
+  modalOpen,
+} from '../../../shared/components/Modal/modalLogic';
 
 const ContactAddForm: FC<{}> = () => {
   const dispatch = useAppDispatch();
@@ -24,27 +28,26 @@ const ContactAddForm: FC<{}> = () => {
     if (contacts.some(contact => contact.name.includes(name)))
       return Notify.failure(`Contact ${name} is already in phonebook!`);
     dispatch(addContact({ name, number }));
-    modalClose();
-  };
-
-  const modalOpen = () => {
-    setIsActive(true);
-    document.body?.classList.add('hidden');
-  };
-  const modalClose = () => {
-    setIsActive(false);
-    document.body?.classList.remove('hidden');
+    modalClose(setIsActive);
   };
 
   return (
     <>
       {isActive && (
-        <Modal onClose={modalClose}>
-          <ContactForm onSubmit={handleSubmit} />
+        <Modal onClose={() => modalClose(setIsActive)}>
+          <ContactForm
+            initialValues={{ name: '', number: '' }}
+            onSubmit={handleSubmit}
+            title={'Add new contact'}
+          />
         </Modal>
       )}
-      <button onClick={modalOpen} className={css.openButton} type="button">
-        <VscPersonAdd />
+      <button
+        onClick={() => modalOpen(setIsActive)}
+        className={css.openButton}
+        type="button"
+      >
+        <BsPersonFillAdd />
       </button>
     </>
   );

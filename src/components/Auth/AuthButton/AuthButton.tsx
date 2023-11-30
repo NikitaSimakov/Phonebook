@@ -6,7 +6,7 @@ import CircularIndeterminate from '../../CircularProgress/CircularProgress';
 const AuthButton = () => {
   const isLoading = useSelector(selectIsLoading);
   return (
-    <Button buttonType={'submit'}>
+    <Button form={'authForm'} buttonType={'submit'}>
       Send
       <CircularIndeterminate conditions={isLoading} />
     </Button>
