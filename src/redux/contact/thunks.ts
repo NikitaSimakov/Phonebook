@@ -87,21 +87,3 @@ export const favoriteContact = (id: string, action: string) => {
       };
   }
 };
-
-// export const removeFavorite = (id: string) => {
-//   return {
-//     type: 'contacts/removeFavoriteContact',
-//     payload: id,
-//   };
-// };
-// export const favoriteContacts = createAsyncThunk<
-//   string,
-//   string,
-//   { rejectValue: string }
-// >('contacts/favoriteContacts', (id, { rejectWithValue }) => {
-//   try {
-//     return id;
-//   } catch (error) {
-//     return rejectWithValue((error as Error).message);
-//   }
-// });

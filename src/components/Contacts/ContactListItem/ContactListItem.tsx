@@ -37,7 +37,7 @@ export const ContactListItem: FC<ContactListItemProps> = ({ contact }) => {
     <li key={contact.id} className={css.item}>
       <div className={css.itemBox}>
         <ContaListItemCard name={contact.name} number={contact.number} />
-        <div className={css.buttonBox}>
+        <div className={css.buttonsBox}>
           <ContactEdit
             id={contact.id}
             isActive={isEdit}

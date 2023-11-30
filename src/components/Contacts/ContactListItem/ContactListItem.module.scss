@@ -37,7 +37,11 @@
   align-items: center;
 }
 
-.buttonBox {
+.buttonsBox {
   display: flex;
   flex-wrap: wrap;
+  gap: 9px;
+  & button {
+    min-width: 60px;
+  }
 }
