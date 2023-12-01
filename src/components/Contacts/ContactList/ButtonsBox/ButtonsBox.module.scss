@@ -1,0 +1,24 @@
+@import "../../../../index.scss";
+
+.buttonsBox {
+  @include flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+.favBtn {
+  border: 1px solid black;
+  border-radius: 5px;
+  min-width: 100px;
+  height: 40px;
+  background-color: transparent;
+  cursor: pointer;
+  &Active {
+    border: 1px solid black;
+    border-radius: 5px;
+    min-width: 100px;
+    height: 40px;
+    background-color: yellowgreen;
+    color: white;
+  }
+}
