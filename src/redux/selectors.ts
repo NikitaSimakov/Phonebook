@@ -22,3 +22,8 @@ export const selectContact = (state: RootState, id: string) => {
   return selectContacts(state).find(contact => contact.id === id);
 };
 export const selectFavoriteIds = (state: RootState) => state.contacts.favorites;
+export const selectFavoritesContacts = (state: RootState) => {
+  return selectFilteredContact(state).filter(contact =>
+    selectFavoriteIds(state).includes(contact.id)
+  );
+};
