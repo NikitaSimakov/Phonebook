@@ -15,7 +15,7 @@
 <img src="https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white" alt="redux">
 </div>
 
----
+___
 
 Мой проект, `Phonebook`, использует передовые технологии для управления
 контактами. Разработанный на TypeScript с использованием библиотеки React, он
