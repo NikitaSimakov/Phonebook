@@ -1,5 +1,5 @@
 <div align="center">
-<h1 ><a href="https://nikitasimakov.github.io/Phonebook/">The Phonebook app</a></h1>
+<h1><a href="https://nikitasimakov.github.io/Phonebook/">The Phonebook app</a></h1>
 
 <a href="https://nikitasimakov.github.io/Phonebook/"><img  src="./src/pages/WelcomePage/book.svg" height="300"></a>
 
