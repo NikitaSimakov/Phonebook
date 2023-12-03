@@ -20,7 +20,9 @@ const ContaListItemCard: FC<ContactCardProp> = ({ name, number }) => {
             fill="#97c784"
             height={15}
           />
-          <p className={css.number}>{number}</p>
+          <a className={css.number} href={`tel:${number}`}>
+            {number}
+          </a>
         </div>
       </div>
     </>
