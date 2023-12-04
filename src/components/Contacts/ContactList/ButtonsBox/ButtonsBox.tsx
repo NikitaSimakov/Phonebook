@@ -13,14 +13,14 @@ const ButtonsBox: FC<IButtonsBoxProps> = ({ isFavorite, setIsFavorite }) => {
   return (
     <div className={css.buttonsBox}>
       <button
-        className={isFavorite ? css.favBtn : css.favBtnActive}
+        className={isFavorite ? css.favBtn : `${css.favBtn} active`}
         onClick={handleButtonClick}
         type="button"
       >
         All
       </button>
       <button
-        className={isFavorite ? css.favBtnActive : css.favBtn}
+        className={isFavorite ? `${css.favBtn} active` : css.favBtn}
         onClick={handleButtonClick}
         type="button"
       >
