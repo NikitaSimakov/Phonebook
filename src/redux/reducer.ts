@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
-import { contactsReducer } from './contact/contactSlice';
-import { filterReducer } from './filterSlice';
-import { loginReducer } from './auth/slice';
+import { contactsReducer } from './contact/contact-slice';
+import { filterReducer } from './filter/filter-slice';
+import { loginReducer } from './auth/auth-slice';
 
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web

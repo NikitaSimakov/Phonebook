@@ -6,7 +6,7 @@ import {
   selectUserName,
 } from '../../redux/selectors';
 import CircularIndeterminate from '../CircularProgress/CircularProgress';
-import { logOutThunk } from '../../redux/auth/thunks';
+import { logOutThunk } from '../../redux/auth/auth-thunks';
 import { AppDispatch } from '../../redux/store';
 import Button from '../Button/Button';
 import css from './UserMenu.module.scss';

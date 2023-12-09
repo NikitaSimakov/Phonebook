@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { BsPersonHeart } from 'react-icons/bs';
 import Button from '../../Button/Button';
 import { useAppDispatch } from '../../../redux/hooks';
-import { favoriteContact } from '../../../redux/contact/thunks';
+import { favoriteContact } from '../../../redux/contact/contact-thunks';
 import { selectFavoriteIds } from '../../../redux/selectors';
 
 interface IContactFavProps {

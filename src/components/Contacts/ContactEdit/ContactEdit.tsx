@@ -12,7 +12,7 @@ import ContactForm from '../ContactAdd/ContactForm/ContactForm';
 import css from './ContactEdit.module.scss';
 import { MyFormValues } from '../modules/interfaces';
 import { useAppDispatch } from '../../../redux/hooks';
-import { editContact } from '../../../redux/contact/thunks';
+import { editContact } from '../../../redux/contact/contact-thunks';
 import { selectContacts } from '../../../redux/selectors';
 
 interface IContactEditProps {

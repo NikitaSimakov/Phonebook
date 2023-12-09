@@ -5,7 +5,7 @@ import { Notify } from 'notiflix';
 import { BsPersonFillAdd } from 'react-icons/bs';
 import css from './ContactAddForm.module.scss';
 import ContactForm from './ContactForm/ContactForm';
-import { addContact } from '../../../redux/contact/thunks';
+import { addContact } from '../../../redux/contact/contact-thunks';
 import { selectContacts } from '../../../redux/selectors';
 import { useAppDispatch } from '../../../redux/hooks';
 import Modal from '../../../shared/components/Modal/Modal';

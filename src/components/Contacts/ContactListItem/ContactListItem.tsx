@@ -4,7 +4,7 @@ import {
   selectContactId,
   selectIsLoadingContacts,
 } from '../../../redux/selectors';
-import { deleteContact } from '../../../redux/contact/thunks';
+import { deleteContact } from '../../../redux/contact/contact-thunks';
 import css from './ContactListItem.module.scss';
 import Button from '../../Button/Button';
 import CircularIndeterminate from '../../CircularProgress/CircularProgress';

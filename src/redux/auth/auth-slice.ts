@@ -4,7 +4,7 @@ import {
   loginThunk,
   refreshUserThunk,
   signUpThunk,
-} from './thunks';
+} from './auth-thunks';
 import { Notify } from 'notiflix';
 
 interface IUser {

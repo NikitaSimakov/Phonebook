@@ -1,4 +1,4 @@
-import { setFilterState } from '../../redux/filterSlice';
+import { setFilterState } from '../../redux/filter/filter-slice';
 import { useState, ChangeEvent } from 'react';
 import css from './Filter.module.scss';
 import { useAppDispatch } from '../../redux/hooks';

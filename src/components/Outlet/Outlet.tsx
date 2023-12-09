@@ -2,7 +2,7 @@ import { UserMenu } from '../UserMenu/UserMenu';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import Header from '../Header/Header';
-import { refreshUserThunk } from '../../redux/auth/thunks';
+import { refreshUserThunk } from '../../redux/auth/auth-thunks';
 import { useAppDispatch } from '../../redux/hooks';
 import { selectToken, selectUserName } from '../../redux/selectors';
 const { Outlet } = require('react-router-dom');

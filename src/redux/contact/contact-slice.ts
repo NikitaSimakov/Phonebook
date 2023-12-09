@@ -1,11 +1,11 @@
-import { ContactsState, contactsState } from '../state';
+import { ContactsState, contactsState } from './contact-state';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import {
   fetchContacts,
   deleteContact,
   addContact,
   editContact,
-} from './thunks';
+} from './contact-thunks';
 import { Notify } from 'notiflix';
 
 const handlePending = (state: ContactsState) => {

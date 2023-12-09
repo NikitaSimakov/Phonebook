@@ -1,6 +1,6 @@
 import { useEffect, FC, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { fetchContacts } from '../../../redux/contact/thunks';
+import { fetchContacts } from '../../../redux/contact/contact-thunks';
 import {
   selectFilteredContact,
   selectFavoritesContacts,
